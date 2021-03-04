@@ -1,2 +1,5 @@
 1) Flask
 - pip install flask
+- export FLASK_APP=twojKomputerowiec.py
+- export FLASK_DEBUG=1
+- flask run
