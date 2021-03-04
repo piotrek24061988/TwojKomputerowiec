@@ -1,0 +1,6 @@
+db.sqlite3
+*.pyc
+*.idea*
+*_initial.py
+serw_med/static/*
+*/migrations/0*
