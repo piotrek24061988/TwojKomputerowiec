@@ -1,0 +1,5 @@
+1) Reset cache firefoxa:
+- Shift + F5
+2) Znalezc zombie proces Flaska i zabic
+- ps -efa | grep flask
+- kill -9 pid
