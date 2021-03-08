@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/domowa.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/domowa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/kontakt.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/kontakt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/oMnie.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/Szablony/oMnie.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/static/glowny.css" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/static/glowny.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/static/media/tlo/matrix-1735640_1920.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="30" />
+            <state relative-caret-position="2">
+              <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -74,17 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/static/glowny.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/static/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="19" />
+            <state relative-caret-position="409">
+              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -92,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="16" column="71" selection-start-line="16" selection-start-column="71" selection-end-line="16" selection-end-column="71" />
+            <state relative-caret-position="342">
+              <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -105,6 +95,11 @@
       <find>dropdown-menu</find>
       <find>site-header</find>
       <find>bg-steel</find>
+      <find>media-body</find>
+      <find>content-section</find>
+      <find>article-content</find>
+      <find>text-muted</find>
+      <find>list-group-item</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,7 +111,6 @@
         <option value="$PROJECT_DIR$/Notatnik/zaleznosci.txt" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Templates/domowa.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Templates/oMnie.html" />
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html" />
         <option value="$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/static/main.css" />
         <option value="$PROJECT_DIR$/Notatnik/porady.txt" />
@@ -126,15 +120,16 @@
         <option value="$PROJECT_DIR$/../SERW-MED/serw_med/news/static/main.css" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/static/glowny.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="27" />
-    <option name="width" value="1786" />
-    <option name="height" value="912" />
+    <option name="x" value="22" />
+    <option name="y" value="12" />
+    <option name="width" value="618" />
+    <option name="height" value="468" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -299,27 +294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/oMnie.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/domowa.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/kontakt.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -358,10 +332,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html">
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/domowa.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="16" column="71" selection-start-line="16" selection-start-column="71" selection-end-line="16" selection-end-column="71" />
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/oMnie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -372,10 +353,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/static/glowny.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="409">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
         </state>
       </provider>
     </entry>

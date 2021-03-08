@@ -1,5 +1,5 @@
 body {
-  background-image: url('media/tlo/matrix-1735640_1920.jpg');
+  background-image: url('media/tlo/network-4556932_1920.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -7,26 +7,30 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  //color: #444444;
-  color: #ffc107;
+  color: #ffffff;
 }
 
 .site-header .navbar-nav .dropdown-item {
-  color: #ffc107;
+  color: #ffffff;
   font-weight: bold;
 }
 
 .site-header .navbar-nav .dropdown-item:hover {
-  color: black;
-  background-color: #ffc107 !important;
+  color: #ffffff;
+  background-color: #868e96 !important;
 }
 
-.site-header .navbar-nav .btn-outline-warning {
+.site-header .navbar-nav .btn-outline-secondary {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .btn-outline-secondary:hover {
   font-weight: bold;
 }
 
 .content-section {
-  background: #ffffff;
+  background: #343a40;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -34,16 +38,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .article-title {
-  color: #444444;
+  color: #ffffff;
 }
 
 a.article-title:hover {
-  color: #428bca;
+  color: #868e96;
   text-decoration: none;
 }
 
 .article-content {
   white-space: pre-line;
+  color: #ffffff;
 }
 
 .article-img {
@@ -59,7 +64,6 @@ a.article-title:hover {
 }
 
 .article-metadata a:hover {
-  color: #333;
   text-decoration: none;
 }
 
@@ -78,4 +82,12 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.content-section .list-group-item-dark {
+  color: #ffffff;
+}
+
+.content-section .list-group-item-dark:hover {
+  color: #868e96;
 }
