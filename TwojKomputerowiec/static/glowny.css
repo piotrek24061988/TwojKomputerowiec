@@ -1,40 +1,28 @@
 body {
-  background: #fafafa;
-  color: #333333;
+  background-image: url('media/tlo/matrix-1735640_1920.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   margin-top: 5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
-}
-
-.bg-steel {
-  background-color: #5f788a;
-}
-
-.site-header .navbar-nav .nav-link {
-  color: #ffffff;
-}
-
-.site-header .navbar-nav .nav-link:hover {
-  color: #ffff22;
-}
-
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
-}
-
-.site-header .navbar-nav .dropdown-menu {
-  background-color: #2f788a;
+  //color: #444444;
+  color: #ffc107;
 }
 
 .site-header .navbar-nav .dropdown-item {
-  color: #ffffff;
-  background-color: #2f788a;
+  color: #ffc107;
+  font-weight: bold;
 }
 
 .site-header .navbar-nav .dropdown-item:hover {
-  color: #ffff22;
+  color: black;
+  background-color: #ffc107 !important;
+}
+
+.site-header .navbar-nav .btn-outline-warning {
+  font-weight: bold;
 }
 
 .content-section {
