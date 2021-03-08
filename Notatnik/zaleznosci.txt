@@ -1,5 +1,7 @@
 1) Flask
 - pip install flask
+- pip install flask-wtf
+- pip install email_validator
 - export FLASK_APP=twojKomputerowiec.py
 - export FLASK_DEBUG=1
 - flask run

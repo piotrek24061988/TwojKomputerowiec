@@ -31,17 +31,17 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarToggle">
                         <div class="navbar-nav mr-auto">
-                            <button class="btn btn-outline-secondary mx-1" type="button" href="#">Strona domowa</button>
-                            <button class="btn btn-outline-secondary mx-1" type="button" href="#">Aktualności</button>
-                            <button class="btn btn-outline-secondary mx-1" type="button" href="#">Kontakt</button>
+                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('stronaStartowa') }}">Strona domowa</a>
+                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('aktualnosci') }}">Aktualności</a>
+                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('kontakt') }}">Kontakt</a>
                             <li class="nav-item dropdown">
-                                <button class="btn btn-outline-secondary mx-1 dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O mnie</button>
+                                <button class="btn btn-outline-secondary mx-1 dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O mnie</button>
                                 <div class="dropdown-menu bg-dark" aria-labelledby="subnav">
-                                    <a class="dropdown-item bg-dark" href="#">Zawodowo</a>
-                                    <a class="dropdown-item bg-dark" href="#">Prywatnie</a>
+                                    <a class="dropdown-item bg-dark" href="{{ url_for('oMnie') }}">Zawodowo</a>
+                                    <a class="dropdown-item bg-dark" href="{{ url_for('oMnie') }}">Prywatnie</a>
                                 </div>
                             </li>
-                            <button class="btn btn-outline-secondary mx-1" type="button" href="#">Galeria</button>
+                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('galeria') }}">Galeria</a>
                             <li class="nav-item dropdown">
                                 <button class="btn btn-outline-secondary mx-1 dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</button>
                                 <div class="dropdown-menu bg-dark" aria-labelledby="subnav">
@@ -56,8 +56,8 @@
                                 <button class="btn btn-outline-secondary mx-1" type="button" href="#">Profil</button>
                                 <button class="btn btn-outline-secondary mx-1" type="button" href="#">Wylogowanie</button>
                             {% else %}
-                                <button class="btn btn-outline-secondary mx-1" type="button" href="#">Logowanie</button>
-                                <button class="btn btn-outline-secondary mx-1" type="button" href="#">Rejestracja</button>
+                                <a class="btn btn-outline-secondary mx-1" type="link" href="{{ url_for('logowanie') }}">Logowanie</a>
+                                <a class="btn btn-outline-secondary mx-1" type="link" href="{{ url_for('rejestracja') }}">Rejestracja</a>
                             {% endif %}
                         </div>
                     </div>
@@ -66,6 +66,15 @@
         </header>
 
         <main role="main" class="container">
+            {%  with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             {% block cialo %}{% endblock %}
         </main>
 

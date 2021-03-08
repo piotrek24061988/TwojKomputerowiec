@@ -91,3 +91,12 @@ a.article-title:hover {
 .content-section .list-group-item-dark:hover {
   color: #868e96;
 }
+
+.form-group .form-control-label {
+  color: #ffffff;
+}
+
+.form-group .btn-outline-secondary {
+  font-weight: bold;
+  color: #ffffff;
+}
