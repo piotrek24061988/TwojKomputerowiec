@@ -2,6 +2,7 @@
 - pip install flask
 - pip install flask-wtf
 - pip install email_validator
+- pip install flask-sqlalchemy
 - export FLASK_APP=twojKomputerowiec.py
 - export FLASK_DEBUG=1
 - flask run
