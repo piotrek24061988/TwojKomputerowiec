@@ -1,5 +1,5 @@
 from flask import render_template, flash, url_for, redirect
-from TwojKomputerowiec import app
+from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania
 from TwojKomputerowiec.modele import Uzytkownik, Post
 
@@ -54,8 +54,12 @@ def galeria():
 def rejestracja():
     formularz = FormularzRejestracji()
     if formularz.validate_on_submit():
+        hash_haslo = bcrypt.generate_password_hash(formularz.haslo.data).decode('utf-8')
+        uzytkownik = Uzytkownik(email=formularz.email.data, haslo=hash_haslo)
+        db.session.add(uzytkownik)
+        db.session.commit()
         flash(f'Konto utworzone dla { formularz.email.data }', 'success')
-        return redirect(url_for('stronaStartowa'))
+        return redirect(url_for('logowanie'))
     return render_template('rejestracja.html', title='Rejestracja', form=formularz)
 
 

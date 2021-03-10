@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from TwojKomputerowiec.modele import Uzytkownik
 
 
 class FormularzRejestracji(FlaskForm):
@@ -8,6 +9,13 @@ class FormularzRejestracji(FlaskForm):
     haslo = PasswordField('Hasło', validators=[DataRequired()])
     haslo2 = PasswordField('Potwierdź hasło', validators=[DataRequired(), EqualTo('haslo')])
     potwierdzenie = SubmitField('Rejestracja')
+
+    def validate_email(self, email):
+
+        uzytkownik = Uzytkownik.query.filter_by(email=email.data).first()
+
+        if uzytkownik:
+            raise ValidationError('Użytkownik już istnieje')
 
 
 class FormularzLogowania(FlaskForm):
