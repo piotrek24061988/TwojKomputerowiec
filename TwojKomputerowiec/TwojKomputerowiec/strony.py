@@ -1,7 +1,8 @@
-from flask import render_template, flash, url_for, redirect
+from flask import render_template, flash, url_for, redirect, request
 from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania
 from TwojKomputerowiec.modele import Uzytkownik, Post
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 posty = [
@@ -52,6 +53,8 @@ def galeria():
 @app.route('/rejestracja', methods=['GET', 'POST'])
 @app.route('/register', methods=['GET', 'POST'])
 def rejestracja():
+    if current_user.is_authenticated:
+        return redirect(url_for('stronaStartowa'))
     formularz = FormularzRejestracji()
     if formularz.validate_on_submit():
         hash_haslo = bcrypt.generate_password_hash(formularz.haslo.data).decode('utf-8')
@@ -66,11 +69,29 @@ def rejestracja():
 @app.route('/logowanie', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def logowanie():
+    if current_user.is_authenticated:
+        return redirect(url_for('stronaStartowa'))
     formularz = FormularzLogowania()
     if formularz.validate_on_submit():
-        if formularz.email.data == 'piotrek24061988@gmail.com':
-            flash(f'zalogowano { formularz.email.data }', 'success')
-            return redirect(url_for('stronaStartowa'))
+        uzytkownik = Uzytkownik.query.filter_by(email=formularz.email.data).first()
+        if uzytkownik and bcrypt.check_password_hash(uzytkownik.haslo, formularz.haslo.data):
+            login_user(uzytkownik, remember=formularz.potwierdzenie.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('stronaStartowa'))
         else:
             flash(f'nie zalogowano', 'danger')
     return render_template('logowanie.html', title='Logowanie', form=formularz)
+
+
+@app.route('/wylogowanie')
+@app.route('/logout')
+def wylogowanie():
+    logout_user()
+    return redirect(url_for('stronaStartowa'))
+
+
+@app.route('/profile')
+@app.route('/profil')
+@login_required
+def profil():
+    return render_template('profil.html', title='Profil')

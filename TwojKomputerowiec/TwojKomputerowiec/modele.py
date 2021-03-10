@@ -1,8 +1,14 @@
 from datetime import datetime
-from TwojKomputerowiec import db
+from TwojKomputerowiec import db, loginManager
+from flask_login import UserMixin
 
 
-class Uzytkownik(db.Model):
+@loginManager.user_loader
+def zaladujUzytkownika(userId):
+    return Uzytkownik.query.get(int(userId))
+
+
+class Uzytkownik(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     zdjecie = db.Column(db.String(20), nullable=False, default='account.png')
