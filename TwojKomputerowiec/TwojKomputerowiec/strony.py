@@ -1,6 +1,7 @@
+import secrets, os
 from flask import render_template, flash, url_for, redirect, request
 from TwojKomputerowiec import app, db, bcrypt
-from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania
+from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu
 from TwojKomputerowiec.modele import Uzytkownik, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -90,9 +91,36 @@ def wylogowanie():
     return redirect(url_for('stronaStartowa'))
 
 
-@app.route('/profile')
-@app.route('/profil')
+def zachowajZdjecie(zdjecie):
+    """
+    Funkcja przyjmuje plik załadowany z formularza jako nowe zdjecie profilowe.
+    Zapisuje go w katalogu ze zdjęciami profilowymi pod zmienioną nazwą i zwraca tą nazwę.
+
+    :param zdjecie: plik, ktory zostal zaladowany przez formularz jako nowe zdjecie profilowe
+    :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami profilowymi
+    """
+    losowy_hex = secrets.token_hex(8)
+    _, rozszerzenie = os.path.splitext(zdjecie.filename)
+    zdjecie_nazwa = losowy_hex + rozszerzenie
+    sciezka_zdjecia = os.path.join(app.root_path, 'static/media/profil', zdjecie_nazwa)
+    zdjecie.save(sciezka_zdjecia)
+    return zdjecie_nazwa
+
+
+@app.route('/profile', methods=['GET', 'POST'])
+@app.route('/profil', methods=['GET', 'POST'])
 @login_required
 def profil():
+    formularz = FormularzAktualizacjiProfilu()
+    if formularz.validate_on_submit():
+        if formularz.zdjecie.data:
+            plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data)
+            current_user.zdjecie = plik_zdjecia
+        current_user.email = formularz.email.data
+        db.session.commit()
+        flash(f'Profil zaktualizowany', 'success')
+        return redirect(url_for('profil'))
+    elif request.method == 'GET':
+        formularz.email.data = current_user.email
     zdjecie = url_for('static', filename='media/profil/' + current_user.zdjecie)
-    return render_template('profil.html', title='Profil', zdjecie=zdjecie)
+    return render_template('profil.html', title='Profil', zdjecie=zdjecie, form=formularz)
