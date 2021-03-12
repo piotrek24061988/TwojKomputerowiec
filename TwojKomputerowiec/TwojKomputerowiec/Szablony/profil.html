@@ -5,6 +5,22 @@
 {% endblock %}
 
 {% block cialo %}
-    <h5>Profil w budowie...</h5>
-    <h6>{{ current_user.email }}</h6>
+
+    <div class="content-section mb-5">
+        <div class="media">
+            <img class="rounded account-img" src="{{ zdjecie }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ current_user.email }}</h2>
+            </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-light">Informacje o profilu</legend>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-secondary" type="submit">Zaktualizuj</button>
+            </div>
+        </form>
+    </div>
+
 {% endblock %}

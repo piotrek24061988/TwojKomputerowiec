@@ -94,4 +94,5 @@ def wylogowanie():
 @app.route('/profil')
 @login_required
 def profil():
-    return render_template('profil.html', title='Profil')
+    zdjecie = url_for('static', filename='media/profil/' + current_user.zdjecie)
+    return render_template('profil.html', title='Profil', zdjecie=zdjecie)
