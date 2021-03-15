@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from TwojKomputerowiec.modele import Uzytkownik
 
@@ -35,3 +35,9 @@ class FormularzAktualizacjiProfilu(FlaskForm):
             uzytkownik = Uzytkownik.query.filter_by(email=email.data).first()
             if uzytkownik:
                 raise ValidationError('Użytkownik już istnieje')
+
+
+class FormularzNowegoPostu(FlaskForm):
+    tytul = StringField('Tytuł', validators=[DataRequired()])
+    tresc = TextAreaField('Treść', validators=[DataRequired()])
+    potwierdzenie = SubmitField('Dodaj post')

@@ -1,0 +1,44 @@
+{% extends "baza.html" %}
+
+{% block glowa %}
+    <title>Blog IT</title>
+{% endblock %}
+
+{% block cialo %}
+<div class="row">
+    <div class="col-md-8">
+
+    {% for post in posts %}
+        <article class="media content-section">
+
+            <div class="media-body">
+                <div class="article-metadata">
+                    <img class="rounded blog-img" src="{{ url_for('static', filename='media/profil/' + post.autor.zdjecie) }}">
+                    <a class="mr-2 text-secondary" href="#">{{ post.autor.email }}</a>
+                    <small class="text-muted">{{ post.data.strftime('%Y-%m-%d') }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ post.tytul }}</a></h2>
+                <p class="article-content">{{ post.tresc }}</p>
+            </div>
+
+        </article>
+    {% endfor %}
+
+        </div>
+            <div class="col-md-4">
+                <div class="content-section">
+                    <h3>Menu Aktualności</h3>
+                    <ul class="list-group">
+                        {% if current_user.is_authenticated  %}
+                            <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePosta') }}">Dodaj post</a li>
+                        {% endif %}
+                        <a li class="list-group-item list-group-item-dark" href="#">Najnowsze</a li>
+                        <a li class="list-group-item list-group-item-dark" href="#">Najstarsze</a li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@ import secrets, os
 from PIL import Image
 from flask import render_template, flash, url_for, redirect, request
 from TwojKomputerowiec import app, db, bcrypt
-from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu
+from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, FormularzNowegoPostu
 from TwojKomputerowiec.modele import Uzytkownik, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -50,6 +50,17 @@ def oMnie():
 @app.route('/galeria')
 def galeria():
     return render_template('galeria.html')
+
+@app.route('/blogZawodowy')
+@app.route('/itBlog')
+def blogZawodowo():
+    postyBazy = Post.query.all()
+    return render_template('itBlog.html', posts=postyBazy)
+
+@app.route('/blogPrywatnie')
+@app.route('/privateBlog')
+def blogPrywatnie():
+    return render_template('prywatnyBlog.html')
 
 
 @app.route('/rejestracja', methods=['GET', 'POST'])
@@ -130,3 +141,17 @@ def profil():
         formularz.email.data = current_user.email
     zdjecie = url_for('static', filename='media/profil/' + current_user.zdjecie)
     return render_template('profil.html', title='Profil', zdjecie=zdjecie, form=formularz)
+
+
+@app.route('/nowyPost', methods=['GET', 'POST'])
+@app.route('/newPost', methods=['GET', 'POST'])
+@login_required
+def dodaniePosta():
+    formularz = FormularzNowegoPostu()
+    if formularz.validate_on_submit():
+        post = Post(tytul=formularz.tytul.data, tresc=formularz.tresc.data, autor=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash(f'Post został dodany', 'success')
+        return redirect(url_for('blogZawodowo'))
+    return render_template('nowyPost.html', title='Nowy Post', form=formularz)
