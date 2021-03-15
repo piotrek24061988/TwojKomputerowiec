@@ -1,4 +1,5 @@
 import secrets, os
+from PIL import Image
 from flask import render_template, flash, url_for, redirect, request
 from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu
@@ -99,12 +100,17 @@ def zachowajZdjecie(zdjecie):
     :param zdjecie: plik, ktory zostal zaladowany przez formularz jako nowe zdjecie profilowe
     :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami profilowymi
     """
-    losowy_hex = secrets.token_hex(8)
+    losowyHex = secrets.token_hex(8)
     _, rozszerzenie = os.path.splitext(zdjecie.filename)
-    zdjecie_nazwa = losowy_hex + rozszerzenie
-    sciezka_zdjecia = os.path.join(app.root_path, 'static/media/profil', zdjecie_nazwa)
-    zdjecie.save(sciezka_zdjecia)
-    return zdjecie_nazwa
+    zdjecieNazwa = losowyHex + rozszerzenie
+    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/profil', zdjecieNazwa)
+
+    rozmiar = (125, 125)
+    zdjecieDoZapisu = Image.open(zdjecie)
+    zdjecieDoZapisu.thumbnail(rozmiar)
+
+    zdjecieDoZapisu.save(sciezkaZdjecia)
+    return zdjecieNazwa
 
 
 @app.route('/profile', methods=['GET', 'POST'])

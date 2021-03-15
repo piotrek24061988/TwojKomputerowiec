@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Notatnik/zaleznosci.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Notatnik/zaleznosci.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="60" column="72" selection-start-line="60" selection-start-column="72" selection-end-line="60" selection-end-column="72" />
+            <state relative-caret-position="300">
+              <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -24,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notatnik/zaleznosci.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="29" />
+            <state relative-caret-position="105">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -146,12 +147,12 @@
         <option value="$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec/__init__.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec/strony.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec.py" />
-        <option value="$PROJECT_DIR$/Notatnik/zaleznosci.txt" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/modele.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/profil.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py" />
+        <option value="$PROJECT_DIR$/Notatnik/zaleznosci.txt" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" />
       </list>
     </option>
@@ -274,7 +275,7 @@
     <frame x="67" y="25" width="1853" height="925" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24972677" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24972677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -285,7 +286,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.50753766" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.50753766" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -486,13 +487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notatnik/zaleznosci.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -500,10 +494,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Notatnik/zaleznosci.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="60" column="72" selection-start-line="60" selection-start-column="72" selection-end-line="60" selection-end-column="72" />
+        <state relative-caret-position="300">
+          <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
         </state>
       </provider>
     </entry>

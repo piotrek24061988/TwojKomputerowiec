@@ -5,6 +5,7 @@
 - pip install flask-sqlalchemy
 - pip install flask-bcrypt
 - pip install flask-login
+- pip install Pillow
 - export FLASK_APP=twojKomputerowiec.py
 - export FLASK_DEBUG=1
 - flask run
