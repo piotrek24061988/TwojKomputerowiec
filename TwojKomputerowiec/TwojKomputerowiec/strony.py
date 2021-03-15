@@ -58,7 +58,7 @@ def rejestracja():
         return redirect(url_for('stronaStartowa'))
     formularz = FormularzRejestracji()
     if formularz.validate_on_submit():
-        hash_haslo = bcrypt.generate_password_hash(formularz.haslo.data).decode('utf-8')
+        hash_haslo = bcrypt.generate_password_hash(formularz.haslo.data)
         uzytkownik = Uzytkownik(email=formularz.email.data, haslo=hash_haslo)
         db.session.add(uzytkownik)
         db.session.commit()
