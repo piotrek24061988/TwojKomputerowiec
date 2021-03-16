@@ -107,3 +107,17 @@ a.article-title:hover {
   font-weight: bold;
   color: #ffffff;
 }
+
+.media-body .btn-outline-secondary {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.modal-content {
+  background: #343a40;
+  color: #ffffff;
+}
+
+.modal-content .btn-outline-secondary {
+  font-weight: bold;
+}

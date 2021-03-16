@@ -1,6 +1,6 @@
 import secrets, os
 from PIL import Image
-from flask import render_template, flash, url_for, redirect, request
+from flask import render_template, flash, url_for, redirect, request, abort
 from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, FormularzNowegoPostu
 from TwojKomputerowiec.modele import Uzytkownik, Post
@@ -155,3 +155,43 @@ def dodaniePosta():
         flash(f'Post został dodany', 'success')
         return redirect(url_for('blogZawodowo'))
     return render_template('nowyPost.html', title='Nowy Post', form=formularz)
+
+
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', title=post.tytul, post=post)
+
+
+@app.route('/aktualizujPost/<int:post_id>', methods=['GET', 'POST'])
+@app.route('/updatePost/<int:post_id>', methods=['GET', 'POST'])
+@login_required
+def aktualizujPost(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.autor != current_user:
+        abort(403)
+    formularz = FormularzNowegoPostu()
+    if formularz.validate_on_submit():
+        post.tytul = formularz.tytul.data
+        post.tresc = formularz.tresc.data
+        db.session.commit()
+        flash(f'Post został zaktualizowany', 'success')
+        return redirect(url_for('blogZawodowo'))
+    elif request.method == 'GET':
+        formularz.tytul.data = post.tytul
+        formularz.tresc.data = post.tresc
+    return render_template('nowyPost.html', title='Aktualizuj Post', form=formularz)
+
+
+
+@app.route('/usunPost/<int:post_id>', methods=['GET','POST'])
+@app.route('/deletePost/<int:post_id>', methods=['GET', 'POST'])
+@login_required
+def usunPost(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.autor != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash(f'Post został usunięty', 'success')
+    return redirect(url_for('blogZawodowo'))
