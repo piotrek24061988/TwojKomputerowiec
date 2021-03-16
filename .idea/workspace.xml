@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowyPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowyPost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,18 +15,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowyPost.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,20 +75,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="35" column="104" selection-start-line="35" selection-start-column="104" selection-end-line="35" selection-end-column="104" />
+            <state relative-caret-position="102">
+              <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+            <state relative-caret-position="50">
+              <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -147,7 +129,6 @@
       <list>
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Templates/domowa.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Templates/oMnie.html" />
-        <option value="$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/static/main.css" />
         <option value="$PROJECT_DIR$/Notatnik/porady.txt" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/kontakt.html" />
@@ -172,11 +153,12 @@
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/prywatnyBlog.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowyPost.html" />
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/post.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html" />
+        <option value="$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" />
       </list>
     </option>
   </component>
@@ -272,7 +254,7 @@
     <frame x="67" y="25" width="1853" height="925" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24918033" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24918033" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -283,7 +265,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.37437186" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.60427135" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -326,16 +308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="84" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="84" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -477,13 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/profil.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -532,10 +497,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="102" lean-forward="true" selection-start-line="11" selection-start-column="102" selection-end-line="11" selection-end-column="102" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="35" column="104" selection-start-line="35" selection-start-column="104" selection-end-line="35" selection-end-column="104" />
+        <state relative-caret-position="102">
+          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
         </state>
       </provider>
     </entry>
