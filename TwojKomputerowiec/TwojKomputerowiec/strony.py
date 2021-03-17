@@ -54,13 +54,18 @@ def galeria():
 @app.route('/blogZawodowy')
 @app.route('/itBlog')
 def blogZawodowo():
-    postyBazy = Post.query.all()
-    return render_template('itBlog.html', posts=postyBazy)
+    strona = request.args.get('page', 1, type=int)
+    postyBloga = Post.query.order_by(Post.data.desc()).paginate(page=strona, per_page=10)
+    return render_template('itBlog.html', posts=postyBloga)
 
-@app.route('/blogPrywatnie')
-@app.route('/privateBlog')
-def blogPrywatnie():
-    return render_template('prywatnyBlog.html')
+
+@app.route('/blogPrywatnie/<string:uzytkownik>')
+@app.route('/privateBlog/<string:uzytkownik>')
+def blogPrywatnie(uzytkownik):
+    strona = request.args.get('page', 1, type=int)
+    tworcaPosta = Uzytkownik.query.filter_by(email=uzytkownik).first_or_404()
+    postyBloga = Post.query.filter_by(autor=tworcaPosta).order_by(Post.data.desc()).paginate(page=strona, per_page=10)
+    return render_template('prywatnyBlog.html', posts=postyBloga, uzytkownik=tworcaPosta)
 
 
 @app.route('/rejestracja', methods=['GET', 'POST'])

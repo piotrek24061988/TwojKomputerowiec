@@ -11,7 +11,7 @@
         <div class="media-body">
             <div class="article-metadata">
                 <img class="rounded blog-img" src="{{ url_for('static', filename='media/profil/' + post.autor.zdjecie) }}">
-                <a class="mr-2 text-secondary" href="#">{{ post.autor.email }}</a>
+                <a class="mr-2 text-secondary" href="{{ url_for('blogPrywatnie', uzytkownik=post.autor.email) }}">{{ post.autor.email }}</a>
                 <small class="text-muted">{{ post.data.strftime('%Y-%m-%d') }}</small>
             </div>
             <h2 class="article-title">{{ post.tytul }}</h2>
