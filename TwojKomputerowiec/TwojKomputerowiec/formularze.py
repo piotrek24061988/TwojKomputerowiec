@@ -41,3 +41,19 @@ class FormularzNowegoPostu(FlaskForm):
     tytul = StringField('Tytuł', validators=[DataRequired()])
     tresc = TextAreaField('Treść', validators=[DataRequired()])
     potwierdzenie = SubmitField('Dodaj post')
+
+
+class FormularzResetuHasla(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    potwierdzenie = SubmitField('Wyślij email')
+
+    def validate_email(self, email):
+        uzytkownik = Uzytkownik.query.filter_by(email=email.data).first()
+        if uzytkownik is None:
+            raise ValidationError('Użytkownik nie istnieje, zarejestruj się')
+
+
+class FormularzResetuHasla2(FlaskForm):
+    haslo = PasswordField('Hasło', validators=[DataRequired()])
+    haslo2 = PasswordField('Potwierdź hasło', validators=[DataRequired(), EqualTo('haslo')])
+    potwierdzenie = SubmitField('Zmień hasło')

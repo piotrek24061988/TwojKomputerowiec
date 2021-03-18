@@ -1,10 +1,12 @@
 import secrets, os
 from PIL import Image
 from flask import render_template, flash, url_for, redirect, request, abort
-from TwojKomputerowiec import app, db, bcrypt
-from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, FormularzNowegoPostu
+from TwojKomputerowiec import app, db, bcrypt, mail
+from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, \
+                                         FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2
 from TwojKomputerowiec.modele import Uzytkownik, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from flask_mail import Message
 
 
 posty = [
@@ -188,7 +190,6 @@ def aktualizujPost(post_id):
     return render_template('nowyPost.html', title='Aktualizuj Post', form=formularz)
 
 
-
 @app.route('/usunPost/<int:post_id>', methods=['GET','POST'])
 @app.route('/deletePost/<int:post_id>', methods=['GET', 'POST'])
 @login_required
@@ -200,3 +201,47 @@ def usunPost(post_id):
     db.session.commit()
     flash(f'Post został usunięty', 'success')
     return redirect(url_for('blogZawodowo'))
+
+
+def emailResetuHasla(uzytkownik):
+    token = uzytkownik.utworz_Token()
+    msg = Message('Wniosek Resetu Hasła', sender='noreplay@demo.com', recipients=[uzytkownik.email])
+    msg.body = f""" Żeby zresetować hasło odwiedź poniższy link:
+    {url_for('noweHaslo', token=token, _external=True)}
+    
+    Regards https://piotrek24061988.pythonanywhere.com
+    """
+    mail.send(msg)
+
+
+@app.route('/resetujHaslo', methods=['GET', 'POST'])
+@app.route('/passwordReset', methods=['GET', 'POST'])
+def wnioskujResetHasla():
+    if current_user.is_authenticated:
+        return redirect(url_for('stronaStartowa'))
+    formularz = FormularzResetuHasla()
+    if formularz.validate_on_submit():
+        uzytkownik = Uzytkownik.query.filter_by(email=formularz.email.data).first()
+        emailResetuHasla(uzytkownik=uzytkownik)
+        flash(f'Email z instrukcją resetu hasła wysłany', 'success')
+        return redirect(url_for('logowanie'))
+    return render_template('wniosekResetuHasla.html', title='Zresetuj Haslo', form=formularz)
+
+
+@app.route('/noweHaslo/<token>', methods=['GET', 'POST'])
+@app.route('/newPassword/<token>', methods=['GET', 'POST'])
+def noweHaslo(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('stronaStartowa'))
+    uzytkownik = Uzytkownik.weryfikuj_token(token)
+    if uzytkownik is None:
+        flash(f'Nieprawidłowy token', 'danger')
+        return redirect(url_for('wnioskujResetHasla'))
+    formularz = FormularzResetuHasla2()
+    if formularz.validate_on_submit():
+        hash_haslo = bcrypt.generate_password_hash(formularz.haslo.data)
+        uzytkownik.haslo = hash_haslo
+        db.session.commit()
+        flash(f'Hasło zmienione', 'success')
+        return redirect(url_for('logowanie'))
+    return render_template('utworzenieNowegoHasla.html', title='Utwórz nowe hasło', form=formularz)
