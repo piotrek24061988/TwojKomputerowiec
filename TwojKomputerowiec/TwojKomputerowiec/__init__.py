@@ -14,10 +14,11 @@ app.config['MAIL_USERNAME'] = 'piotrek24061988@gmail.com'
 app.config['MAIL_PASSWORD'] = 'dajffmmwfatdotkc'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+mail = Mail(app)
 loginManager = LoginManager(app)
 loginManager.login_view = 'logowanie'
 loginManager.login_message_category = 'info'
 loginManager.login_message = 'Zaloguj się aby uzyskać dostęp'
-mail = Mail(app)
+
 
 from TwojKomputerowiec import strony

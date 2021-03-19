@@ -1,12 +1,10 @@
-import secrets, os
-from PIL import Image
 from flask import render_template, flash, url_for, redirect, request, abort
-from TwojKomputerowiec import app, db, bcrypt, mail
+from flask_login import login_user, current_user, logout_user, login_required
+from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, \
                                          FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2
 from TwojKomputerowiec.modele import Uzytkownik, Post
-from flask_login import login_user, current_user, logout_user, login_required
-from flask_mail import Message
+from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla
 
 
 posty = [
@@ -48,10 +46,12 @@ def kontakt():
 def oMnie():
     return render_template('oMnie.html')
 
+
 @app.route('/gallery')
 @app.route('/galeria')
 def galeria():
     return render_template('galeria.html')
+
 
 @app.route('/blogZawodowy')
 @app.route('/itBlog')
@@ -108,27 +108,6 @@ def logowanie():
 def wylogowanie():
     logout_user()
     return redirect(url_for('stronaStartowa'))
-
-
-def zachowajZdjecie(zdjecie):
-    """
-    Funkcja przyjmuje plik załadowany z formularza jako nowe zdjecie profilowe.
-    Zapisuje go w katalogu ze zdjęciami profilowymi pod zmienioną nazwą i zwraca tą nazwę.
-
-    :param zdjecie: plik, ktory zostal zaladowany przez formularz jako nowe zdjecie profilowe
-    :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami profilowymi
-    """
-    losowyHex = secrets.token_hex(8)
-    _, rozszerzenie = os.path.splitext(zdjecie.filename)
-    zdjecieNazwa = losowyHex + rozszerzenie
-    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/profil', zdjecieNazwa)
-
-    rozmiar = (125, 125)
-    zdjecieDoZapisu = Image.open(zdjecie)
-    zdjecieDoZapisu.thumbnail(rozmiar)
-
-    zdjecieDoZapisu.save(sciezkaZdjecia)
-    return zdjecieNazwa
 
 
 @app.route('/profile', methods=['GET', 'POST'])
@@ -201,17 +180,6 @@ def usunPost(post_id):
     db.session.commit()
     flash(f'Post został usunięty', 'success')
     return redirect(url_for('blogZawodowo'))
-
-
-def emailResetuHasla(uzytkownik):
-    token = uzytkownik.utworz_Token()
-    msg = Message('Wniosek Resetu Hasła', sender='noreplay@demo.com', recipients=[uzytkownik.email])
-    msg.body = f""" Żeby zresetować hasło odwiedź poniższy link:
-    {url_for('noweHaslo', token=token, _external=True)}
-    
-    Regards https://piotrek24061988.pythonanywhere.com
-    """
-    mail.send(msg)
 
 
 @app.route('/resetujHaslo', methods=['GET', 'POST'])
