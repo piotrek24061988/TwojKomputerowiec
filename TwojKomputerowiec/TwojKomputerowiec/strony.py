@@ -213,3 +213,18 @@ def noweHaslo(token):
         flash(f'Hasło zmienione', 'success')
         return redirect(url_for('logowanie'))
     return render_template('utworzenieNowegoHasla.html', title='Utwórz nowe hasło', form=formularz)
+
+
+@app.errorhandler(404)
+def blad_404(error):
+    return render_template('blad404.html'), 404
+
+
+@app.errorhandler(403)
+def blad_403(error):
+    return render_template('blad403.html'), 403
+
+
+@app.errorhandler(500)
+def blad_500(error):
+    return render_template('blad500.html'), 500

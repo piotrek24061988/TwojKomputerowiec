@@ -10,7 +10,7 @@ app.config.from_object(Konfiguracja)
 
 loginManager = LoginManager(app)
 loginManager.login_view = Konfiguracja.LOGIN_PATH
-loginManager.login_message_category = 'info'
+loginManager.login_message_category = 'danger'
 loginManager.login_message = Konfiguracja.LOGIN_MSG
 
 db = SQLAlchemy(app)
