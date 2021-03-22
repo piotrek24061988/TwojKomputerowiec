@@ -57,3 +57,10 @@ class FormularzResetuHasla2(FlaskForm):
     haslo = PasswordField('Hasło', validators=[DataRequired()])
     haslo2 = PasswordField('Potwierdź hasło', validators=[DataRequired(), EqualTo('haslo')])
     potwierdzenie = SubmitField('Zmień hasło')
+
+
+class FormularzKontaktowy(FlaskForm):
+    kontakt = StringField('Twoje dane kontaktowe', validators=[DataRequired()])
+    temat = StringField('Tytuł', validators=[DataRequired()])
+    tresc = TextAreaField('Treść', validators=[DataRequired()])
+    potwierdzenie = SubmitField('Napisz')

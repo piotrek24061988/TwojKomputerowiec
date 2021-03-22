@@ -41,3 +41,13 @@ def emailResetuHasla(uzytkownik):
     Regards https://piotrek24061988.pythonanywhere.com
     """
     mail.send(msg)
+
+
+def emailKontaktowy(kontakt, temat, tresc):
+    """
+    Wyślij email kontaktowy do administratora strony.
+    :param kontakt, temat, tresc - maila
+    """
+    msg = Message("Twój komputerowiec: " + temat, sender='noreplay@demo.com', recipients=['piotrek24061988@gmail.com'])
+    msg.body = "Twój komputerowiec:\n\n" + tresc + "\n\n" + "kontakt: " + kontakt
+    mail.send(msg)

@@ -2,9 +2,10 @@ from flask import render_template, flash, url_for, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
 from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, \
-                                         FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2
+                                         FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2, \
+                                         FormularzKontaktowy
 from TwojKomputerowiec.modele import Uzytkownik, Post
-from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla
+from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla, emailKontaktowy
 
 
 posty = [
@@ -35,10 +36,15 @@ def aktualnosci():
     return render_template('aktualnosci.html', posts=posty)
 
 
-@app.route('/contact')
-@app.route('/kontakt')
+@app.route('/contact', methods=['GET', 'POST'])
+@app.route('/kontakt', methods=['GET', 'POST'])
 def kontakt():
-    return render_template('kontakt.html')
+    formularz = FormularzKontaktowy()
+    if formularz.validate_on_submit():
+        emailKontaktowy(kontakt=formularz.kontakt.data, temat=formularz.temat.data, tresc=formularz.tresc.data)
+        flash(f'Wiadomość wysłana', 'success')
+        return redirect(url_for('stronaStartowa'))
+    return render_template('kontakt.html', form=formularz)
 
 
 @app.route('/about')
