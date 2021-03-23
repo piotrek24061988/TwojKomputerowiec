@@ -1,0 +1,52 @@
+{% extends "baza.html" %}
+
+{% block glowa %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block cialo %}
+
+    <article class="media content-section">
+
+        <div class="media-body">
+            <h2 class="article-title">{{ aktualnosc.tytul }}</h2>
+            {% if aktualnosc.zdjecie %}
+                <img class="rounded aktualnosci-img mb-3"
+                 src="{{ url_for('static', filename='media/aktualnosci/' + aktualnosc.zdjecie) }}">
+            {% endif %}
+            {% if aktualnosc.videoUrl %}
+                <iframe class="aktualnosci-video mb-3" src="{{aktualnosc.videoUrl}}" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            {% endif %}
+            <p class="article-content">{{ aktualnosc.tresc }}</p>
+            {% if admin == current_user.email %}
+                <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujAktualnosc', aktualnosc_id=aktualnosc.id)  }}">Aktualizuj</a>
+                <a class="btn btn-outline-secondary text-light" data-toggle="modal" data-target="#usuniecieModal">Usuń</a>
+            {% endif %}
+        </div>
+
+    </article>
+
+    <div class="modal fade" id="usuniecieModal" tabindex="-1" role="dialog" aria-labelledby="usuniecieModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="usuniecieModalLabel">Usunięcie aktualności</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Czy chcesz usunąć aktualność?
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</a>
+                    <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunAktualnosc', aktualnosc_id=aktualnosc.id)  }}">Potwierdź usunięcie</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

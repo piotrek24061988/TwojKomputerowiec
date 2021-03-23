@@ -3,3 +3,8 @@
 2) Znalezc zombie proces Flaska i zabic
 - ps -efa | grep flask
 - kill -9 pid
+3) Flask utworzenie bazy danych
+- export FLASK_APP=twojKomputerowiec.py
+- flask db init
+- flask db migrate
+- flask db upgrade

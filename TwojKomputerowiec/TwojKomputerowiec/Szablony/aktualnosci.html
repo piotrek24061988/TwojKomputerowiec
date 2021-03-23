@@ -8,22 +8,42 @@
 <div class="row">
     <div class="col-md-8">
 
-    {% for post in posts %}
+    {% for aktualnosc in aktualnosci.items %}
         <article class="media content-section">
 
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2 text-secondary" href="#">{{ post.autor }}</a>
-                    <small class="text-muted">{{ post.data }}</small>
+                    <a class="mr-2 text-secondary" href="#">{{ aktualnosc.autor }}</a>
+                    <small class="text-muted">{{ aktualnosc.data.strftime('%Y-%m-%d') }}</small>
                 </div>
-                <h2><a class="article-title" href="#">{{ post.tytul }}</a></h2>
-                {% if post.image %}
-                    <img class="rounded news-img" src="{{ post.image.url }}">
+                <h2><a class="article-title" href="{{ url_for('aktualnosc', aktualnosc_id=aktualnosc.id)  }}">{{ aktualnosc.tytul }}</a></h2>
+                {% if aktualnosc.zdjecie %}
+                    <img class="rounded aktualnosci-img mb-3" src="{{ url_for('static', filename='media/aktualnosci/' + aktualnosc.zdjecie) }}">
                 {% endif %}
-                <p class="article-content">{{ post.tresc }}</p>
+                {% if aktualnosc.videoUrl %}
+                    <iframe class="aktualnosci-video mb-3" src="{{aktualnosc.videoUrl}}" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                {% endif %}
+                <p class="article-content">{{ aktualnosc.tresc }}</p>
             </div>
 
         </article>
+    {% endfor %}
+
+    {% for page_num in aktualnosci.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+
+        {% if page_num %}
+            {% if aktualnosci.page == page_num %}
+                <a class="btn btn-outline-secondary active mx-1" href="{{ url_for('aktualnosci', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+                <a class="btn btn-outline-secondary mx-1" href="{{ url_for('aktualnosci', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+            <a class="h1 text-light">...</a>
+        {% endif %}
+
     {% endfor %}
 
         </div>
@@ -31,11 +51,11 @@
                 <div class="content-section">
                     <h3>Menu Aktualności</h3>
                     <ul class="list-group">
-                        {% if user  %}
-                            <a li class="list-group-item list-group-item-dark" href="#">Dodaj aktualności</a li>
+                        {% if current_user.is_authenticated  %}
+                            {% if current_user.email == admin %}
+                                <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieAktualnosci') }}">Dodaj aktualności</a li>
+                            {% endif %}
                         {% endif %}
-                        <a li class="list-group-item list-group-item-dark" href="#">Najnowsze</a li>
-                        <a li class="list-group-item list-group-item-dark" href="#">Najstarsze</a li>
                     </ul>
                 </div>
             </div>

@@ -3,25 +3,11 @@ from flask_login import login_user, current_user, logout_user, login_required
 from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, \
                                          FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2, \
-                                         FormularzKontaktowy
-from TwojKomputerowiec.modele import Uzytkownik, Post
-from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla, emailKontaktowy
+                                         FormularzKontaktowy, FormularzNowejAktualnosci
+from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc
+from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla, emailKontaktowy, zachowajZdjecieAktualnosci
+from TwojKomputerowiec.konfiguracja import Konfiguracja
 
-
-posty = [
-    {
-        'autor': 'Piotr Górecki',
-        'tytul': 'Strona w przygotowaniu',
-        'tresc': 'Trwa przygotowanie strony firmowej',
-        'data': '05.03.2021'
-    },
-    {
-        'autor': 'Piotr Górecki',
-        'tytul': 'Firma w przygotowaniu',
-        'tresc': 'Trwa przygotowanie koncecji firmy',
-        'data': '05.03.2021'
-    }
-]
 
 @app.route('/')
 @app.route('/home')
@@ -33,7 +19,78 @@ def stronaStartowa():
 @app.route('/news')
 @app.route('/aktualnosci')
 def aktualnosci():
-    return render_template('aktualnosci.html', posts=posty)
+    strona = request.args.get('page', 1, type=int)
+    postyAktualnosci = Aktualnosc.query.order_by(Aktualnosc.data.desc()).paginate(page=strona, per_page=5)
+    return render_template('aktualnosci.html', aktualnosci=postyAktualnosci, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/nowaAktualnosc', methods=['GET', 'POST'])
+@app.route('/addNews', methods=['GET', 'POST'])
+@login_required
+def dodanieAktualnosci():
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzNowejAktualnosci()
+    if formularz.validate_on_submit():
+        plik_zdjecia = None
+        if formularz.zdjecie.data:
+            plik_zdjecia = zachowajZdjecieAktualnosci(formularz.zdjecie.data)
+        aktualnosc = Aktualnosc(tytul=formularz.tytul.data, tresc=formularz.tresc.data, zdjecie=plik_zdjecia, videoUrl=formularz.videoUrl.data)
+        db.session.add(aktualnosc)
+        db.session.commit()
+        flash(f'Aktualizacja został dodany', 'success')
+        return redirect(url_for('aktualnosci'))
+    return render_template('nowaAktualnosc.html', title='Aktualizacja', form=formularz)
+
+
+@app.route('/aktualnosc/<int:aktualnosc_id>')
+@app.route('/news/<int:aktualnosc_id>')
+def aktualnosc(aktualnosc_id):
+    #if Konfiguracja.MAIL_USERNAME != current_user.email:
+    #    abort(403)
+    aktualnosc = Aktualnosc.query.get_or_404(aktualnosc_id)
+    return render_template('aktualnosc.html', title=aktualnosc.tytul, aktualnosc=aktualnosc, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/usunAktualnosc/<int:aktualnosc_id>', methods=['GET','POST'])
+@app.route('/deleteNews/<int:aktualnosc_id>', methods=['GET', 'POST'])
+@login_required
+def usunAktualnosc(aktualnosc_id):
+    aktualnosc = Aktualnosc.query.get_or_404(aktualnosc_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    db.session.delete(aktualnosc)
+    db.session.commit()
+    flash(f'Aktualność została usunięta', 'success')
+    return redirect(url_for('aktualnosci'))
+
+
+@app.route('/aktualizujAktualnosc/<int:aktualnosc_id>', methods=['GET', 'POST'])
+@app.route('/updateNews/<int:aktualnosc_id>', methods=['GET', 'POST'])
+@login_required
+def aktualizujAktualnosc(aktualnosc_id):
+    aktualnosc = Aktualnosc.query.get_or_404(aktualnosc_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzNowejAktualnosci()
+    if formularz.validate_on_submit():
+        aktualnosc.tytul = formularz.tytul.data
+        aktualnosc.tresc = formularz.tresc.data
+        plik_zdjecia = None
+        if formularz.zdjecie.data:
+            plik_zdjecia = zachowajZdjecieAktualnosci(formularz.zdjecie.data)
+            aktualnosc.zdjecie = plik_zdjecia
+        if formularz.videoUrl.data:
+            aktualnosc.videoUrl = formularz.videoUrl.data
+        db.session.commit()
+        flash(f'Aktualność została zaktualizowany', 'success')
+        return redirect(url_for('aktualnosci'))
+    elif request.method == 'GET':
+        formularz.tytul.data = aktualnosc.tytul
+        formularz.tresc.data = aktualnosc.tresc
+        formularz.zdjecie.data = aktualnosc.zdjecie
+        formularz.videoUrl.data = aktualnosc.videoUrl
+    return render_template('nowaAktualnosc.html', title='Aktualizuj', form=formularz)
 
 
 @app.route('/contact', methods=['GET', 'POST'])

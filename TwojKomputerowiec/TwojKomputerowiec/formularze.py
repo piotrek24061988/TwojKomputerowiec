@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, URL, Optional
 from TwojKomputerowiec.modele import Uzytkownik
 
 
@@ -64,3 +64,11 @@ class FormularzKontaktowy(FlaskForm):
     temat = StringField('Tytuł', validators=[DataRequired()])
     tresc = TextAreaField('Treść', validators=[DataRequired()])
     potwierdzenie = SubmitField('Napisz')
+
+
+class FormularzNowejAktualnosci(FlaskForm):
+    tytul = StringField('Tytuł', validators=[DataRequired()])
+    tresc = TextAreaField('Treść', validators=[DataRequired()])
+    zdjecie = FileField('Dodaj zdjęcie do aktualności', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
+    videoUrl = StringField('Video URL:', validators=[Optional(), URL()])
+    potwierdzenie = SubmitField('Dodaj informacje')

@@ -131,3 +131,16 @@ a.article-title:hover {
 .col-md-8 .btn-outline-secondary:hover {
   color: #868e96;
 }
+
+.aktualnosci-img {
+  width: 100%;
+  height: auto;
+}
+
+.aktualnosci-video {
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block
+}

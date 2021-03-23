@@ -27,6 +27,23 @@ def zachowajZdjecie(zdjecie):
     return zdjecieNazwa
 
 
+def zachowajZdjecieAktualnosci(zdjecie):
+    """
+    Funkcja przyjmuje plik załadowany z formularza jako zdjecie aktualnosci.
+    Zapisuje go w katalogu ze zdjęciami aktualnosci pod zmienioną nazwą i zwraca tą nazwę.
+
+    :param zdjecie: plik, ktory zostal zaladowany przez formularz jako zdjecie aktualnosci
+    :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami aktualnosci
+    """
+    losowyHex = secrets.token_hex(8)
+    _, rozszerzenie = os.path.splitext(zdjecie.filename)
+    zdjecieNazwa = losowyHex + rozszerzenie
+    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/aktualnosci', zdjecieNazwa)
+    zdjecie.save(sciezkaZdjecia)
+
+    return zdjecieNazwa
+
+
 def emailResetuHasla(uzytkownik):
     """
     Wyślij email do zarejestrowanego użytkownika, który zapomniał swoje hasło.

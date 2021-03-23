@@ -42,3 +42,15 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.tytul}','{self.data}')"
+
+
+class Aktualnosc(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tytul = db.Column(db.String(100), nullable=False)
+    data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    tresc = db.Column(db.Text, nullable=False)
+    zdjecie = db.Column(db.String(20), nullable=True)
+    videoUrl = db.Column(db.String(200), nullable=True)
+
+    def __repr__(self):
+        return f"Aktualnosc('{self.tytul}','{self.data}', '{self.tresc}')"
