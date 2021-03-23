@@ -138,8 +138,9 @@ a.article-title:hover {
 }
 
 .aktualnosci-video {
-  width: auto;
-  height: auto;
+  height: 100%;
+  width: 100%;
+  min-height: 480px;
   margin-left: auto;
   margin-right: auto;
   display: block
