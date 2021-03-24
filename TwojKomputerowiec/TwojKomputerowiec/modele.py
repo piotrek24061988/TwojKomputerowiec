@@ -33,24 +33,25 @@ class Uzytkownik(db.Model, UserMixin):
         return Uzytkownik.query.get(uzytkownik_id)
 
 
-class Post(db.Model):
+class Wpis():
     id = db.Column(db.Integer, primary_key=True)
     tytul = db.Column(db.String(100), nullable=False)
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"Wpis('{self.tytul}')"
+
+
+class Post(db.Model, Wpis):
     tresc = db.Column(db.Text, nullable=False)
     uzytkownik_id = db.Column(db.Integer, db.ForeignKey('uzytkownik.id'), nullable=False)
 
-    def __repr__(self):
-        return f"Post('{self.tytul}','{self.data}')"
 
-
-class Aktualnosc(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    tytul = db.Column(db.String(100), nullable=False)
-    data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+class Aktualnosc(db.Model, Wpis):
     tresc = db.Column(db.Text, nullable=False)
     zdjecie = db.Column(db.String(20), nullable=True)
     videoUrl = db.Column(db.String(200), nullable=True)
 
-    def __repr__(self):
-        return f"Aktualnosc('{self.tytul}','{self.data}', '{self.tresc}')"
+
+class Zdjecie(db.Model, Wpis):
+    zdjecie = db.Column(db.String(20), nullable=True)
