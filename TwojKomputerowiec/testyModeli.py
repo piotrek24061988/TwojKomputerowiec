@@ -1,12 +1,12 @@
 import unittest, string, random
 from TwojKomputerowiec import app, db, bcrypt
-from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc
+from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc, Galeria
 
 
 class TestyModeliUzytkownika(unittest.TestCase):
     def testLosowyUzytkownik(self):
         # Setup
-        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(20))
+        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(10))
         hashHaslo = bcrypt.generate_password_hash(nazwa)
         # Run
         uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
@@ -19,7 +19,7 @@ class TestyModeliUzytkownika(unittest.TestCase):
 
     def testLosowyPostBlogowy(self):
         # Setup
-        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(20))
+        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(10))
         hashHaslo = bcrypt.generate_password_hash(nazwa)
         uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
         tytul = ''.join(random.choice(string.ascii_letters) for i in range(10))
@@ -43,9 +43,22 @@ class TestyModeliUzytkownika(unittest.TestCase):
         db.session.add(aktualnosc)
         db.session.commit()
         # Check
-        aktualnoscDoTestu = aktualnosc.query.filter_by(tytul=tytul).first()
+        aktualnoscDoTestu = Aktualnosc.query.filter_by(tytul=tytul).first()
         self.assertEqual(aktualnoscDoTestu.tresc, tresc)
         self.assertNotEqual(aktualnoscDoTestu, None)
+
+    def testGalerii(self):
+        # Setup
+        tytul = "Testowe zdjęcie do galerii"
+        zdjecie = "Bydgoszcz.jpg"
+        # Run
+        zdjecie = Galeria(tytul=tytul, zdjecie=zdjecie)
+        db.session.add(zdjecie)
+        db.session.commit()
+        # Check
+        zdjecieDoTestu = Galeria.query.filter_by(tytul=tytul).first()
+        self.assertEqual(zdjecieDoTestu.tytul, tytul)
+        self.assertNotEqual(zdjecieDoTestu, None)
 
 
 if __name__ == "__main__":

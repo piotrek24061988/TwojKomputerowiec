@@ -163,3 +163,12 @@ a.article-title:hover {
 .scrollup:hover {
     transform: scale(0.7);
 }
+
+figure {
+    margin: 10px;
+    padding: 0;
+}
+
+figcaption {
+    margin-top: 5px;
+}

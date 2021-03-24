@@ -53,5 +53,5 @@ class Aktualnosc(db.Model, Wpis):
     videoUrl = db.Column(db.String(200), nullable=True)
 
 
-class Zdjecie(db.Model, Wpis):
-    zdjecie = db.Column(db.String(20), nullable=True)
+class Galeria(db.Model, Wpis):
+    zdjecie = db.Column(db.String(20), nullable=False, default='Bydgoszcz.jpg')

@@ -44,6 +44,23 @@ def zachowajZdjecieAktualnosci(zdjecie):
     return zdjecieNazwa
 
 
+def zachowajZdjecieGalerii(zdjecie):
+    """
+    Funkcja przyjmuje plik załadowany z formularza jako zdjecie galerii.
+    Zapisuje go w katalogu ze zdjęciami galerii pod zmienioną nazwą i zwraca tą nazwę.
+
+    :param zdjecie: plik, ktory zostal zaladowany przez formularz jako zdjecie galerii
+    :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami galerii
+    """
+    losowyHex = secrets.token_hex(8)
+    _, rozszerzenie = os.path.splitext(zdjecie.filename)
+    zdjecieNazwa = losowyHex + rozszerzenie
+    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/galeria', zdjecieNazwa)
+    zdjecie.save(sciezkaZdjecia)
+
+    return zdjecieNazwa
+
+
 def emailResetuHasla(uzytkownik):
     """
     Wyślij email do zarejestrowanego użytkownika, który zapomniał swoje hasło.

@@ -3,9 +3,11 @@ from flask_login import login_user, current_user, logout_user, login_required
 from TwojKomputerowiec import app, db, bcrypt
 from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, \
                                          FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2, \
-                                         FormularzKontaktowy, FormularzNowejAktualnosci
-from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc
-from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla, emailKontaktowy, zachowajZdjecieAktualnosci
+                                         FormularzKontaktowy, FormularzNowejAktualnosci, FormularzNowegoZdjecia, \
+                                         FormularzAktualizacjiZdjecia
+from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc, Galeria
+from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla, emailKontaktowy, zachowajZdjecieAktualnosci, \
+                                        zachowajZdjecieGalerii
 from TwojKomputerowiec.konfiguracja import Konfiguracja
 
 
@@ -46,8 +48,6 @@ def dodanieAktualnosci():
 @app.route('/aktualnosc/<int:aktualnosc_id>')
 @app.route('/news/<int:aktualnosc_id>')
 def aktualnosc(aktualnosc_id):
-    #if Konfiguracja.MAIL_USERNAME != current_user.email:
-    #    abort(403)
     aktualnosc = Aktualnosc.query.get_or_404(aktualnosc_id)
     return render_template('aktualnosc.html', title=aktualnosc.tytul, aktualnosc=aktualnosc, admin=Konfiguracja.MAIL_USERNAME)
 
@@ -113,7 +113,71 @@ def oMnie():
 @app.route('/gallery')
 @app.route('/galeria')
 def galeria():
-    return render_template('galeria.html')
+    strona = request.args.get('page', 1, type=int)
+    galeria = Galeria.query.order_by(Galeria.data.desc()).paginate(page=strona, per_page=20)
+    return render_template('galeria.html', galeria=galeria, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/noweZdjecie', methods=['GET', 'POST'])
+@app.route('/addPhoto', methods=['GET', 'POST'])
+@login_required
+def dodanieZdjecia():
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzNowegoZdjecia()
+    if formularz.validate_on_submit():
+        plik_zdjecia = None
+        if formularz.zdjecie.data:
+            plik_zdjecia = zachowajZdjecieGalerii(formularz.zdjecie.data)
+        zdjecie = Galeria(tytul=formularz.tytul.data, zdjecie=plik_zdjecia)
+        db.session.add(zdjecie)
+        db.session.commit()
+        flash(f'Zdjęcie zostało dodane', 'success')
+        return redirect(url_for('galeria'))
+    return render_template('noweZdjecie.html', title='NoweZdjecie', form=formularz)
+
+
+@app.route('/zdjecie/<int:zdjecie_id>')
+@app.route('/photo/<int:zdjecie_id>')
+def zdjecie(zdjecie_id):
+    zdjecie = Galeria.query.get_or_404(zdjecie_id)
+    return render_template('zdjecie.html', title=zdjecie.tytul, zdjecie=zdjecie, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/usunZdjecie/<int:zdjecie_id>', methods=['GET','POST'])
+@app.route('/deletePhoto/<int:zdjecie_id>', methods=['GET', 'POST'])
+@login_required
+def usunZdjecie(zdjecie_id):
+    zdjecie = Galeria.query.get_or_404(zdjecie_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    db.session.delete(zdjecie)
+    db.session.commit()
+    flash(f'Zdjęcie zostało usunięte', 'success')
+    return redirect(url_for('galeria'))
+
+
+@app.route('/aktualizujZdjecie/<int:zdjecie_id>', methods=['GET', 'POST'])
+@app.route('/updatePhoto/<int:zdjecie_id>', methods=['GET', 'POST'])
+@login_required
+def aktualizujZdjecie(zdjecie_id):
+    zdjecie = Galeria.query.get_or_404(zdjecie_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzAktualizacjiZdjecia()
+    if formularz.validate_on_submit():
+        zdjecie.tytul = formularz.tytul.data
+        plik_zdjecia = None
+        if formularz.zdjecie.data:
+            plik_zdjecia = zachowajZdjecieGalerii(formularz.zdjecie.data)
+            zdjecie.zdjecie = plik_zdjecia
+        db.session.commit()
+        flash(f'Zdjęcie zostało zaktualizowane', 'success')
+        return redirect(url_for('galeria'))
+    elif request.method == 'GET':
+        formularz.tytul.data = zdjecie.tytul
+        formularz.zdjecie.data = zdjecie.zdjecie
+    return render_template('noweZdjecie.html', title='Aktualizuj', form=formularz)
 
 
 @app.route('/blogZawodowy')

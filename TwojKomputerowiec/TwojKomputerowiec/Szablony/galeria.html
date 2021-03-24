@@ -5,5 +5,50 @@
 {% endblock %}
 
 {% block cialo %}
-    <h5>Galeria w budowie...</h5>
+     <div class="container">
+          <div class="row">
+
+              <div class="col-md-8">
+
+               {% for zdjecie in galeria.items %}
+                    <div class="col-md-4 mb-1 float-left">
+                        <figure class="border text-center rounded content-section">
+                            <a href="{{ url_for('zdjecie', zdjecie_id=zdjecie.id)  }}">
+                                <img src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}" class="img-fluid my-1 p-1">
+                            </a>
+                            <figcaption class="text-light">{{ zdjecie.tytul }}</figcaption>
+                        </figure>
+                    </div>
+               {% endfor %}
+
+              </div>
+
+              <div class="col-md-4">
+                  <div class="content-section">
+                      <h3>Menu Galerii</h3>
+                      <ul class="list-group">
+                          {% if current_user.is_authenticated  %}
+                          {% if current_user.email == admin %}
+                              <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieZdjecia') }}">Dodaj aktualności</a li>
+                          {% endif %}
+                          {% endif %}
+                      </ul>
+                  </div>
+              </div>
+
+          </div>
+         {% for page_num in galeria.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+
+            {% if page_num %}
+                {% if galeria.page == page_num %}
+                    <a class="btn btn-outline-secondary active mx-1" href="{{ url_for('galeria', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                    <a class="btn btn-outline-secondary mx-1" href="{{ url_for('galeria', page=page_num) }}">{{ page_num }}</a>
+                {% endif %}
+            {% else %}
+                <a class="h1 text-light">...</a>
+            {% endif %}
+
+         {% endfor %}
+     </div>
 {% endblock %}

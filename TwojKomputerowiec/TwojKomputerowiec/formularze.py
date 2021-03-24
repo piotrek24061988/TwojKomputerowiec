@@ -72,3 +72,15 @@ class FormularzNowejAktualnosci(FlaskForm):
     zdjecie = FileField('Dodaj zdjęcie do aktualności', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     videoUrl = StringField('Video URL:', validators=[Optional(), URL()])
     potwierdzenie = SubmitField('Dodaj informacje')
+
+
+class FormularzNowegoZdjecia(FlaskForm):
+    tytul = StringField('Tytuł', validators=[DataRequired()])
+    zdjecie = FileField('Dodaj zdjęcie do galerii', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png'])])
+    potwierdzenie = SubmitField('Dodaj zdjęcie')
+
+
+class FormularzAktualizacjiZdjecia(FlaskForm):
+    tytul = StringField('Tytuł', validators=[DataRequired()])
+    zdjecie = FileField('Dodaj zdjęcie do galerii', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
+    potwierdzenie = SubmitField('Dodaj zdjęcie')
