@@ -20,7 +20,7 @@ def stronaStartowa():
 @app.route('/aktualnosci')
 def aktualnosci():
     strona = request.args.get('page', 1, type=int)
-    postyAktualnosci = Aktualnosc.query.order_by(Aktualnosc.data.desc()).paginate(page=strona, per_page=5)
+    postyAktualnosci = Aktualnosc.query.order_by(Aktualnosc.data.desc()).paginate(page=strona, per_page=10)
     return render_template('aktualnosci.html', aktualnosci=postyAktualnosci, admin=Konfiguracja.MAIL_USERNAME)
 
 

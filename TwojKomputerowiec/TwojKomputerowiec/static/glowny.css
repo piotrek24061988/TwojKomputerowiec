@@ -145,3 +145,21 @@ a.article-title:hover {
   margin-right: auto;
   display: block
 }
+
+.scrollup {
+    width: 100px;
+    height: 128px;
+    background: url("media/ikony/scrollup.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position : fixed;
+    right: 25px;
+    bottom: 25px;
+    display: none;
+    z-index:1;
+    transition: all 0.5s ease-in-out;
+}
+
+.scrollup:hover {
+    transform: scale(0.7);
+}
