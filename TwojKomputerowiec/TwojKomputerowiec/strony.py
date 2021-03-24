@@ -1,13 +1,9 @@
 from flask import render_template, flash, url_for, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
 from TwojKomputerowiec import app, db, bcrypt
-from TwojKomputerowiec.formularze import FormularzRejestracji, FormularzLogowania, FormularzAktualizacjiProfilu, \
-                                         FormularzNowegoPostu, FormularzResetuHasla, FormularzResetuHasla2, \
-                                         FormularzKontaktowy, FormularzNowejAktualnosci, FormularzNowegoZdjecia, \
-                                         FormularzAktualizacjiZdjecia
-from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc, Galeria
-from TwojKomputerowiec.przydatne import zachowajZdjecie, emailResetuHasla, emailKontaktowy, zachowajZdjecieAktualnosci, \
-                                        zachowajZdjecieGalerii
+from TwojKomputerowiec.formularze import *
+from TwojKomputerowiec.modele import *
+from TwojKomputerowiec.przydatne import *
 from TwojKomputerowiec.konfiguracja import Konfiguracja
 
 
@@ -36,7 +32,7 @@ def dodanieAktualnosci():
     if formularz.validate_on_submit():
         plik_zdjecia = None
         if formularz.zdjecie.data:
-            plik_zdjecia = zachowajZdjecieAktualnosci(formularz.zdjecie.data)
+            plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_NEWS)
         aktualnosc = Aktualnosc(tytul=formularz.tytul.data, tresc=formularz.tresc.data, zdjecie=plik_zdjecia, videoUrl=formularz.videoUrl.data)
         db.session.add(aktualnosc)
         db.session.commit()
@@ -76,10 +72,8 @@ def aktualizujAktualnosc(aktualnosc_id):
     if formularz.validate_on_submit():
         aktualnosc.tytul = formularz.tytul.data
         aktualnosc.tresc = formularz.tresc.data
-        plik_zdjecia = None
         if formularz.zdjecie.data:
-            plik_zdjecia = zachowajZdjecieAktualnosci(formularz.zdjecie.data)
-            aktualnosc.zdjecie = plik_zdjecia
+            aktualnosc.zdjecie = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_NEWS)
         if formularz.videoUrl.data:
             aktualnosc.videoUrl = formularz.videoUrl.data
         db.session.commit()
@@ -128,7 +122,7 @@ def dodanieZdjecia():
     if formularz.validate_on_submit():
         plik_zdjecia = None
         if formularz.zdjecie.data:
-            plik_zdjecia = zachowajZdjecieGalerii(formularz.zdjecie.data)
+            plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_GALLERY)
         zdjecie = Galeria(tytul=formularz.tytul.data, zdjecie=plik_zdjecia)
         db.session.add(zdjecie)
         db.session.commit()
@@ -167,10 +161,8 @@ def aktualizujZdjecie(zdjecie_id):
     formularz = FormularzAktualizacjiZdjecia()
     if formularz.validate_on_submit():
         zdjecie.tytul = formularz.tytul.data
-        plik_zdjecia = None
         if formularz.zdjecie.data:
-            plik_zdjecia = zachowajZdjecieGalerii(formularz.zdjecie.data)
-            zdjecie.zdjecie = plik_zdjecia
+            zdjecie.zdjecie = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_GALLERY)
         db.session.commit()
         flash(f'Zdjęcie zostało zaktualizowane', 'success')
         return redirect(url_for('galeria'))
@@ -244,8 +236,7 @@ def profil():
     formularz = FormularzAktualizacjiProfilu()
     if formularz.validate_on_submit():
         if formularz.zdjecie.data:
-            plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data)
-            current_user.zdjecie = plik_zdjecia
+            current_user.zdjecie = zachowajZdjecie(formularz.zdjecie.data, resize=True, sciezka=Konfiguracja.PATH_PROFILE)
         current_user.email = formularz.email.data
         db.session.commit()
         flash(f'Profil zaktualizowany', 'success')

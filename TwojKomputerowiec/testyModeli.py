@@ -1,6 +1,6 @@
 import unittest, string, random
 from TwojKomputerowiec import app, db, bcrypt
-from TwojKomputerowiec.modele import Uzytkownik, Post, Aktualnosc, Galeria
+from TwojKomputerowiec.modele import *
 
 
 class TestyModeliUzytkownika(unittest.TestCase):

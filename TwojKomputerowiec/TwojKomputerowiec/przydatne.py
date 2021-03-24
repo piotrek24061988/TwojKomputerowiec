@@ -6,7 +6,7 @@ from flask_mail import Message
 from TwojKomputerowiec import mail, app
 
 
-def zachowajZdjecie(zdjecie):
+def zachowajZdjecie(zdjecie, resize=False, sciezka='static/media/losowe'):
     """
     Funkcja przyjmuje plik załadowany z formularza jako nowe zdjecie profilowe.
     Zapisuje go w katalogu ze zdjęciami profilowymi pod zmienioną nazwą i zwraca tą nazwę.
@@ -17,47 +17,16 @@ def zachowajZdjecie(zdjecie):
     losowyHex = secrets.token_hex(8)
     _, rozszerzenie = os.path.splitext(zdjecie.filename)
     zdjecieNazwa = losowyHex + rozszerzenie
-    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/profil', zdjecieNazwa)
+    sciezkaZdjecia = os.path.join(app.root_path, sciezka, zdjecieNazwa)
 
-    rozmiar = (125, 125)
-    zdjecieDoZapisu = Image.open(zdjecie)
-    zdjecieDoZapisu.thumbnail(rozmiar)
+    if resize:
+        rozmiar = (125, 125)
+        zdjecieDoZapisu = Image.open(zdjecie)
+        zdjecieDoZapisu.thumbnail(rozmiar)
 
-    zdjecieDoZapisu.save(sciezkaZdjecia)
-    return zdjecieNazwa
-
-
-def zachowajZdjecieAktualnosci(zdjecie):
-    """
-    Funkcja przyjmuje plik załadowany z formularza jako zdjecie aktualnosci.
-    Zapisuje go w katalogu ze zdjęciami aktualnosci pod zmienioną nazwą i zwraca tą nazwę.
-
-    :param zdjecie: plik, ktory zostal zaladowany przez formularz jako zdjecie aktualnosci
-    :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami aktualnosci
-    """
-    losowyHex = secrets.token_hex(8)
-    _, rozszerzenie = os.path.splitext(zdjecie.filename)
-    zdjecieNazwa = losowyHex + rozszerzenie
-    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/aktualnosci', zdjecieNazwa)
-    zdjecie.save(sciezkaZdjecia)
-
-    return zdjecieNazwa
-
-
-def zachowajZdjecieGalerii(zdjecie):
-    """
-    Funkcja przyjmuje plik załadowany z formularza jako zdjecie galerii.
-    Zapisuje go w katalogu ze zdjęciami galerii pod zmienioną nazwą i zwraca tą nazwę.
-
-    :param zdjecie: plik, ktory zostal zaladowany przez formularz jako zdjecie galerii
-    :return: nazwa zdjecia ktora zostaje zaladowana do folderu ze zdjeciami galerii
-    """
-    losowyHex = secrets.token_hex(8)
-    _, rozszerzenie = os.path.splitext(zdjecie.filename)
-    zdjecieNazwa = losowyHex + rozszerzenie
-    sciezkaZdjecia = os.path.join(app.root_path, 'static/media/galeria', zdjecieNazwa)
-    zdjecie.save(sciezkaZdjecia)
-
+        zdjecieDoZapisu.save(sciezkaZdjecia)
+    else:
+        zdjecie.save(sciezkaZdjecia)
     return zdjecieNazwa
 
 

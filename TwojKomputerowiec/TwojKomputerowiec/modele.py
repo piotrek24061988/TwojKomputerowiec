@@ -33,7 +33,7 @@ class Uzytkownik(db.Model, UserMixin):
         return Uzytkownik.query.get(uzytkownik_id)
 
 
-class Wpis():
+class Wpis:
     id = db.Column(db.Integer, primary_key=True)
     tytul = db.Column(db.String(100), nullable=False)
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
