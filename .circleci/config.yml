@@ -21,6 +21,5 @@ jobs:
       - run:
           command: |
             cd TwojKomputerowiec
-            coverage run testyModeli.py
-            coverage report
+            python testyModeli.py
 destination: tr1
