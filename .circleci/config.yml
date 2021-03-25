@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/circleci-demo-python-flask
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - run:
+          command: |
+            pip install flask
+            pip install flask-wtf
+            pip install email_validator
+            pip install flask-sqlalchemy
+            pip install flask-bcrypt
+            pip install flask-login
+            pip install Pillow
+            pip install flask-mail
+      - run:
+          command: |
+            cd TwojKomputerowiec
+            coverage run testyModeli.py
+            coverage report
+destination: tr1

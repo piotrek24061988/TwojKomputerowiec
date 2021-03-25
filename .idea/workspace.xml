@@ -4,15 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" description="}" line="113" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/modele.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/modele.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/przydatne.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/przydatne.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona_bkp.db" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona_bkp.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/testyModeli.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/testyModeli.py" afterDir="false" />
-    </list>
+    <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,13 +46,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="18" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -197,18 +194,7 @@
             <path>
               <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
               <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="Notatnik" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
+              <item name=".circleci" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -219,7 +205,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -231,6 +217,7 @@
       <recent name="$PROJECT_DIR$/TwojKomputerowiec/static" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony" />
       <recent name="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static" />
       <recent name="$PROJECT_DIR$/TwojKomputerowiec/static" />
@@ -306,16 +293,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/tests/tests_models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/prywatnyBlog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -658,6 +635,9 @@
           <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="18" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
