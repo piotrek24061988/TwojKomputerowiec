@@ -10,6 +10,7 @@ jobs:
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run:
           command: |
+            pip install --upgrade pip
             pip install flask
             #pip install flask-wtf
             #pip install email_validator
