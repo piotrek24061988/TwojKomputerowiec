@@ -12,13 +12,13 @@ jobs:
           command: |
             pip install --upgrade pip
             pip install flask
-            #pip install flask-wtf
-            #pip install email_validator
+            pip install flask-wtf
+            pip install email_validator
             pip install --user flask-sqlalchemy
-            #pip install flask-bcrypt
-            #pip install flask-login
-            #pip install Pillow
-            #pip install flask-mail
+            pip install flask-bcrypt
+            pip install flask-login
+            pip install Pillow
+            pip install flask-mail
       - run:
           command: |
             cd TwojKomputerowiec
