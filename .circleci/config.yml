@@ -19,6 +19,7 @@ jobs:
             pip install flask-login
             pip install Pillow
             pip install flask-mail
+            pip install flask-migrate
       - run:
           command: |
             cd TwojKomputerowiec
