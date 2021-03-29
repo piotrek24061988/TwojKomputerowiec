@@ -35,13 +35,7 @@
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('stronaStartowa') }}">Strona domowa</a>
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('aktualnosci') }}">Aktualności</a>
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('kontakt') }}">Kontakt</a>
-                            <li class="nav-item dropdown">
-                                <button class="btn btn-outline-secondary mx-1 dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O mnie</button>
-                                <div class="dropdown-menu bg-dark" aria-labelledby="subnav">
-                                    <a class="dropdown-item bg-dark" href="{{ url_for('oMnie') }}">Zawodowo</a>
-                                    <a class="dropdown-item bg-dark" href="{{ url_for('oMnie') }}">Prywatnie</a>
-                                </div>
-                            </li>
+                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('oMnie') }}">O mnie</a>
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('galeria') }}">Galeria</a>
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('blogZawodowo') }}">Blog</a>
                         </div>

@@ -172,3 +172,11 @@ figure {
 figcaption {
     margin-top: 5px;
 }
+
+.experience-section {
+  background: #343a40;
+  padding: 10px 0px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}

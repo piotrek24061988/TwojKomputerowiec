@@ -5,5 +5,107 @@
 {% endblock %}
 
 {% block cialo %}
-    <h5>Strona o mnie w budowie...</h5>
+     <div class="container">
+          <div class="row">
+
+              <div class="col-md-4">
+                  <div class="content-section mb-1 text-center">
+                      <h3>Twój informatyk</h3>
+                  </div>
+                  <img class="rounded aktualnosci-img mb-1" src="{{ url_for('static', filename='/media/profil/piotrek24061988.jpg') }}">
+                  <div class="content-section">
+                      <h5>Piotr Górecki</h5>
+                      <h5>piotrek24061988@gmail.com</h5>
+                      <h5>53724061988</h5>
+                  </div>
+
+                  <div class="content-section">
+                      <h6>języki programowania: C / C++ / Python</h6>
+                      <h6>frameworki: Autosar / Qt / Flask / Django</h6>
+                      <h6>sieci: Cisco CCNA / Wirtualizacja ESX</h6>
+                      <h6>osy: Windows / Linux / ESX / QNX / FreeRTOS / OSEK</h6>
+                      <h6>pcb: KiCAD / Altium Designer / Eagle</h6>
+                      <h6>web: HTML / CSS / JS / Bootstrap</h6>
+                      <h6>integracja: Jenkins / CircleCi / Heroku / Pythonanywhere</h6>
+                      <h6>magistrale: Ethernet / CAN / RS </h6>
+                      <h6>mikrokontrolery: 8051 / AVR / ST</h6>
+                  </div>
+              </div>
+
+              <div class="col-md-8 experience-section">
+
+                  <div class="content-section m-1 text-center">
+                      <h4>Elektronika / Automatyka / Robotyka / Informatyka / Programowanie</h4>
+                  </div>
+
+                  <div class="row content-section m-1">
+                      <a class="col-md-2" href="https://www.globallogic.com/pl/" target="_blank">
+                          <img class="aktualnosci-img float-left" src="{{ url_for('static', filename='/media/ikony/globallogic.jpg') }}">
+                      </a>
+                      <div class="col-md-10 text-center">
+                          <h4>2021-obecnie</h4>
+                          <h5>Globallogic</h5>
+                          <h6>programista</h6>
+                      </div>
+                  </div>
+
+                  <div class="row content-section m-1">
+                      <a class="col-md-2" href="https://www.globallogic.com/about/news/globallogic-acquires-meelogic" target="_blank">
+                          <img class="aktualnosci-img float-left" src="{{ url_for('static', filename='/media/ikony/meelogic.jpg') }}">
+                      </a>
+                      <div class="col-md-10 text-center">
+                          <h4>2019-2021</h4>
+                          <h5>Melogic Consulting</h5>
+                          <h6>programista</h6>
+                      </div>
+                  </div>
+
+                  <div class="row content-section m-1">
+                      <a class="col-md-2" href="https://mobica.com" target="_blank">
+                          <img class="aktualnosci-img float-left" src="{{ url_for('static', filename='/media/ikony/mobica.png') }}">
+                      </a>
+                      <div class="col-md-10 text-center">
+                          <h4>2014-2019</h4>
+                          <h5>Mobica Limited</h5>
+                          <h6>programista</h6>
+                      </div>
+                  </div>
+
+                  <div class="row content-section m-1">
+                      <a class="col-md-2" href="http://pesa.pl" target="_blank">
+                          <img class="aktualnosci-img float-left" src="{{ url_for('static', filename='/media/ikony/pesa.jpeg') }}">
+                      </a>
+                      <div class="col-md-10 text-center">
+                          <h4>2011-2013</h4>
+                          <h5>Pojazdy Szynowe Pesa Bydgoszcz SA</h5>
+                          <h6>samodzielny konstruktor</h6>
+                      </div>
+                  </div>
+
+                  <div class="row content-section m-1">
+                      <a class="col-md-2" href="https://www.fizyka.umk.pl/kaisp" target="_blank">
+                          <img class="aktualnosci-img float-left" src="{{ url_for('static', filename='/media/ikony/umk.jpg') }}">
+                      </a>
+                      <div class="col-md-10 text-center">
+                          <h4>2008-2012</h4>
+                          <h5>Uniwersystet Mikołaja Kopernika w Toruniu</h5>
+                          <h6>inzynier automatyki i robotyki</h6>
+                      </div>
+                  </div>
+
+                  <div class="row content-section m-1">
+                      <a class="col-md-2" href="https://zse.bydgoszcz.pl" target="_blank">
+                          <img class="aktualnosci-img float-left" src="{{ url_for('static', filename='/media/ikony/zse.png') }}">
+                      </a>
+                      <div class="col-md-10 text-center">
+                          <h4>2004-2008</h4>
+                          <h5>Zespół Szkół Elektronicznych w Bydgoszczy</h5>
+                          <h6>technik elektronik</h6>
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+     </div>
 {% endblock %}
