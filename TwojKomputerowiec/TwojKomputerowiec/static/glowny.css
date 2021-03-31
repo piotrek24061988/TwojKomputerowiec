@@ -180,3 +180,48 @@ figcaption {
   border-radius: 3px;
   margin-bottom: 20px;
 }
+
+.domowa {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.box {
+    position: relative;
+    width:  20vw;
+    height: 20vh;
+    transform-style: preserve-3d;
+    animation: animate 30s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+.box span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85%;
+    height: 85%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(30vw);
+}
+
+.figure-section {
+  background: #343a40;
+  padding: 1px 1px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
