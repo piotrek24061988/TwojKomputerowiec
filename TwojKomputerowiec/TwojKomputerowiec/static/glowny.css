@@ -197,6 +197,11 @@ figcaption {
     height: 20vh;
     transform-style: preserve-3d;
     animation: animate 30s linear infinite;
+    animation-direction: reverse;
+}
+
+.box:hover {
+    animation-play-state: paused;
 }
 
 @keyframes animate {
@@ -212,11 +217,26 @@ figcaption {
     position: absolute;
     top: 0;
     left: 0;
-    width: 85%;
-    height: 85%;
+    width: 75%;
+    height: 75%;
     transform-origin: center;
     transform-style: preserve-3d;
     transform: rotateY(calc(var(--i) * 45deg)) translateZ(30vw);
+}
+
+.box span:hover {
+    width: 85%;
+    height: 85%;
+}
+
+.box span p {
+    visibility: hidden;
+}
+
+.box span:hover p {
+    visibility: visible;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .figure-section {
