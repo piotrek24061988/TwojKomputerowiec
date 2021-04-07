@@ -20,6 +20,7 @@ jobs:
             pip install Pillow
             pip install flask-mail
             pip install flask-migrate
+            pip install Flask-RESTful
       - run:
           command: |
             cd TwojKomputerowiec
