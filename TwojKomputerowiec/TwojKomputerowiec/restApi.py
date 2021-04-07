@@ -31,7 +31,7 @@ class EmailDoAutora(Resource):
             emailKontaktowy(kontakt=kontakt, temat=temat, tresc=tresc)
             return {'wyslales kompletny json': json}
         else:
-            return {'wyslales niekompletny json': json, 'kontakt': kontakt, 'temat': temat, 'tresc': tresc}
+            return {'wyslales niekompletny json': json, 'kontakt': kontakt, 'temat': temat, 'tresc': tresc}, 401
 
 
 api.add_resource(Autor, '/autor')
