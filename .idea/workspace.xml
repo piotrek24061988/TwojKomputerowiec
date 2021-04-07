@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="i">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notatnik/porady.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Notatnik/porady.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,56 +18,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/przydatne.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/domowa.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
-              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+            <state relative-caret-position="218">
+              <caret line="48" column="19" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="19" />
               <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#3;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#4;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#5;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#6;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#7;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css">
+        <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+            <state>
+              <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/post.html">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="40" column="117" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="117" />
+            <state relative-caret-position="345">
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+            <state relative-caret-position="327">
+              <caret line="347" column="47" selection-start-line="347" selection-start-column="47" selection-end-line="347" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,26 +86,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="20">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/zdjecie.html">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="13" column="57" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/galeria.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -109,9 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new</find>
-      <find>align</find>
-      <find>text</find>
       <find>zdjecie</find>
       <find>403</find>
       <find>current_user</find>
@@ -139,6 +139,9 @@
       <find>content-section</find>
       <find>media-body</find>
       <find>article-content</find>
+      <find>Konfiguracja</find>
+      <find>email</find>
+      <find>emailKontaktowy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,8 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/aktualnosci.html" />
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/static/glowny.css" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/logowanie.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/galeria.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html" />
@@ -176,7 +177,6 @@
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/blad500.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/sitemap.xml" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/kontakt.html" />
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py" />
         <option value="$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/news.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/aktualnosc.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowaAktualnosc.html" />
@@ -188,8 +188,6 @@
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/modele.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/testyModeli.py" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py" />
-        <option value="$PROJECT_DIR$/Notatnik/porady.txt" />
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" />
         <option value="$PROJECT_DIR$/.circleci/config.yml" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/aktualnosci.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/oMnie.html" />
@@ -198,6 +196,11 @@
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/rest.py" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py" />
+        <option value="$PROJECT_DIR$/Notatnik/porady.txt" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" />
       </list>
     </option>
   </component>
@@ -248,13 +251,6 @@
               <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
               <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="Szablony" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -309,6 +305,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="925" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24918033" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -352,20 +349,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/serw_med/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="147" column="39" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -443,13 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="872" selection-start-line="872" selection-end-line="872" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/jquery.scrollTo.min.js1" />
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/ikony/scrollup.png">
       <provider selected="true" editor-type-id="images" />
@@ -516,23 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1230">
@@ -543,27 +502,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/przydatne.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Notatnik/zaleznosci.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -588,16 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
           <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="245" column="40" lean-forward="true" selection-start-line="245" selection-start-column="32" selection-end-line="245" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -646,13 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/zdjecie.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -667,10 +592,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html">
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="385">
+          <caret line="40" column="117" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -691,24 +630,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/post.html">
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="40" column="117" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="117" />
+        <state>
+          <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css">
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/itBlog.html">
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        <state relative-caret-position="20">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/przydatne.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/twojKomputerowiec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="872" selection-start-line="872" selection-end-line="872" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="347" column="47" selection-start-line="347" selection-start-column="47" selection-end-line="347" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -8,3 +8,7 @@
 - flask db init
 - flask db migrate
 - flask db upgrade
+4) Używanie REST API
+- curl http://127.0.0.1:5000/autor
+- curl -H "Content-Type: application/json" -X POST -d '{"name": "piotrek", "kontakt": "mieciu@gmail.com"}' http://127.0.0.1:5000/email
+- curl -H "Content-Type: application/json" -X POST -d '{"kontakt": "mieciu@gmail.com", "temat":"test", "tresc":"testowa"}' http://127.0.0.1:5000/email

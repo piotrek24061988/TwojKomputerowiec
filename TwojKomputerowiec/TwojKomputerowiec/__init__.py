@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_migrate import Migrate
+from flask_restful import Api
 from TwojKomputerowiec.konfiguracja import Konfiguracja
 
 app = Flask(__name__, template_folder=Konfiguracja.TEMPLATE_FOLDER)
@@ -18,5 +19,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 mail = Mail(app)
+api = Api(app)
 
-from TwojKomputerowiec import strony
+from TwojKomputerowiec import strony, restApi
