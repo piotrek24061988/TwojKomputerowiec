@@ -14,6 +14,10 @@ resp = requests.get(serverURL + serverMethod2)
 print(resp.status_code)
 print(resp.text)
 
+resp = requests.post(serverURL + serverMethod2, json={})
+print(resp.status_code)
+print(resp.text)
+
 resp = requests.post(serverURL + serverMethod2, json=jsonPostMethod2)
 print(resp.status_code)
 print(resp.text)
