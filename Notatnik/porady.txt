@@ -10,5 +10,6 @@
 - flask db upgrade
 4) Używanie REST API
 - curl http://piotrek24061988.pythonanywhere.com/autor
+- curl http://piotrek24061988.pythonanywhere.com/email
 - curl -H "Content-Type: application/json" -X POST -d '{"name": "piotrek", "kontakt": "mieciu@gmail.com"}' http://piotrek24061988.pythonanywhere.com/email
 - curl -H "Content-Type: application/json" -X POST -d '{"kontakt": "mieciu@gmail.com", "temat":"test", "tresc":"testowa"}' http://piotrek24061988.pythonanywhere.com/email
