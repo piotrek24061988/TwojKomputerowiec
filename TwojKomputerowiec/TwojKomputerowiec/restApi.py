@@ -14,6 +14,14 @@ class Autor(Resource):
 
 
 class EmailDoAutora(Resource):
+    def get(self):
+        return {
+            'funkcja': 'wyslij email do autora strony poprzez metode POST i podanie argumentow: kontakt, temat, tresc',
+            'kontakt': 'kto wysyla wiadomosc',
+            'temat': 'jaki jest temat wiadomosci',
+            'tresc': 'jaka jest tresc wiadomosci'
+        }
+
     def post(self):
         json = request.get_json()
         kontakt = json.get('kontakt')
