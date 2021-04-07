@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="i">
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +20,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -69,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="277">
@@ -77,6 +86,15 @@
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/restClient.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -130,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/logowanie.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/galeria.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/baza.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/Szablony/rejestracja.html" />
@@ -181,6 +198,7 @@
         <option value="$PROJECT_DIR$/Notatnik/porady.txt" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" />
         <option value="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/restApi.py" />
+        <option value="$PROJECT_DIR$/TwojKomputerowiec/restClient.py" />
       </list>
     </option>
   </component>
@@ -218,26 +236,6 @@
               <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
               <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
               <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TwojKomputerowiec" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="TwojKomputerowiec" type="462c0819:PsiDirectoryNode" />
-              <item name="Szablony" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,7 +292,7 @@
     <frame x="79" y="25" width="1841" height="925" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24917492" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24917492" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -305,7 +303,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.42964825" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.42964825" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -336,16 +334,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="91" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="91" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../SERW-MED/serw_med/news/templates/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2175">
@@ -623,13 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/przydatne.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -691,6 +672,20 @@
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Notatnik/porady.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TwojKomputerowiec/restClient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
         </state>
       </provider>
     </entry>
