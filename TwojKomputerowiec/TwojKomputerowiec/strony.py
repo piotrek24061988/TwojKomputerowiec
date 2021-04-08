@@ -333,6 +333,12 @@ def noweHaslo(token):
     return render_template('utworzenieNowegoHasla.html', title='Utwórz nowe hasło', form=formularz)
 
 
+@app.route('/testowa')
+@app.route('/test')
+def testowa():
+    return render_template('testowa.html')
+
+
 @app.errorhandler(404)
 def blad_404(error):
     return render_template('blad404.html'), 404
