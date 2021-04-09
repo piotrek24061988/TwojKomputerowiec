@@ -13,3 +13,4 @@ class Konfiguracja:
     PATH_GALLERY = 'static/media/galeria'
     PATH_NEWS = 'static/media/aktualnosci'
     PATH_PROFILE = 'static/media/profil'
+    SERVER_URL = 'http://piotrek24061988.pythonanywhere.com'

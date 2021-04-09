@@ -25,4 +25,5 @@ jobs:
           command: |
             cd TwojKomputerowiec
             python testyModeli.py
+            python testyRestApi.py
 destination: tr1
