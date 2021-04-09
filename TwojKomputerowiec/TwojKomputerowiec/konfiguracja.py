@@ -9,6 +9,7 @@ class Konfiguracja:
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'piotrek24061988@gmail.com'
     MAIL_PASSWORD = 'dajffmmwfatdotkc'
+    ADMIN_USERNAME = 'Piotr Gorecki'
     PATH_GALLERY = 'static/media/galeria'
     PATH_NEWS = 'static/media/aktualnosci'
     PATH_PROFILE = 'static/media/profil'

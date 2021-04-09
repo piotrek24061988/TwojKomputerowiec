@@ -8,7 +8,7 @@ from TwojKomputerowiec.przydatne import emailKontaktowy
 class Autor(Resource):
     def get(self):
         return {
-            'autor': 'Piotr Gorecki',
+            'autor': Konfiguracja.ADMIN_USERNAME,
             'email': Konfiguracja.MAIL_USERNAME
         }
 
