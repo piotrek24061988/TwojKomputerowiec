@@ -196,7 +196,7 @@ figcaption {
     width:  20vw;
     height: 20vh;
     transform-style: preserve-3d;
-    animation: animate 30s linear infinite;
+    animation: animate 60s linear infinite;
     animation-direction: reverse;
 }
 
@@ -217,16 +217,16 @@ figcaption {
     position: absolute;
     top: 0;
     left: 0;
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    height: 80%;
     transform-origin: center;
     transform-style: preserve-3d;
     transform: rotateY(calc(var(--i) * 45deg)) translateZ(30vw);
 }
 
 .box span:hover {
-    width: 85%;
-    height: 85%;
+    width: 90%;
+    height: 90%;
 }
 
 .box span p {
@@ -244,4 +244,53 @@ figcaption {
   padding: 1px 1px;
   border: 1px solid #dddddd;
   border-radius: 5px;
+}
+
+.details {
+    margin-top: 250px;
+}
+
+.domeindetail {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: #343a40;
+    padding: 1px 1px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.domeindetailimage {
+    padding: 10px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 10px;
+    max-width: 100%;
+    width: 260px;
+    height: auto;
+}
+
+.domeindetailimage img {
+    border-radius: 10px;
+    box-shadow: 10px 10px 48px 0px rgba(47,120,138,1);
+}
+
+.domeindescription {
+    vertical-align: middle;
+    display: inline-block;
+    width: 70%;
+}
+
+.domeindescription h2 {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.domainfoto {
+    width: 100%;
+    height: auto;
+    filter: brightness(100%);
 }

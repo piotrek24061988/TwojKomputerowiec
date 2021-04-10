@@ -1,5 +1,13 @@
+function getId(){console.log(this.event.target.id)}
+
 jQuery(function($)
 {
+    $('.linknr').click(function()
+    {
+        console.log(event.currentTarget.id)
+        $.scrollTo($('#' + event.currentTarget.id + 'cont'), 1500);
+    });
+
     //Scroll to top when button selected
     $('.scrollup').click(function()
     {

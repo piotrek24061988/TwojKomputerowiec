@@ -9,60 +9,182 @@
         <div class="box">
                 <span style="--i:1">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/serwisKomputerowy.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link1">
+                                        <img src="{{ url_for('static', filename='media/glowna/serwisKomputerowy.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">serwis komputerowy</figcaption>
                         </figure>
                         <p class="figure-section text-center text-wrap">naprawię twój uszkodzony sprzęt komputerowy</p>
                 </span>
                 <span style="--i:2">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/siecDomowa.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link2">
+                                        <img src="{{ url_for('static', filename='media/glowna/siecDomowa.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">informatyzacja domu</figcaption>
                         </figure>
                         <p class="figure-section text-center text-wrap">rozwiąże problemy informatyczne w Twoim mieszkaniu</p>
                 </span>
                 <span style="--i:3">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/serwer.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link3">
+                                        <img src="{{ url_for('static', filename='media/glowna/serwer.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">informatyzacja firm</figcaption>
                         </figure>
                         <p class="figure-section text-center text-wrap">zmodernizuję infrastrukturę informatyczną Twojej firmy</p>
                 </span>
                 <span style="--i:4">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/web.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link4">
+                                        <img src="{{ url_for('static', filename='media/glowna/web.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">strony www</figcaption>
                         </figure>
-                        <p class="figure-section text-center text-wrap">zajmę się Twoją stroną internetową</p>
+                        <p class="figure-section text-center text-wrap">zajmę się Twoją stroną internetową</p>
                 </span>
                 <span style="--i:5">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/programowanie.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link5">
+                                        <img src="{{ url_for('static', filename='media/glowna/programowanie.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">programowanie</figcaption>
                         </figure>
                         <p class="figure-section text-center text-wrap">zrealizuję dla Ciebie projekt informatyczny</p>
                 </span>
                 <span style="--i:6">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/pcb.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link6">
+                                        <img src="{{ url_for('static', filename='media/glowna/pcb.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">elektronika</figcaption>
                         </figure>
-                        <p class="figure-section text-center text-wrap">zajmę się Twoją elektroniką</p>
+                        <p class="figure-section text-center text-wrap">zajmę się Twoją elektroniką</p>
                 </span>
                 <span style="--i:7">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/automatyka.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link7">
+                                        <img src="{{ url_for('static', filename='media/glowna/automatyka.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">automatyka</figcaption>
                         </figure>
                         <p class="figure-section text-center text-wrap">zrealizuje dla Ciebie projekt z obszaru automatyki</p>
                 </span>
                 <span style="--i:8">
                         <figure class="border text-center rounded figure-section">
-                                <img src="{{ url_for('static', filename='media/glowna/media.jpg') }}" class="img-fluid"/>
+                                <a href="#" class="linknr" id="link8">
+                                        <img src="{{ url_for('static', filename='media/glowna/media.jpg') }}" class="img-fluid"/>
+                                </a>
                                 <figcaption class="text-light">social media</figcaption>
                         </figure>
-                        <p class="figure-section text-center text-wrap">zajmę się utrzymaniem Twojej firmy na Faceboku, Twiterze, Instagramie itp.</p>
+                        <p class="figure-section text-center text-wrap">zajmę się utrzymaniem Twojej firmy na Faceboku, Twiterze, Instagramie itp.</p>
                 </span>
         </div>
+
 </div>
+
+<div class="details">
+        <div class="row">
+
+                <div class="col-md-12 domeindetail" id="link1cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/serwisKomputerowy.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>serwis komputerowy</h2>
+                                <h5>Rozwiąże problemy z Twoim komputerem, telefonem komórkowym, drukarką, routerem,
+                                    telewizorem, konsolą do gier itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link2cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/siecDomowa.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>informatyzacja domu</h2>
+                                <h5>Doradzę jak skonfigurować sieć domową i dostęp do internetu w Twoim domu,
+                                    jak i gdzie kupić router, jak podłączyć drukarkę do sieci wifi,
+                                    jak skonfigurować inteligentnego robota sprzątającego itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link3cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/serwer.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>informatyzacja firm</h2>
+                                <h5>Skonfiguruję urządzenia sieciowe i zajmę się informatyką w Twojej firmie,
+                                    stworzę dla Ciebie stronę internetową i konta na profilach społecznościowych,
+                                    zaprojektuje dla Ciebie sklep internetowy itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link4cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/web.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>strony www</h2>
+                                <h5>Zaprojektuję dla Ciebie dowolną stronę internetową Twojej firmy bądź sklep
+                                    internetowy. Zajmę się prowadzeniem Twojej strony internetowej i doradzę
+                                    jak uniknąć niepotrzebnych opłat itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link5cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/programowanie.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>programowanie</h2>
+                                <h5>Zrealizuję dla Ciebie projekt informatycnzy, programistyczny w określonej technologii,
+                                    doradzę jak taki projekt wykonać itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link6cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto"  src="{{ url_for('static', filename='media/glowna/pcb.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>elektronika</h2>
+                                <h5>Zaprojektuję dla Ciebie urządzenie elektroniczne, zaprojektuję i pomogę
+                                    wykonać obwody drukowane, opracuję niezbędną dokumentację techniczną itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link7cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/automatyka.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>automatyka</h2>
+                                <h5>Zrealizuję dla Ciebie projekt z obszaru automatyki przemysłowej, doradzę
+                                    jakiego sprzętu użyć i opracuję niezbędną dokumentację techniczną itp...</h5>
+                        </div>
+                </div>
+
+                <div class="col-md-12 domeindetail" id="link8cont">
+                        <div class="domeindetailimage">
+                                <img class="domainfoto" src="{{ url_for('static', filename='media/glowna/media.jpg') }}">
+                        </div>
+
+                        <div class="domeindescription">
+                                <h2>social media</h2>
+                                <h5>Zajmę się stworzeniem bądź utrzymaniem kont Twojej firmy na portalach społecznościowych
+                                    np. Faceboku, YouTubie itp.</h5>
+                        </div>
+                </div>
+        </div>
+</div>
+
 {% endblock %}
