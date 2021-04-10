@@ -193,8 +193,8 @@ figcaption {
 
 .box {
     position: relative;
-    width:  20vw;
-    height: 20vh;
+    width:  25vw;
+    height: 25vh;
     transform-style: preserve-3d;
     animation: animate 60s linear infinite;
     animation-direction: reverse;
@@ -225,8 +225,8 @@ figcaption {
 }
 
 .box span:hover {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
 }
 
 .box span p {
@@ -253,7 +253,7 @@ figcaption {
 }
 
 .details {
-    margin-top: 275px;
+    margin-top: 300px;
 }
 
 .domeindetail {
