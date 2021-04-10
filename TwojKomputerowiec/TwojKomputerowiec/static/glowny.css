@@ -239,6 +239,53 @@ figcaption {
     font-weight: bold;
 }
 
+@media (max-width: 800px) {
+
+    .domowa {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .box {
+        position: relative;
+        width:  50vw;
+        height: 50vh;
+        transform-style: preserve-3d;
+        animation: animate 60s linear infinite;
+        animation-direction: reverse;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+        100% {
+            transform: perspective(1000px) rotateX(360deg);
+        }
+    }
+
+    .box span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 80%;
+        transform-origin: center;
+        transform-style: preserve-3d;
+        transform: rotateX(calc(var(--i) * 45deg)) translateZ(45vw);
+    }
+
+    .box span:hover {
+        width: 80%;
+        height: 80%;
+    }
+}
+
 .figure-section {
   background: #343a40;
   padding: 1px 1px;
