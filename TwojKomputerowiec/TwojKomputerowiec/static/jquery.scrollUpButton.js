@@ -2,6 +2,7 @@ function getId(){console.log(this.event.target.id)}
 
 jQuery(function($)
 {
+    //Scroll to corresponding image description
     $('.linknr').click(function()
     {
         console.log(event.currentTarget.id)
