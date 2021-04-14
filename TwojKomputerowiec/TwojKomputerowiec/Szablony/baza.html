@@ -14,6 +14,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='glowny.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fontello/fontello-a1256c3a/css/fontello.css') }}">
         <!-- font -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet">
@@ -71,6 +72,21 @@
 
             {% block cialo %}{% endblock %}
         </main>
+
+        <footer>
+            <div class="socials">
+                <a href="https://www.youtube.com/watch?v=Zc8sgcFzh8U&list=PLvWGmxma3ypQXRKYWGJt8z68SPL-BQtXa&index=2" target="_blank" class="youtube">
+                    <i class="icon-youtube"></i>
+                </a>
+                <a href="https://github.com/piotrek24061988" target="_blank" class="github">
+                    <i class="icon-github-squared"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/piotr-górecki-1b364087/" target="_blank" class="linkedin">
+                    <i class="icon-linkedin-squared"></i>
+                </a>
+                <div style="clear:both"></div>
+            </div>
+        </footer>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

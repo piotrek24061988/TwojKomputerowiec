@@ -334,3 +334,55 @@ figcaption {
     height: auto;
     filter: brightness(100%);
 }
+
+.socials
+{
+    text-align: center;
+    background-color: #343a40;
+    margin-top: 30px;
+}
+
+.youtube
+{
+    width: 33%;
+    height: auto;
+    float:left;
+    padding: 10px 0px 10px 0px;
+    color: white;
+}
+
+.youtube:hover
+{
+    color: white;
+    background-color: #d94348;
+}
+
+.github
+{
+    width: 33%;
+    height: auto;
+    float:left;
+    padding: 10px 0px 10px 0px;
+    color: white;
+}
+
+.github:hover
+{
+    background-color: #e0e0e0;
+    color: black;
+}
+
+.linkedin
+{
+    width: 34%;
+    height: auto;
+    float:left;
+    padding: 10px 0px 10px 0px;
+    color: white;
+}
+
+.linkedin:hover
+{
+    background-color: #0e76a8;
+    color: white;
+}
