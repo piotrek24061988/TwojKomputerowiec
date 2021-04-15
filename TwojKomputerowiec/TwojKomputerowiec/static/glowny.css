@@ -5,19 +5,16 @@ body {
   background-size: 100% 100%;
   margin-top: 5rem;
   font-family: 'Teko', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
+  color: white;
 }
 
 .site-header .navbar-nav .dropdown-item {
-  color: #ffffff;
+  color: white;
   font-weight: bold;
 }
 
 .site-header .navbar-nav .dropdown-item:hover {
-  color: #ffffff;
+  color: white;
   background-color: #868e96 !important;
 }
 
@@ -162,7 +159,7 @@ a.article-title:hover {
 }
 
 .scrollup:hover {
-    transform: scale(0.7);
+    transform: scale(1.3);
 }
 
 figure {
@@ -342,28 +339,23 @@ figcaption {
     margin-top: 30px;
 }
 
-.youtube
+.socialmedia
 {
     width: 33%;
     height: auto;
     float:left;
     padding: 10px 0px 10px 0px;
+    color: white;
+}
+
+.socialmedia:hover
+{
     color: white;
 }
 
 .youtube:hover
 {
-    color: white;
     background-color: #d94348;
-}
-
-.github
-{
-    width: 33%;
-    height: auto;
-    float:left;
-    padding: 10px 0px 10px 0px;
-    color: white;
 }
 
 .github:hover
@@ -375,14 +367,9 @@ figcaption {
 .linkedin
 {
     width: 34%;
-    height: auto;
-    float:left;
-    padding: 10px 0px 10px 0px;
-    color: white;
 }
 
 .linkedin:hover
 {
     background-color: #0e76a8;
-    color: white;
 }
