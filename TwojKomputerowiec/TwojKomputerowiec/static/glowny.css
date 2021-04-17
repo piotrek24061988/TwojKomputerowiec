@@ -376,3 +376,7 @@ figcaption {
 {
     background-color: #0e76a8;
 }
+
+.myinput {
+    display: none;
+}
