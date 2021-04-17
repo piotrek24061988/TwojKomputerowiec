@@ -45,13 +45,13 @@
                 {{ form.potwierdzenie(class="btn btn-outline-secondary") }}
             </div>
             <small class="text-light">
-            Nie pamiętasz hasła? <a class="ml-2 article-title" href="{{ url_for('wnioskujResetHasla', ) }}">Zresetuj hasło</a>
+                <h6>Nie pamiętasz hasła? <a class="ml-2 article-title" href="{{ url_for('wnioskujResetHasla', ) }}">Zresetuj hasło</a></h6>
             </small>
         </form>
     </div>
     <div class="border-top pt-3">
         <small class="text-light">
-            Nie masz konta? <a class="ml-2 article-title" href="{{ url_for('rejestracja') }}">Zarejestruj się</a>
+            <h6>Nie masz konta? <a class="ml-2 article-title" href="{{ url_for('rejestracja') }}">Zarejestruj się</a><h5>
         </small>
     </div>
 {% endblock %}
