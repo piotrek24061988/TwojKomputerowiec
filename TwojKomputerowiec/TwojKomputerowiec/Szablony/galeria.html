@@ -14,7 +14,7 @@
                     <div class="col-md-4 mb-1 float-left">
                         <figure class="border text-center rounded content-section">
                             <a href="{{ url_for('zdjecie', zdjecie_id=zdjecie.id)  }}">
-                                <img src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}" class="img-fluid my-1 p-1 pgphoto">
+                                <img src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}" class="img-fluid galeryimg">
                             </a>
                             <figcaption class="text-light">{{ zdjecie.tytul }}</figcaption>
                         </figure>

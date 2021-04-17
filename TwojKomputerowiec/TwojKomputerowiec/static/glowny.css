@@ -381,11 +381,13 @@ figcaption {
     display: none;
 }
 
-.pgphoto {
+.galeryimg {
+    padding: 2%;
+    margin: 3% 0;
     border-radius: 10px;
     transition: transform 0.5s ease-in-out;
 }
 
-.pgphoto:hover {
+.galeryimg:hover {
     transform: scale(1.2);
 }
