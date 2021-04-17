@@ -228,14 +228,26 @@ figcaption {
     height: 100%;
 }
 
-.box span p {
-    visibility: hidden;
+.linknr {
+    position: relative;
 }
 
-.box span:hover p {
-    visibility: visible;
-    color: #ffffff;
+.linknr .overlay {
+    position: absolute;
+    top: 0;
+    padding: 1%;
+    background: black;
+    color: white;
+    opacity: 0;
+    width: 100%;
+    transition: opacity 2s ease-in-out;
+    font-size: 1vw;
     font-weight: bold;
+    text-align: center;
+}
+
+.linknr:hover .overlay {
+    opacity: 0.8;
 }
 
 @media (max-width: 800px) {
