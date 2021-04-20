@@ -38,8 +38,15 @@
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('kontakt') }}">Kontakt</a>
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('oMnie') }}">O mnie</a>
                             <a class="btn btn-outline-secondary mx-1" href="{{ url_for('galeria') }}">Galeria</a>
-                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('blogZawodowo') }}">Blog</a>
-                            <a class="btn btn-outline-secondary mx-1" href="{{ url_for('testowa') }}">Testowa</a>
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-outline-secondary mx-1 dropdown-toggle" style="width: 98%;" id="subnav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dodatkowo
+                                </button>
+                                <div class="dropdown-menu bg-dark" aria-labelledby="subnav">
+                                    <a class="dropdown-item bg-dark" href="{{ url_for('blogZawodowo') }}">Blog</a>
+                                    <a class="dropdown-item bg-dark" href="{{ url_for('testowa') }}">Testowa</a>
+                                </div>
+                            </li>
                         </div>
 
                         <div class="navbar-nav">
