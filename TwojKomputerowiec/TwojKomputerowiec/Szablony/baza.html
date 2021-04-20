@@ -63,7 +63,7 @@
             </nav>
         </header>
 
-        <main role="main" class="container">
+        <main role="main" class="container" style="min-height: 72vh;">
             {%  with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
