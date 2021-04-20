@@ -9,16 +9,19 @@
           <div class="row">
               <div class="col-md-8">
 
-               {% for zdjecie in galeria.items %}
-                    <div class="col-xl-4 col-md-6 mb-1 float-left">
-                        <figure class="border text-center rounded content-section">
-                            <a href="{{ url_for('zdjecie', zdjecie_id=zdjecie.id)  }}">
-                                <img src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}" class="img-fluid galeryimg">
-                            </a>
-                            <figcaption class="text-light">{{ zdjecie.tytul }}</figcaption>
-                        </figure>
-                    </div>
-               {% endfor %}
+                  <div class="row">
+                      {% for zdjecie in galeria.items %}
+                      <div class="col-xl-4 col-md-6 mb-1 float-left">
+                          <figure class="border text-center rounded content-section">
+                              <a href="{{ url_for('zdjecie', zdjecie_id=zdjecie.id)  }}">
+                                  <img src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}"
+                                       class="img-fluid galeryimg">
+                              </a>
+                              <figcaption class="text-light">{{ zdjecie.tytul }}</figcaption>
+                          </figure>
+                      </div>
+                      {% endfor %}
+                  </div>
 
               </div>
 
