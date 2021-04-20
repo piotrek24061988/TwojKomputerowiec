@@ -7,7 +7,7 @@
 {% block cialo %}
      <div class="container">
           <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-9">
 
                   <div class="row">
                       {% for zdjecie in galeria.items %}
@@ -25,13 +25,13 @@
 
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-3">
                   <div class="content-section">
                       <h3>Menu Galerii</h3>
                       <ul class="list-group">
                           {% if current_user.is_authenticated  %}
                           {% if current_user.email == admin %}
-                              <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieZdjecia') }}">Dodaj aktualności</a li>
+                              <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieZdjecia') }}">Dodaj zdjęcie</a li>
                           {% endif %}
                           {% endif %}
                       </ul>
