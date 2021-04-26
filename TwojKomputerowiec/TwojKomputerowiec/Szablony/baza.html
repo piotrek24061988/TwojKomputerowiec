@@ -22,7 +22,7 @@
         {% block glowa %}{% endblock %}
     </head>
 
-    <body>
+    <body onload="currentTimeAndDate();">
         <header class="site-header">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div class="container">
@@ -47,6 +47,7 @@
                                     <a class="dropdown-item bg-dark" href="{{ url_for('testowa') }}">Testowa</a>
                                 </div>
                             </li>
+                            <div id="zegar">00:00:00</div>
                         </div>
 
                         <div class="navbar-nav">
@@ -77,6 +78,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
             <script src="{{ url_for('static', filename='jquery.scrollTo.min.js') }}"></script>
             <script src="{{ url_for('static', filename='jquery.scrollUpButton.js') }}"></script>
+            <script src="{{ url_for('static', filename='zegar.js') }}"></script>
             <a href="#" class="scrollup"></a>
 
             {% block cialo %}{% endblock %}

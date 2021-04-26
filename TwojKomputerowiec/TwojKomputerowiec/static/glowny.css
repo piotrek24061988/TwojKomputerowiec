@@ -403,3 +403,8 @@ figcaption {
 .galeryimg:hover {
     transform: scale(1.1);
 }
+
+#zegar {
+    margin-left: 15px;
+    margin-top: 8px;
+}
