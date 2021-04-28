@@ -7,7 +7,6 @@
 {% block cialo %}
 
     <article class="media content-section">
-
         <div class="media-body">
             <div class="article-metadata">
                 <img class="rounded blog-img" src="{{ url_for('static', filename='media/profil/' + post.autor.zdjecie) }}">
@@ -16,7 +15,7 @@
             </div>
             <h2 class="article-title">{{ post.tytul }}</h2>
             <p class="article-content">{{ post.tresc }}</p>
-            {% if post.autor == current_user %}
+            {% if post.autor == current_user or (current_user.is_authenticated and current_user.email == admin) %}
                 <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujPost', post_id=post.id)  }}">Aktualizuj</a>
                 <a class="btn btn-outline-secondary text-light" data-toggle="modal" data-target="#usuniecieModal">Usuń</a>
             {% endif %}

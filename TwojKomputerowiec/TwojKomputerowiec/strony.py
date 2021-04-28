@@ -264,7 +264,7 @@ def dodaniePosta():
 @app.route('/post/<int:post_id>')
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title=post.tytul, post=post)
+    return render_template('post.html', title=post.tytul, post=post, admin=Konfiguracja.MAIL_USERNAME)
 
 
 @app.route('/aktualizujPost/<int:post_id>', methods=['GET', 'POST'])
@@ -272,7 +272,9 @@ def post(post_id):
 @login_required
 def aktualizujPost(post_id):
     post = Post.query.get_or_404(post_id)
-    if post.autor != current_user:
+    if post.autor == current_user or (current_user.is_authenticated and current_user.email == Konfiguracja.MAIL_USERNAME):
+        pass
+    else:
         abort(403)
     formularz = FormularzNowegoPostu()
     if formularz.validate_on_submit():
@@ -292,7 +294,9 @@ def aktualizujPost(post_id):
 @login_required
 def usunPost(post_id):
     post = Post.query.get_or_404(post_id)
-    if post.autor != current_user:
+    if post.autor == current_user or (current_user.is_authenticated and current_user.email == Konfiguracja.MAIL_USERNAME):
+        pass
+    else:
         abort(403)
     db.session.delete(post)
     db.session.commit()

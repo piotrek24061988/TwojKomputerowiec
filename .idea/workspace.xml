@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="i">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/baza.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
