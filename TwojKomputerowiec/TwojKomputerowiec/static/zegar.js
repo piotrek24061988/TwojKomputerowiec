@@ -7,7 +7,7 @@ function currentTimeAndDate()
     if(minutes < 10) minutes = "0" + minutes;
     var seconds = today.getSeconds();
     if(seconds < 10) seconds = "0" + seconds;
-    document.getElementById("zegar").innerHTML = hours + ":" + minutes + ":" + seconds;
+    $("#zegar").html(hours + ":" + minutes + ":" + seconds);
 
     setTimeout("currentTimeAndDate()", 500);
 }
