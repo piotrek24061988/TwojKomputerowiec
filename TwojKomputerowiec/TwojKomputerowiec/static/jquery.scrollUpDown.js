@@ -1,6 +1,4 @@
-function getId(){console.log(this.event.target.id)}
-
-jQuery(function($)
+$(function($)
 {
     //Scroll to corresponding image description
     $('.linknr').click(function()
