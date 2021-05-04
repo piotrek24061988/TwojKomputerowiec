@@ -356,7 +356,7 @@ figcaption {
 
 .socialmedia
 {
-    width: 33%;
+    width: 25%;
     height: auto;
     float:left;
     padding: 10px 0px 10px 0px;
@@ -379,9 +379,10 @@ figcaption {
     color: black;
 }
 
-.linkedin
+.bitbucket:hover
 {
-    width: 34%;
+    background-color: #e0e0e0;
+    color: #2684ff;
 }
 
 .linkedin:hover

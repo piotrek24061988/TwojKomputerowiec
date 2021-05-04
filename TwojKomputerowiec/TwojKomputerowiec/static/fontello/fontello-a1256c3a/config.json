@@ -7,21 +7,27 @@
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "1145676a91138011729fa2909997af66",
-      "css": "linkedin-squared",
-      "code": 62220,
-      "src": "fontawesome"
-    },
-    {
       "uid": "a9862b9d5197886c1ad693ecd7120b31",
       "css": "youtube",
       "code": 61799,
       "src": "fontawesome"
     },
     {
+      "uid": "1145676a91138011729fa2909997af66",
+      "css": "linkedin-squared",
+      "code": 62220,
+      "src": "fontawesome"
+    },
+    {
       "uid": "0ece9a12de796b8411f868d582bee678",
       "css": "github-squared",
       "code": 62208,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "4ae56c66a1f93e28b8d4f866db2b018a",
+      "css": "bitbucket-squared",
+      "code": 61810,
       "src": "fontawesome"
     }
   ]
