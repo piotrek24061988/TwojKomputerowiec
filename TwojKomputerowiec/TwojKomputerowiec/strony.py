@@ -342,6 +342,11 @@ def noweHaslo(token):
 def testowa():
     return render_template('testowa.html')
 
+@app.route('/sklep')
+@app.route('/shop')
+def sklep():
+    return render_template('sklep.html')
+
 
 @app.errorhandler(404)
 def blad_404(error):
