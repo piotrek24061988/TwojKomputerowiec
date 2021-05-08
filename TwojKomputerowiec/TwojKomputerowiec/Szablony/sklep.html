@@ -5,7 +5,40 @@
 {% endblock %}
 
 {% block cialo %}
-<div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="row">
+                {% for produkt in sklep %}
+                <div class="col-xl-4 col-md-6 mb-1 float-left">
+                    <figure class="border text-center rounded content-section">
+                        <a href="{{ url_for('produkt', produkt_id=produkt.id)  }}">
+                            <img src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}"
+                                 class="img-fluid galeryimg">
+                        </a>
+                        <figcaption class="text-light">{{ produkt.nazwa }}</figcaption>
+                    </figure>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="content-section">
+                <h3>Menu Sklepu</h3>
+                <ul class="list-group">
+                    {% if current_user.is_authenticated  %}
+                    {% if current_user.email == admin %}
+                    <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieProduktu') }}">Dodaj produkt</a li>
+                    {% endif %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 {% endblock %}

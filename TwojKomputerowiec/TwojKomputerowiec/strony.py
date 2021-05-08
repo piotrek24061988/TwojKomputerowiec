@@ -172,6 +172,91 @@ def aktualizujZdjecie(zdjecie_id):
     return render_template('noweZdjecie.html', title='Aktualizuj', form=formularz)
 
 
+"""
+Stub produktu sklepowego
+"""
+class Produkt():
+    def __init__(self, nazwa, zdjecie, id):
+        self.nazwa = nazwa
+        self.zdjecie = zdjecie
+        self.id = id
+
+
+@app.route('/shop')
+@app.route('/sklep')
+def sklep():
+    strona = request.args.get('page', 1, type=int)
+    #galeria = Galeria.query.order_by(Galeria.data.desc()).paginate(page=strona, per_page=20)
+    #sklep = Sklep.query.order_by(Sklep.data.desc()).paginate(page=strona, per_page=20)
+    sklep = {Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1), Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2)}
+    return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/produkt/<int:produkt_id>')
+@app.route('/product/<int:produkt_id>')
+def produkt(produkt_id):
+    #zdjecie = Galeria.query.get_or_404(zdjecie_id)
+    #produkt = Sklep.query.get_or_404(produkt_id)
+    produkt = Produkt("produkt testowy 1", "placeholder.png", 1)
+    return render_template('produkt.html', produkt=produkt, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/karta')
+@app.route('/card')
+def karta():
+    return render_template('karta.html')
+
+
+@app.route('/zamowienie')
+@app.route('/order')
+def zamowienie():
+    return render_template('zamowienie.html')
+
+
+@app.route('/nowyProdukt', methods=['GET', 'POST'])
+@app.route('/newProduct', methods=['GET', 'POST'])
+@login_required
+def dodanieProduktu():
+    return render_template('nowyProdukt.html')
+
+@app.route('/usunProdukt/<int:produkt_id>', methods=['GET','POST'])
+@app.route('/deleteProduct/<int:produkt_id>', methods=['GET', 'POST'])
+@login_required
+def usunProdukt(produkt_id):
+    #zdjecie = Galeria.query.get_or_404(zdjecie_id)
+    #produkt = Sklep.query.get_or_404(produkt_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    #db.session.delete(produkt)
+    #db.session.commit()
+    flash(f'Produkt został usunięty', 'success')
+    return redirect(url_for('sklep'))
+
+
+@app.route('/aktualizujProdukt/<int:produkt_id>', methods=['GET', 'POST'])
+@app.route('/updateProduct/<int:produkt_id>', methods=['GET', 'POST'])
+@login_required
+def aktualizujProdukt(produkt_id):
+    #zdjecie = Galeria.query.get_or_404(zdjecie_id)
+    #produkt = Sklep.query.get_or_404(produkt_id)
+    produkt = Produkt("produkt testowy 1", "placeholder.png", 1)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    #formularz = FormularzAktualizacjiProduktu()
+    #if formularz.validate_on_submit():
+    #    produkt.nazwa = produkt.nazwa.data
+    #    if formularz.produkt.data:
+    #        produkt.zdjecie = zachowajZdjecie(formularz.produkt.data, sciezka=Konfiguracja.PATH_SHOP)
+    #    db.session.commit()
+    #    flash(f'Produkt został zaktualizowany', 'success')
+    #    return redirect(url_for('sklep'))
+    #elif request.method == 'GET':
+    #    formularz.nazwa.data = produkt.nazwa
+    #    formularz.zdjecie.data = produkt.zdjecie
+    formularz = {}
+    return render_template('nowyProdukt.html', title='Aktualizuj', form=formularz)
+
+
 @app.route('/blogZawodowy')
 @app.route('/itBlog')
 def blogZawodowo():
@@ -341,11 +426,6 @@ def noweHaslo(token):
 @app.route('/test')
 def testowa():
     return render_template('testowa.html')
-
-@app.route('/sklep')
-@app.route('/shop')
-def sklep():
-    return render_template('sklep.html')
 
 
 @app.errorhandler(404)

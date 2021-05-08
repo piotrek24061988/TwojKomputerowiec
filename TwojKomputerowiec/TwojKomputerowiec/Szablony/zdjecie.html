@@ -15,7 +15,7 @@
                  src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}">
             {% endif %}
             {% if admin == current_user.email %}
-                <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujZdjecie', zdjecie_id=zdjecie.id)  }}">Aktualizuj</a>
+                <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujZdjecie', zdjecie_id=zdjecie.id) }}">Aktualizuj</a>
                 <a class="btn btn-outline-secondary text-light" data-toggle="modal" data-target="#usuniecieModal">Usuń</a>
             {% endif %}
         </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</a>
-                    <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunZdjecie', zdjecie_id=zdjecie.id)  }}">Potwierdź usunięcie</a>
+                    <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunZdjecie', zdjecie_id=zdjecie.id) }}">Potwierdź usunięcie</a>
                 </div>
             </div>
         </div>
