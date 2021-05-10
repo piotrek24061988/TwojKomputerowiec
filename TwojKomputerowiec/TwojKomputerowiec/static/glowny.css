@@ -414,6 +414,7 @@ figcaption {
 
 .basket-img {
   height: 35px;
+  margin-top: 3px;
   width: auto;
   margin-left: 3px;
   float: left;
