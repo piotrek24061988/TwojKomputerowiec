@@ -406,7 +406,21 @@ figcaption {
 }
 
 #zegar {
-    margin-left: 15px;
+    margin-left: 12px;
     margin-top: 8px;
     text-align: center;
+    margin-right: 3px;
+}
+
+.basket-img {
+  height: 35px;
+  width: auto;
+  margin-left: 3px;
+  float: left;
+}
+
+#cart-total {
+    float: left;
+    margin-left: 3px;
+    color: white;
 }

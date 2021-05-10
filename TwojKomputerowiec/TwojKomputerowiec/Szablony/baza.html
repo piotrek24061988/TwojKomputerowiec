@@ -54,12 +54,18 @@
                         <div class="navbar-nav">
                             {% if current_user.is_authenticated %}
                                 <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('profil') }}">Profil</a>
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('wylogowanie') }}">Wylogowanie</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('wylogowanie') }}">Wyloguj</a>
                             {% else %}
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('logowanie') }}">Logowanie</a>
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('rejestracja') }}">Rejestracja</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('logowanie') }}">Loguj</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('rejestracja') }}">Rejestruj</a>
                             {% endif %}
                         </div>
+                        {% if request.path == '/sklep' %}
+                        <a href="{{ url_for('karta') }}">
+                            <img class="basket-img" src="{{ url_for('static', filename='media/sklep/basket_white.png') }}">
+                            <p id="cart-total"> 0 </p>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </nav>
