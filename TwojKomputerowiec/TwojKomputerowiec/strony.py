@@ -176,10 +176,31 @@ def aktualizujZdjecie(zdjecie_id):
 Stub produktu sklepowego
 """
 class Produkt():
-    def __init__(self, nazwa, zdjecie, id):
+    def __init__(self, nazwa, zdjecie, id, ilosc=0, cena=999, opis=None):
         self.nazwa = nazwa
         self.zdjecie = zdjecie
         self.id = id
+        self.ilosc = ilosc
+        self.cena = cena
+        self.opis = opis
+
+
+"""
+Stub zamowionego produktu
+"""
+class ZamowionyProdukt():
+    def __init__(self, ilosc, calkowitaCena, produkt):
+        self.ilosc = ilosc
+        self.calkowitaCena = calkowitaCena
+        self.produkt = produkt
+
+"""
+Stub kosza
+"""
+class Kosz():
+    def __init__(self, produkty, cena):
+        self.iloscProduktowKosza = produkty
+        self.cenaKosza = cena
 
 
 @app.route('/shop')
@@ -188,7 +209,7 @@ def sklep():
     strona = request.args.get('page', 1, type=int)
     #galeria = Galeria.query.order_by(Galeria.data.desc()).paginate(page=strona, per_page=20)
     #sklep = Sklep.query.order_by(Sklep.data.desc()).paginate(page=strona, per_page=20)
-    sklep = {Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1), Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2)}
+    sklep = {Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=3, cena=9.99), Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=10, cena=11.11)}
     return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME)
 
 
@@ -197,14 +218,20 @@ def sklep():
 def produkt(produkt_id):
     #zdjecie = Galeria.query.get_or_404(zdjecie_id)
     #produkt = Sklep.query.get_or_404(produkt_id)
-    produkt = Produkt("produkt testowy 1", "placeholder.png", 1)
+    opis = "to jest testowy opis produtu sporządzony dla celów testowych tego co znajduje się w sklepie, " \
+           "który docelowo zostanie zamieniony na pełnowartościowy opis produktu sklepowego"
+    produkt = Produkt("produkt testowy 1", "placeholder.png", 1, 10, 9.99, opis)
     return render_template('produkt.html', produkt=produkt, admin=Konfiguracja.MAIL_USERNAME)
 
 
 @app.route('/karta')
 @app.route('/card')
 def karta():
-    return render_template('karta.html')
+    zamowionyProdukt1 = ZamowionyProdukt(1, 9.99, Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
+    zamowionyProdukt2 = ZamowionyProdukt(2, 19.98, Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
+    zamowionyProdukt3 = ZamowionyProdukt(3, 29.97, Produkt(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
+    zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
+    return render_template('karta.html', zamowienie=zamowienie, kosz=Kosz(6, 59.94))
 
 
 @app.route('/zamowienie')

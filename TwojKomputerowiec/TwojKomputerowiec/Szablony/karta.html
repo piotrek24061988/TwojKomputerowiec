@@ -5,7 +5,61 @@
 {% endblock %}
 
 {% block cialo %}
-<div>
 
+<div class="container">
+    <a href="#" class="scrollup"></a>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="border text-center rounded bg-dark store-section">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th><h6>Produkt:</h6></th>
+                        <th><h6>Cena:</h6></th>
+                        <th><h6>Ilość:</h6>
+                        </th>
+                        <th><h6>Cena łączna:</h6></th>
+                    </tr>
+
+                    {% for zamowienieProduktu in zamowienie %}
+                    <tr>
+                        <th>
+                            <a href="{{ url_for('produkt', produkt_id=zamowienieProduktu.produkt.id)  }}">
+                                <img src="{{ url_for('static', filename='media/sklep/' + zamowienieProduktu.produkt.zdjecie) }}" class="img-fluid text-center" style="max-width: 50px; height: auto;">
+                            </a>
+                        </th>
+                        <th><h6>{{ zamowienieProduktu.produkt.nazwa }}</h6></th>
+                        <th><h6>{{ zamowienieProduktu.produkt.cena }}zł</h6></th>
+                        <th>
+                            <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="remove" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
+                            <h6 class="store-quant">{{ zamowienieProduktu.ilosc }}</h6>
+                            <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="add" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
+                        </th>
+                        <th><h6>{{ zamowienieProduktu.calkowitaCena }} zł</h6></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="border text-center rounded bg-dark store-section">
+                <table class="table">
+                    <tr>
+                        <th>
+                            <a href="{{ url_for('sklep') }}"><button class="btn btn-outline-secondary w-100 update-cart">Sklep</button></a>
+                        </th>
+                        <th><h6>Produkty: {{ kosz.iloscProduktowKosza }}</h6></th>
+                        <th><h6>Kwota: {{ kosz.cenaKosza }} zł</h6></th>
+                        <th>
+                            <a href="{{ url_for('zamowienie') }}"><button class="btn btn-outline-secondary w-100 update-cart">Zamów</button></a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
 </div>
+
 {% endblock %}

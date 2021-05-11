@@ -160,7 +160,7 @@ a.article-title:hover {
 }
 
 .scrollup:hover {
-    transform: scale(1.3);
+    transform: scale(0.7);
 }
 
 figure {
@@ -424,4 +424,30 @@ figcaption {
     float: left;
     margin-left: 3px;
     color: white;
+}
+
+.update-cart {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.store-section {
+    box-shadow: 3px 3px 10px 2px rgba(255,255,255,1);
+}
+
+.store-quant {
+    display: inline-block;
+    max-width: 25px;
+    height: auto;
+}
+
+.store-quant-img {
+    display: inline-block;
+    max-width: 30px;
+    height: auto;
+    transition: all 0.5s ease-in-out;
+}
+
+.store-quant-img:hover {
+    transform: scale(0.7);
 }

@@ -9,10 +9,13 @@
 <article class="media content-section">
 
     <div class="media-body">
-        <h2 class="article-title">{{ produkt.nazwa }}</h2>
+        <h2 class="article-title text-center">{{ produkt.nazwa }}</h2>
         {% if produkt.zdjecie %}
-        <img class="rounded aktualnosci-img mb-1"
-             src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}">
+        <img class="rounded aktualnosci-img mb-1" src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}">
+        {% endif %}
+        <h3 class="text-center">{{ produkt.cena }} zł</h3>
+        {% if produkt.opis %}
+        <p class="text-justify">{{ produkt.opis }}</p>
         {% endif %}
         {% if admin == current_user.email %}
         <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujProdukt', produkt_id=produkt.id) }}">Aktualizuj</a>

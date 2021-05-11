@@ -9,7 +9,7 @@
     <article class="media content-section">
 
         <div class="media-body">
-            <h2 class="article-title">{{ zdjecie.tytul }}</h2>
+            <h2 class="article-title text-center">{{ zdjecie.tytul }}</h2>
             {% if zdjecie.zdjecie %}
                 <img class="rounded aktualnosci-img mb-1"
                  src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}">
