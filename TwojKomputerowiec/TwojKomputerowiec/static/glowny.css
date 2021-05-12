@@ -457,3 +457,7 @@ figcaption {
     padding: 5px;
     display: inline-block;
 }
+
+.hidden {
+    display: none;
+}
