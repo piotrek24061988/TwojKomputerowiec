@@ -5,7 +5,75 @@
 {% endblock %}
 
 {% block cialo %}
-<div>
+<div class="row">
+    <div class="col-md-6">
+        <div id="form-wrapper" class="border text-center rounded bg-dark store-section mb-5">
+            <form id="form">
+                <div id="user-info">
+                    <p>Informacje o użytkowniku</p>
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="login" placeholder="login...">
+                    </div>
 
+                    <div class="form-field">
+                        <input required class="form-control" type="email" name="email" placeholder="email...">
+                    </div>
+                </div>
+
+                <div id="shipping-info">
+                    <p>Informacje o dostawie</p>
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="adres" placeholder="adres... ">
+                    </div>
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="kod" placeholder="kod... ">
+                    </div>
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="miasto" placeholder="miasto... ">
+                    </div>
+                    <div class="form-field">
+                        <input class="form-control" type="text" name="telefon" placeholder="telefon... ">
+                    </div>
+                </div>
+
+                <input id="store-form" type="submit" value="Potwierdż" class="btn btn-outline-secondary update-cart m-1">
+            </form>
+        </div>
+
+        <div class="border text-center rounded bg-dark store-section mb-5 hidden" id="payment-info">
+            <strong>Formy płatności</strong>
+            <p class="mt-5">1)Przedpłata przelewem na konto</p>
+            Piotr Górecki<br>
+            MBank: XX XXXX XXXX XXXX XXXX XXXX XXXX<br>
+            <input id="make-order" value="Potwierdż" class="btn btn-outline-secondary update-cart m-1">
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="border text-center rounded bg-dark store-section mb-5">
+            <a href="{{ url_for('karta') }}"><button class="btn btn-outline-secondary update-cart m-1">Modyfikuj</button></a>
+            <p>Podsumowanie zamówienia</p>
+            <table class="table">
+                {% for zamowienieProduktu in zamowienie %}
+                <tr>
+                    <th>
+                        <a href="{{ url_for('produkt', produkt_id=zamowienieProduktu.produkt.id) }}">
+                            <img src="{{ url_for('static', filename='media/sklep/' + zamowienieProduktu.produkt.zdjecie) }}" class="img-fluid text-center" style="max-width: 35px; height: auto;">
+                        </a>
+                    </th>
+                    <th><h6>{{ zamowienieProduktu.produkt.nazwa }}</h6></th>
+                    <th><h6>{{ zamowienieProduktu.ilosc }}</h6></th>
+                    <th><h6>{{ zamowienieProduktu.calkowitaCena }} zł</h6></th>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th></th>
+                    <th><h6>Produkty: {{ kosz.iloscProduktowKosza }}</h6></th>
+                    <th></th>
+                    <th><h6>Kwota: {{ kosz.cenaKosza }} zł</h6></th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}

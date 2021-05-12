@@ -237,7 +237,11 @@ def karta():
 @app.route('/zamowienie')
 @app.route('/order')
 def zamowienie():
-    return render_template('zamowienie.html')
+    zamowionyProdukt1 = ZamowionyProdukt(1, 9.99, Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
+    zamowionyProdukt2 = ZamowionyProdukt(2, 19.98, Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
+    zamowionyProdukt3 = ZamowionyProdukt(3, 29.97, Produkt(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
+    zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
+    return render_template('zamowienie.html', zamowienie=zamowienie, kosz=Kosz(6, 59.94))
 
 
 @app.route('/nowyProdukt', methods=['GET', 'POST'])

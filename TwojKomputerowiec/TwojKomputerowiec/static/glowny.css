@@ -451,3 +451,9 @@ figcaption {
 .store-quant-img:hover {
     transform: scale(0.7);
 }
+
+.form-field {
+    width: 250px;
+    padding: 5px;
+    display: inline-block;
+}
