@@ -128,7 +128,7 @@ def dodanieZdjecia():
         db.session.commit()
         flash(f'Zdjęcie zostało dodane', 'success')
         return redirect(url_for('galeria'))
-    return render_template('noweZdjecie.html', title='NoweZdjecie', form=formularz)
+    return render_template('noweZdjecie.html', title='Nowe zdjecie', form=formularz)
 
 
 @app.route('/zdjecie/<int:zdjecie_id>')
@@ -248,7 +248,23 @@ def zamowienie():
 @app.route('/newProduct', methods=['GET', 'POST'])
 @login_required
 def dodanieProduktu():
-    return render_template('nowyProdukt.html')
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzNowegoProduktu()
+    if formularz.validate_on_submit():
+        plik_zdjecia = None
+        if formularz.zdjecie.data:
+            plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
+        #zdjecie = Galeria(tytul=formularz.tytul.data, zdjecie=plik_zdjecia)
+        #db.session.add(zdjecie)
+        #db.session.commit()
+        #Replace stub class to model
+        produkt = Produkt(nazwa=formularz.nazwa.data, opis=formularz.tresc.data, zdjecie=plik_zdjecia, id=1, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
+        #db.session.add(produkt)
+        #db.session.commit()
+        flash(f'Produkt został dodany', 'success')
+        return redirect(url_for('sklep'))
+    return render_template('nowyProdukt.html', title='Nowy produkt', form=formularz)
 
 @app.route('/usunProdukt/<int:produkt_id>', methods=['GET','POST'])
 @app.route('/deleteProduct/<int:produkt_id>', methods=['GET', 'POST'])
@@ -270,21 +286,26 @@ def usunProdukt(produkt_id):
 def aktualizujProdukt(produkt_id):
     #zdjecie = Galeria.query.get_or_404(zdjecie_id)
     #produkt = Sklep.query.get_or_404(produkt_id)
-    produkt = Produkt("produkt testowy 1", "placeholder.png", 1)
+    produkt = Produkt("produkt testowy 1", "placeholder.png", 1, opis="lorem ipsum", ilosc=99, cena=9.99)
     if Konfiguracja.MAIL_USERNAME != current_user.email:
         abort(403)
-    #formularz = FormularzAktualizacjiProduktu()
-    #if formularz.validate_on_submit():
-    #    produkt.nazwa = produkt.nazwa.data
-    #    if formularz.produkt.data:
-    #        produkt.zdjecie = zachowajZdjecie(formularz.produkt.data, sciezka=Konfiguracja.PATH_SHOP)
+    formularz = FormularzAktualizacjiProduktu()
+    if formularz.validate_on_submit():
+        produkt.nazwa = formularz.nazwa.data
+        produkt.opis = formularz.tresc.data
+        produkt.ilosc = formularz.ilosc.data
+        produkt.cena = formularz.cena.data
+        if formularz.zdjecie.data:
+            produkt.zdjecie = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
     #    db.session.commit()
-    #    flash(f'Produkt został zaktualizowany', 'success')
-    #    return redirect(url_for('sklep'))
-    #elif request.method == 'GET':
-    #    formularz.nazwa.data = produkt.nazwa
-    #    formularz.zdjecie.data = produkt.zdjecie
-    formularz = {}
+        flash(f'Produkt został zaktualizowany', 'success')
+        return redirect(url_for('sklep'))
+    elif request.method == 'GET':
+        formularz.nazwa.data = produkt.nazwa
+        formularz.tresc.data = produkt.opis
+        formularz.zdjecie.data = produkt.zdjecie
+        formularz.ilosc.data = produkt.ilosc
+        formularz.cena.data = produkt.cena
     return render_template('nowyProdukt.html', title='Aktualizuj', form=formularz)
 
 

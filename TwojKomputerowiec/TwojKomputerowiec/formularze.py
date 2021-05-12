@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FloatField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, URL, Optional
 from TwojKomputerowiec.modele import Uzytkownik
 
@@ -83,4 +83,22 @@ class FormularzNowegoZdjecia(FlaskForm):
 class FormularzAktualizacjiZdjecia(FlaskForm):
     tytul = StringField('Tytuł', validators=[DataRequired()])
     zdjecie = FileField('Dodaj zdjęcie do galerii', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
-    potwierdzenie = SubmitField('Dodaj zdjęcie')
+    potwierdzenie = SubmitField('Aktualizuj zdjęcie')
+
+
+class FormularzNowegoProduktu(FlaskForm):
+    nazwa = StringField('Nazwa', validators=[DataRequired()])
+    tresc = TextAreaField('Treść', validators=[DataRequired()])
+    zdjecie = FileField('Dodaj zdjęcie produktu', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png'])])
+    ilosc = IntegerField('Ilość', validators=[DataRequired()])
+    cena = FloatField('Cena', validators=[DataRequired()])
+    potwierdzenie = SubmitField('Dodaj produkt')
+
+
+class FormularzAktualizacjiProduktu(FlaskForm):
+    nazwa = StringField('Nazwa', validators=[DataRequired()])
+    tresc = TextAreaField('Treść', validators=[DataRequired()])
+    zdjecie = FileField('Dodaj zdjęcie produktu', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
+    ilosc = IntegerField('Ilość', validators=[DataRequired()])
+    cena = FloatField('Cena', validators=[DataRequired()])
+    potwierdzenie = SubmitField('Aktualizuj produkt')

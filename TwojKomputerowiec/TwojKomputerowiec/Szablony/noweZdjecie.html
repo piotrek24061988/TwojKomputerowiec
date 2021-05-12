@@ -24,8 +24,8 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{ form.zdjecie.label(class="text-light") }}
-                    {{ form.zdjecie(class="form-control-file") }}
+                    {{ form.zdjecie.label(class="btn btn-outline-secondary") }}
+                    {{ form.zdjecie(class="myinput") }}
                     {% if form.zdjecie.errors %}
                         {% for error in form.zdjecie.errors %}
                                 <span class="text-danger">{{ error }}</span></br>
