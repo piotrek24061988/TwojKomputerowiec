@@ -175,7 +175,7 @@ def aktualizujZdjecie(zdjecie_id):
 """
 Stub produktu sklepowego
 """
-class Produkt():
+class ProduktStub():
     def __init__(self, nazwa, zdjecie, id, ilosc=0, cena=999, opis=None):
         self.nazwa = nazwa
         self.zdjecie = zdjecie
@@ -188,7 +188,7 @@ class Produkt():
 """
 Stub zamowionego produktu
 """
-class ZamowionyProdukt():
+class ZamowionyProduktStub():
     def __init__(self, ilosc, calkowitaCena, produkt):
         self.ilosc = ilosc
         self.calkowitaCena = calkowitaCena
@@ -197,7 +197,7 @@ class ZamowionyProdukt():
 """
 Stub kosza
 """
-class Kosz():
+class KoszStub():
     def __init__(self, produkty, cena):
         self.iloscProduktowKosza = produkty
         self.cenaKosza = cena
@@ -207,41 +207,40 @@ class Kosz():
 @app.route('/sklep')
 def sklep():
     strona = request.args.get('page', 1, type=int)
-    #galeria = Galeria.query.order_by(Galeria.data.desc()).paginate(page=strona, per_page=20)
-    #sklep = Sklep.query.order_by(Sklep.data.desc()).paginate(page=strona, per_page=20)
-    sklep = {Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=3, cena=9.99), Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=10, cena=11.11)}
+    sklep = Produkt.query.order_by(Produkt.data.desc()).paginate(page=strona, per_page=10)
+    #sklep = {ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=3, cena=9.99),
+    #         ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=10, cena=11.11)}
     return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME)
 
 
 @app.route('/produkt/<int:produkt_id>')
 @app.route('/product/<int:produkt_id>')
 def produkt(produkt_id):
-    #zdjecie = Galeria.query.get_or_404(zdjecie_id)
-    #produkt = Sklep.query.get_or_404(produkt_id)
+    produkt = Produkt.query.get_or_404(produkt_id)
     opis = "to jest testowy opis produtu sporządzony dla celów testowych tego co znajduje się w sklepie, " \
            "który docelowo zostanie zamieniony na pełnowartościowy opis produktu sklepowego"
-    produkt = Produkt("produkt testowy 1", "placeholder.png", 1, 10, 9.99, opis)
+    #produkt = ProduktStub("produkt testowy 1", "placeholder.png", 1, 10, 9.99, opis)
     return render_template('produkt.html', produkt=produkt, admin=Konfiguracja.MAIL_USERNAME)
 
 
 @app.route('/karta')
 @app.route('/card')
 def karta():
-    zamowionyProdukt1 = ZamowionyProdukt(1, 9.99, Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
-    zamowionyProdukt2 = ZamowionyProdukt(2, 19.98, Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
-    zamowionyProdukt3 = ZamowionyProdukt(3, 29.97, Produkt(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
+    zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
+    zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
+    zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
     zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
-    return render_template('karta.html', zamowienie=zamowienie, kosz=Kosz(6, 59.94))
+    return render_template('karta.html', zamowienie=zamowienie, kosz=KoszStub(6, 59.94))
 
 
 @app.route('/zamowienie')
 @app.route('/order')
 def zamowienie():
-    zamowionyProdukt1 = ZamowionyProdukt(1, 9.99, Produkt(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
-    zamowionyProdukt2 = ZamowionyProdukt(2, 19.98, Produkt(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
-    zamowionyProdukt3 = ZamowionyProdukt(3, 29.97, Produkt(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
+    zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
+    zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
+    zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
     zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
-    return render_template('zamowienie.html', zamowienie=zamowienie, kosz=Kosz(6, 59.94))
+    return render_template('zamowienie.html', zamowienie=zamowienie, kosz=KoszStub(6, 59.94))
 
 
 @app.route('/nowyProdukt', methods=['GET', 'POST'])
@@ -255,13 +254,10 @@ def dodanieProduktu():
         plik_zdjecia = None
         if formularz.zdjecie.data:
             plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
-        #zdjecie = Galeria(tytul=formularz.tytul.data, zdjecie=plik_zdjecia)
-        #db.session.add(zdjecie)
-        #db.session.commit()
-        #Replace stub class to model
-        produkt = Produkt(nazwa=formularz.nazwa.data, opis=formularz.tresc.data, zdjecie=plik_zdjecia, id=1, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
-        #db.session.add(produkt)
-        #db.session.commit()
+        #produkt = ProduktStub(nazwa=formularz.nazwa.data, opis=formularz.tresc.data, zdjecie=plik_zdjecia, id=1, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
+        produkt = Produkt(tytul=formularz.nazwa.data, tresc=formularz.tresc.data, zdjecie=plik_zdjecia, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
+        db.session.add(produkt)
+        db.session.commit()
         flash(f'Produkt został dodany', 'success')
         return redirect(url_for('sklep'))
     return render_template('nowyProdukt.html', title='Nowy produkt', form=formularz)
@@ -270,12 +266,11 @@ def dodanieProduktu():
 @app.route('/deleteProduct/<int:produkt_id>', methods=['GET', 'POST'])
 @login_required
 def usunProdukt(produkt_id):
-    #zdjecie = Galeria.query.get_or_404(zdjecie_id)
-    #produkt = Sklep.query.get_or_404(produkt_id)
+    produkt = Produkt.query.get_or_404(produkt_id)
     if Konfiguracja.MAIL_USERNAME != current_user.email:
         abort(403)
-    #db.session.delete(produkt)
-    #db.session.commit()
+    db.session.delete(produkt)
+    db.session.commit()
     flash(f'Produkt został usunięty', 'success')
     return redirect(url_for('sklep'))
 
@@ -284,25 +279,24 @@ def usunProdukt(produkt_id):
 @app.route('/updateProduct/<int:produkt_id>', methods=['GET', 'POST'])
 @login_required
 def aktualizujProdukt(produkt_id):
-    #zdjecie = Galeria.query.get_or_404(zdjecie_id)
-    #produkt = Sklep.query.get_or_404(produkt_id)
-    produkt = Produkt("produkt testowy 1", "placeholder.png", 1, opis="lorem ipsum", ilosc=99, cena=9.99)
+    produkt = Produkt.query.get_or_404(produkt_id)
+    #produkt = ProduktStub("produkt testowy 1", "placeholder.png", 1, opis="lorem ipsum", ilosc=99, cena=9.99)
     if Konfiguracja.MAIL_USERNAME != current_user.email:
         abort(403)
     formularz = FormularzAktualizacjiProduktu()
     if formularz.validate_on_submit():
-        produkt.nazwa = formularz.nazwa.data
-        produkt.opis = formularz.tresc.data
+        produkt.tytul = formularz.nazwa.data
+        produkt.tresc = formularz.tresc.data
         produkt.ilosc = formularz.ilosc.data
         produkt.cena = formularz.cena.data
         if formularz.zdjecie.data:
             produkt.zdjecie = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
-    #    db.session.commit()
+        db.session.commit()
         flash(f'Produkt został zaktualizowany', 'success')
         return redirect(url_for('sklep'))
     elif request.method == 'GET':
-        formularz.nazwa.data = produkt.nazwa
-        formularz.tresc.data = produkt.opis
+        formularz.nazwa.data = produkt.tytul
+        formularz.tresc.data = produkt.tresc
         formularz.zdjecie.data = produkt.zdjecie
         formularz.ilosc.data = produkt.ilosc
         formularz.cena.data = produkt.cena

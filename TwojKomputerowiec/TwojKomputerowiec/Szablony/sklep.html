@@ -10,7 +10,7 @@
         <div class="col-md-9">
 
             <div class="row">
-                {% for produkt in sklep %}
+                {% for produkt in sklep.items %}
                 <div class="col-xl-6 mb-1 float-left">
                     <figure class="border text-center rounded content-section">
                         <a href="{{ url_for('produkt', produkt_id=produkt.id)  }}">

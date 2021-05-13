@@ -6,24 +6,42 @@
 
 {% block cialo %}
 
-<article class="media content-section">
+<div class="row">
 
-    <div class="media-body">
-        <h2 class="article-title text-center">{{ produkt.nazwa }}</h2>
-        {% if produkt.zdjecie %}
-        <img class="rounded aktualnosci-img mb-1" src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}">
-        {% endif %}
-        <h3 class="text-center">{{ produkt.cena }} zł</h3>
-        {% if produkt.opis %}
-        <p class="text-justify">{{ produkt.opis }}</p>
-        {% endif %}
-        {% if admin == current_user.email %}
-        <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujProdukt', produkt_id=produkt.id) }}">Aktualizuj</a>
-        <a class="btn btn-outline-secondary text-light" data-toggle="modal" data-target="#usuniecieModal">Usuń</a>
-        {% endif %}
+    <div class="col-md-9">
+        <article class="media content-section">
+            <div class="media-body">
+                <h2 class="article-title text-center">{{ produkt.tytul }}</h2>
+                {% if produkt.zdjecie %}
+                <img class="rounded aktualnosci-img mb-1"
+                     src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}">
+                {% endif %}
+                <h3 class="text-center">cena: {{ produkt.cena }} zł</h3>
+                <h3 class="text-center">ilość: {{ produkt.ilosc }}</h3>
+                {% if produkt.tresc %}
+                <p class="text-justify">{{ produkt.tresc }}</p>
+                {% endif %}
+                {% if admin == current_user.email %}
+                <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujProdukt', produkt_id=produkt.id) }}">Aktualizuj</a>
+                <a class="btn btn-outline-secondary text-light" data-toggle="modal"
+                   data-target="#usuniecieModal">Usuń</a>
+                {% endif %}
+            </div>
+        </article>
     </div>
 
-</article>
+    <div class="col-md-3">
+        <div class="content-section">
+            <h3>Menu Sklepu</h3>
+            <ul class="list-group">
+                <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Wróć do
+                    sklepu</a li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="modal fade" id="usuniecieModal" tabindex="-1" role="dialog" aria-labelledby="usuniecieModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -35,7 +53,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Czy chcesz usunąć zdjęcie?
+                Czy chcesz usunąć produkt?
             </div>
             <div class="modal-footer">
                 <a class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</a>

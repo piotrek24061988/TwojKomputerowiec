@@ -55,3 +55,10 @@ class Aktualnosc(db.Model, Wpis):
 
 class Galeria(db.Model, Wpis):
     zdjecie = db.Column(db.String(20), nullable=False, default='Bydgoszcz.jpg')
+
+
+class Produkt(db.Model, Wpis):
+    tresc = db.Column(db.Text, nullable=False)
+    zdjecie = db.Column(db.String(20), nullable=True)
+    ilosc = db.Column(db.Integer, nullable=True)
+    cena = db.Column(db.Float, nullable=True)
