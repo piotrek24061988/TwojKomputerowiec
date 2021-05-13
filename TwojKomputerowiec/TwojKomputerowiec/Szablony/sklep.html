@@ -17,7 +17,7 @@
                             <img src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}"
                                  class="img-fluid galeryimg">
                         </a>
-                        <figcaption class="update-cart"><h5>{{ produkt.nazwa }}</h5></figcaption>
+                        <figcaption class="update-cart"><h5>{{ produkt.tytul }}</h5></figcaption>
                         <h5>cena: {{ produkt.cena }} zł</h5>
                         <h6>ilość w magazynie: {{ produkt.ilosc }}</h6>
                         <button data-product={{ produkt.id }} data-action="add" class="btn btn-outline-secondary w-100 my-1 update-cart">do koszyka</button>
