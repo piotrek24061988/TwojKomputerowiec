@@ -71,6 +71,19 @@
                 {{ form.cena(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
+            <div class="form-group float-left">
+                {{ form.cyfrowy.label(class="form-control-label ") }}
+                {% if form.cyfrowy.errors  %}
+                {{ form.cyfrowy(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.cyfrowy.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.cyfrowy(class="form-control form-control-lg float-left") }}
+                {% endif %}
+            </div>
         </fieldset>
         <div class="form-group">
             {{ form.potwierdzenie(class="btn btn-outline-secondary") }}

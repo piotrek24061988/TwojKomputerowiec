@@ -92,13 +92,10 @@ class FormularzNowegoProduktu(FlaskForm):
     zdjecie = FileField('Dodaj zdjęcie produktu', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png'])])
     ilosc = IntegerField('Ilość', validators=[DataRequired()])
     cena = FloatField('Cena', validators=[DataRequired()])
+    cyfrowy = BooleanField('Cyfrowy')
     potwierdzenie = SubmitField('Dodaj produkt')
 
 
-class FormularzAktualizacjiProduktu(FlaskForm):
-    nazwa = StringField('Nazwa', validators=[DataRequired()])
-    tresc = TextAreaField('Treść', validators=[DataRequired()])
+class FormularzAktualizacjiProduktu(FormularzNowegoProduktu):
     zdjecie = FileField('Dodaj zdjęcie produktu', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
-    ilosc = IntegerField('Ilość', validators=[DataRequired()])
-    cena = FloatField('Cena', validators=[DataRequired()])
     potwierdzenie = SubmitField('Aktualizuj produkt')

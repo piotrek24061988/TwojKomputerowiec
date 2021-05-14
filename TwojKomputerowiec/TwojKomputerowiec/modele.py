@@ -62,3 +62,4 @@ class Produkt(db.Model, Wpis):
     zdjecie = db.Column(db.String(20), nullable=True)
     ilosc = db.Column(db.Integer, nullable=True)
     cena = db.Column(db.Float, nullable=True)
+    cyfrowy = db.Column(db.Boolean, default=False)

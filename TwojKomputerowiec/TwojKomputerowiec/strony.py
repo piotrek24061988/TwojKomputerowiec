@@ -255,7 +255,8 @@ def dodanieProduktu():
         if formularz.zdjecie.data:
             plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
         #produkt = ProduktStub(nazwa=formularz.nazwa.data, opis=formularz.tresc.data, zdjecie=plik_zdjecia, id=1, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
-        produkt = Produkt(tytul=formularz.nazwa.data, tresc=formularz.tresc.data, zdjecie=plik_zdjecia, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
+        produkt = Produkt(tytul=formularz.nazwa.data, tresc=formularz.tresc.data, zdjecie=plik_zdjecia, ilosc=formularz.ilosc.data,
+                          cena=formularz.cena.data, cyfrowy=formularz.cyfrowy.data)
         db.session.add(produkt)
         db.session.commit()
         flash(f'Produkt został dodany', 'success')
@@ -289,6 +290,7 @@ def aktualizujProdukt(produkt_id):
         produkt.tresc = formularz.tresc.data
         produkt.ilosc = formularz.ilosc.data
         produkt.cena = formularz.cena.data
+        produkt.cyfrowy = formularz.cyfrowy.data
         if formularz.zdjecie.data:
             produkt.zdjecie = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
         db.session.commit()
@@ -300,6 +302,7 @@ def aktualizujProdukt(produkt_id):
         formularz.zdjecie.data = produkt.zdjecie
         formularz.ilosc.data = produkt.ilosc
         formularz.cena.data = produkt.cena
+        formularz.cyfrowy.data = produkt.cyfrowy
     return render_template('nowyProdukt.html', title='Aktualizuj', form=formularz)
 
 
