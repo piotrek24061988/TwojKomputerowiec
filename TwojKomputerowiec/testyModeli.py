@@ -60,6 +60,76 @@ class TestyModeliUzytkownika(unittest.TestCase):
         self.assertEqual(zdjecieDoTestu.tytul, tytul)
         self.assertNotEqual(zdjecieDoTestu, None)
 
+    def testProduktu(self):
+        # Setup
+        tytul = "Testowy produkt 1"
+        tresc = "To jest pierwszy i testowy produkt do sklepu"
+        zdjecie = "placeholder.png"
+        # Run
+        produkt = Produkt(tytul=tytul, tresc=tresc, zdjecie=zdjecie, ilosc=99, cena=23.45, cyfrowy=False)
+        db.session.add(produkt)
+        db.session.commit()
+        # Check
+        produktDoTestu = Produkt.query.filter_by(tytul=tytul).first()
+        self.assertEqual(produktDoTestu.tytul, tytul)
+        self.assertNotEqual(produktDoTestu, None)
+
+    def testZamowienia(self):
+        # Setup
+        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(10))
+        hashHaslo = bcrypt.generate_password_hash(nazwa)
+        uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
+        platnosc = "przelew"
+        # Run
+        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc)
+        db.session.add(zamowienie)
+        db.session.commit()
+        # Check
+        zamowienieDoTestu = Zamowienie.query.filter_by(platnosc=platnosc).first()
+        self.assertEqual(zamowienieDoTestu.platnosc, platnosc)
+        self.assertNotEqual(zamowienieDoTestu, None)
+
+    def testObiektuZamowienia(self):
+        # Setup
+        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(10))
+        hashHaslo = bcrypt.generate_password_hash(nazwa)
+        uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
+        tytul = "Testowy produkt 2"
+        tresc = "To jest drugi i testowy produkt do sklepu"
+        zdjecie = "placeholder.png"
+        produkt = Produkt(tytul=tytul, tresc=tresc, zdjecie=zdjecie, ilosc=100, cena=34.56, cyfrowy=False)
+        platnosc = "przelew"
+        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc)
+        ilosc=88
+        # Run
+        obiektZamowienia = ObiektZamowienia(produkt=produkt, zamowienie=zamowienie, ilosc=ilosc)
+        db.session.add(obiektZamowienia)
+        db.session.commit()
+        # Check
+        obiektZamowienieDoTestu = ObiektZamowienia.query.filter_by(ilosc=ilosc).first()
+        self.assertEqual(obiektZamowienieDoTestu.ilosc, ilosc)
+        self.assertNotEqual(obiektZamowienia, None)
+
+    def testAdresu(self):
+        # Setup
+        nazwa = ''.join(random.choice(string.ascii_letters) for i in range(10))
+        hashHaslo = bcrypt.generate_password_hash(nazwa)
+        uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
+        platnosc = "przelew"
+        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc)
+        adres = "Gdanska 1/1"
+        miasto = "Bydgoszcz"
+        kod = "85-001"
+        numer = "123-45-67-89"
+        # Run
+        adresDostawy = AdresDostawy(autor=uzytkownik, zamowienie=zamowienie, adres=adres, miasto=miasto, kod=kod, numer=numer)
+        db.session.add(adresDostawy)
+        db.session.commit()
+        # Check
+        adresDostawyDoTestu = AdresDostawy.query.filter_by(adres=adres).first()
+        self.assertEqual(adresDostawyDoTestu.adres, adres)
+        self.assertNotEqual(adresDostawyDoTestu, None)
+
 
 if __name__ == "__main__":
      unittest.main()

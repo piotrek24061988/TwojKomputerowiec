@@ -6,22 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f6a259-dff1-40fc-8934-0505a53e33a7" name="Default Changelist" comment="i">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowyProdukt.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/nowyProdukt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/modele.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/modele.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/0ab6d03607f6edfd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/1289b02f6b6e7ec9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/7fb69404db8f6202.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/7fc60084442c1201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/a3b50b9af94480cc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/c9fccd59647009c8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/3c81486b31feecea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/5876b419c7db5fea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/bc2b517b838f42ca.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/media/sklep/c7a2a3e727e1de72.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/migrations/README" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/migrations/alembic.ini" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/migrations/env.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/migrations/script.py.mako" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/migrations/versions/994b18cec16d_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/migrations/versions/34905c866679_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/testyModeli.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/testyModeli.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

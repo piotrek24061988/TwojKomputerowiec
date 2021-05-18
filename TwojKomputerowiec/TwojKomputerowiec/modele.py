@@ -15,6 +15,8 @@ class Uzytkownik(db.Model, UserMixin):
     zdjecie = db.Column(db.String(20), nullable=False, default='account.png')
     haslo = db.Column(db.String(60), nullable=False)
     posty = db.relationship('Post', backref='autor', lazy=True)
+    zamowienia = db.relationship('Zamowienie', backref='autor', lazy=True)
+    adres = db.relationship('AdresDostawy', backref='autor', lazy=True)
 
     def __repr__(self):
         return f"Uzytkownik('{self.email}','{self.zdjecie}')"
@@ -63,3 +65,35 @@ class Produkt(db.Model, Wpis):
     ilosc = db.Column(db.Integer, nullable=True)
     cena = db.Column(db.Float, nullable=True)
     cyfrowy = db.Column(db.Boolean, default=False)
+    obiektZamowienia = db.relationship('ObiektZamowienia', backref='produkt', lazy=True)
+
+
+class Zamowienie(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    uzytkownik_id = db.Column(db.Integer, db.ForeignKey('uzytkownik.id'), nullable=False)
+    data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    ukonczone = db.Column(db.Boolean, default=False)
+    platnosc = db.Column(db.String(200), nullable=True)
+    obiektZamowienia = db.relationship('ObiektZamowienia', backref='zamowienie', lazy=True)
+    adresDostawy =  db.relationship('AdresDostawy', backref='zamowienie', lazy=True)
+
+
+class ObiektZamowienia(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    produkt_id = db.Column(db.Integer, db.ForeignKey('produkt.id'), nullable=False)
+    zamowienie_id = db.Column(db.Integer, db.ForeignKey('zamowienie.id'), nullable=False)
+    ilosc = db.Column(db.Integer, nullable=True)
+    data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+
+class AdresDostawy(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    uzytkownik_id = db.Column(db.Integer, db.ForeignKey('uzytkownik.id'), nullable=False)
+    zamowienie_id = db.Column(db.Integer, db.ForeignKey('zamowienie.id'), nullable=False)
+    adres = db.Column(db.String(200), nullable=True)
+    miasto = db.Column(db.String(100), nullable=True)
+    kod = db.Column(db.String(50), nullable=True)
+    numer = db.Column(db.String(100), nullable=True)
+    data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+
