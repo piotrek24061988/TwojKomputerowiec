@@ -1,0 +1,64 @@
+{% extends "baza.html" %}
+
+{% block glowa %}
+<title>Historia Zamowienia</title>
+{% endblock %}
+
+{% block cialo %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-xl-12 mb-1 content-section">
+                        <h1>Zamowienie:</h1>
+                        <p>id zamówienia: {{ zamowienie.id }}</p>
+                        <p>data zamówienia: {{ zamowienie.data }}</p>
+                        <p>ukończone: {{ zamowienie.ukonczone }}</p>
+                        <p>płatność: {{ zamowienie.platnosc }}</p>
+                        <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
+                        <div class="article-metadata"></div>
+                        {% if zamowienie.autor %}
+                            <h3>Autor zamowienia:</h3>
+                            <p>email: {{ zamowienie.autor.email }}</p>
+                            <img class="rounded blog-img" src="{{ url_for('static', filename='media/profil/' + zamowienie.autor.zdjecie) }}">
+                            <div class="article-metadata"></div>
+                        {% endif %}
+
+                        {% for adresDostawy in zamowienie.adresDostawy %}
+                            <h3>Adres dostawy:</h3>
+                            <p>id adresu dostawy: {{ adresDostawy.id }}</p>
+                            <p>adres: {{ adresDostawy.adres }}</p>
+                            <p>miasto: {{ adresDostawy.miasto }}</p>
+                            <p>kod: {{ adresDostawy.kod }}</p>
+                            <p>numer: {{ adresDostawy.numer }}</p>
+                            <div class="article-metadata"></div>
+                        {% endfor %}
+
+                        {% for obiektZamowienia in zamowienie.obiektZamowienia %}
+                            <h3>Obiekt zamowienia:</h3>
+                            <p>id obiektu zamówienia: {{ obiektZamowienia.id }}</p>
+                            <p>id produktu: {{ obiektZamowienia.produkt_id }}</p>
+                            <p>ilość: {{ obiektZamowienia.ilosc }}</p>
+                            <div class="article-metadata"></div>
+                            {% if obiektZamowienia.produkt%}
+                                <h5>Produkt:</h5>
+                                <p>id produktu: {{ obiektZamowienia.produkt.id }}</p>
+                                <p>tytuł: {{ obiektZamowienia.produkt.tytul }}</p>
+                                <img class="rounded blog-img mb-1"
+                                    src="{{ url_for('static', filename='media/sklep/' + obiektZamowienia.produkt.zdjecie) }}">
+                                <p>tresc: {{ obiektZamowienia.produkt.tresc }}</p>
+                                <p>ilość: {{ obiektZamowienia.produkt.ilosc }}</p>
+                                <p>cena: {{ obiektZamowienia.produkt.cena }}</p>
+                                <p>cyfrowy: {{ obiektZamowienia.produkt.cyfrowy }}</p>
+                                <div class="article-metadata"></div>
+                            {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "baza.html" %}
+
+{% block glowa %}
+<title>Historia</title>
+{% endblock %}
+
+{% block cialo %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+                {% for zamowienie in zamowienia.items %}
+                <div class="col-xl-12 mb-1 content-section">
+                        <a href="{{ url_for('historiaZamowienia', zamowienie_id=zamowienie.id)  }}" class="text-light">
+                            <h4>Zamówienie:</h4>
+                            <p>id zamówienia: {{ zamowienie.id }}</p>
+                            <p>data zamówienia: {{ zamowienie.data }}</p>
+                            <p>ukończone: {{ zamowienie.ukonczone }}</p>
+                            <p>płatność: {{ zamowienie.platnosc }}</p>
+                            <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
+                        </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+    {% for page_num in zamowienia.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+
+    {% if page_num %}
+    {% if zamowienia.page == page_num %}
+    <a class="btn btn-outline-secondary active mx-1" href="{{ url_for('historiaZamowien', page=page_num) }}">{{ page_num }}</a>
+    {% else %}
+    <a class="btn btn-outline-secondary mx-1" href="{{ url_for('historiaZamowien', page=page_num) }}">{{ page_num }}</a>
+    {% endif %}
+    {% else %}
+    <a class="h1 text-light">...</a>
+    {% endif %}
+
+    {% endfor %}
+</div>
+{% endblock %}

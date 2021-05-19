@@ -306,6 +306,24 @@ def aktualizujProdukt(produkt_id):
     return render_template('nowyProdukt.html', title='Aktualizuj', form=formularz)
 
 
+@app.route('/historiaZamowien')
+@app.route('/ordersHistory')
+@login_required
+def historiaZamowien():
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    strona = request.args.get('page', 1, type=int)
+    zamowienia = Zamowienie.query.order_by(Zamowienie.data.desc()).paginate(page=strona, per_page=20)
+    return render_template('historiaZamowien.html', zamowienia=zamowienia, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/historiaZamowienia/<int:zamowienie_id>')
+@app.route('/orderHistory/<int:zamowienie_id>')
+def historiaZamowienia(zamowienie_id):
+    zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
+    return render_template('historiaZamowienia.html', zamowienie=zamowienie, admin=Konfiguracja.MAIL_USERNAME)
+
+
 @app.route('/blogZawodowy')
 @app.route('/itBlog')
 def blogZawodowo():

@@ -75,7 +75,7 @@ class Zamowienie(db.Model):
     ukonczone = db.Column(db.Boolean, default=False)
     platnosc = db.Column(db.String(200), nullable=True)
     obiektZamowienia = db.relationship('ObiektZamowienia', backref='zamowienie', lazy=True)
-    adresDostawy =  db.relationship('AdresDostawy', backref='zamowienie', lazy=True)
+    adresDostawy = db.relationship('AdresDostawy', backref='zamowienie', lazy=True)
 
 
 class ObiektZamowienia(db.Model):
@@ -95,5 +95,8 @@ class AdresDostawy(db.Model):
     kod = db.Column(db.String(50), nullable=True)
     numer = db.Column(db.String(100), nullable=True)
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __str__(self):
+        print(adres)
 
 

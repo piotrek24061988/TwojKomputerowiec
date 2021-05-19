@@ -96,14 +96,19 @@ class TestyModeliUzytkownika(unittest.TestCase):
         uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
         tytul = "Testowy produkt 2"
         tresc = "To jest drugi i testowy produkt do sklepu"
+        tytul2= "Testowy produkt 3"
+        tresc2 = "To jest trzeci i testowy produkt do sklepu"
         zdjecie = "placeholder.png"
-        produkt = Produkt(tytul=tytul, tresc=tresc, zdjecie=zdjecie, ilosc=100, cena=34.56, cyfrowy=False)
+        produkt = Produkt(tytul=tytul, tresc=tresc, zdjecie=zdjecie, ilosc=101, cena=34.56, cyfrowy=False)
+        produkt2 = Produkt(tytul=tytul2, tresc=tresc2, zdjecie=zdjecie, ilosc=102, cena=65.43, cyfrowy=True)
         platnosc = "przelew"
         zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc)
         ilosc=88
         # Run
         obiektZamowienia = ObiektZamowienia(produkt=produkt, zamowienie=zamowienie, ilosc=ilosc)
+        obiektZamowienia2 = ObiektZamowienia(produkt=produkt2, zamowienie=zamowienie, ilosc=ilosc)
         db.session.add(obiektZamowienia)
+        db.session.add(obiektZamowienia2)
         db.session.commit()
         # Check
         obiektZamowienieDoTestu = ObiektZamowienia.query.filter_by(ilosc=ilosc).first()
