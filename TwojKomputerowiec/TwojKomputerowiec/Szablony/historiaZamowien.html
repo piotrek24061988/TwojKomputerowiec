@@ -7,23 +7,32 @@
 {% block cialo %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
 
-            <div class="row">
-                {% for zamowienie in zamowienia.items %}
-                <div class="col-xl-12 mb-1 content-section">
-                        <a href="{{ url_for('historiaZamowienia', zamowienie_id=zamowienie.id)  }}" class="text-light">
-                            <h4>Zamówienie:</h4>
-                            <p>id zamówienia: {{ zamowienie.id }}</p>
-                            <p>data zamówienia: {{ zamowienie.data }}</p>
-                            <p>ukończone: {{ zamowienie.ukonczone }}</p>
-                            <p>płatność: {{ zamowienie.platnosc }}</p>
-                            <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
-                        </a>
-                </div>
-                {% endfor %}
+            {% for zamowienie in zamowienia.items %}
+            <div class="col-xl-12 mb-1 content-section">
+                <a href="{{ url_for('historiaZamowienia', zamowienie_id=zamowienie.id)  }}" class="text-light">
+                    <h4>Zamówienie:</h4>
+                    <p>id zamówienia: {{ zamowienie.id }}</p>
+                    <p>data zamówienia: {{ zamowienie.data }}</p>
+                    <p>ukończone: {{ zamowienie.ukonczone }}</p>
+                    <p>płatność: {{ zamowienie.platnosc }}</p>
+                    <p>uwagi: {{ zamowienie.uwagi }}</p>
+                    <p>komentarz administratora: {{ zamowienie.komentarzAdmina }}</p>
+                    <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
+                </a>
             </div>
+            {% endfor %}
 
+        </div>
+
+        <div class="col-md-3">
+            <div class="content-section">
+                <h3>Menu Sklepu</h3>
+                <ul class="list-group">
+                    <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Idż do sklepu</a li>
+                </ul>
+            </div>
         </div>
 
     </div>

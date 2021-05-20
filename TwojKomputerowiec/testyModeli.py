@@ -102,7 +102,8 @@ class TestyModeliUzytkownika(unittest.TestCase):
         produkt = Produkt(tytul=tytul, tresc=tresc, zdjecie=zdjecie, ilosc=101, cena=34.56, cyfrowy=False)
         produkt2 = Produkt(tytul=tytul2, tresc=tresc2, zdjecie=zdjecie, ilosc=102, cena=65.43, cyfrowy=True)
         platnosc = "przelew"
-        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc)
+        uwagi = "Proszę wysyłać jedynie w pełni skompletowane zamówienie"
+        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc, uwagi=uwagi)
         ilosc=88
         # Run
         obiektZamowienia = ObiektZamowienia(produkt=produkt, zamowienie=zamowienie, ilosc=ilosc)
@@ -121,7 +122,8 @@ class TestyModeliUzytkownika(unittest.TestCase):
         hashHaslo = bcrypt.generate_password_hash(nazwa)
         uzytkownik = Uzytkownik(email=nazwa + '@gmail.com', haslo=hashHaslo)
         platnosc = "przelew"
-        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc)
+        uwagi = "nie mam uwag"
+        zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc, uwagi=uwagi)
         adres = "Gdanska 1/1"
         miasto = "Bydgoszcz"
         kod = "85-001"

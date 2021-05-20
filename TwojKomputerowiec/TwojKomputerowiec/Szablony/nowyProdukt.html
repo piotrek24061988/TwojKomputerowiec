@@ -5,89 +5,104 @@
 {% endblock %}
 
 {% block cialo %}
-<div class="content-section">
-    <form method="POST" action="" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <h3 class="border-bottom mb-4"> {{ title }} </h3>
-            <div class="form-group">
-                {{ form.nazwa.label(class="form-control-label") }}
-                {% if form.nazwa.errors  %}
-                {{ form.nazwa(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.nazwa.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
+<div class="container">
+    <div class="row">
+
+        <div class="content-section col-md-9">
+            <form method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <h3 class="border-bottom mb-4"> {{ title }} </h3>
+                    <div class="form-group">
+                        {{ form.nazwa.label(class="form-control-label") }}
+                        {% if form.nazwa.errors %}
+                        {{ form.nazwa(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.nazwa.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.nazwa(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.tresc.label(class="form-control-label") }}
+                        {% if form.tresc.errors %}
+                        {{ form.tresc(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.tresc.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.tresc(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.zdjecie.label(class="btn btn-outline-secondary") }}
+                        {{ form.zdjecie(class="myinput") }}
+                        {% if form.zdjecie.errors %}
+                        {% for error in form.zdjecie.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.ilosc.label(class="form-control-label") }}
+                        {% if form.ilosc.errors %}
+                        {{ form.ilosc(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ilosc.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.ilosc(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.cena.label(class="form-control-label") }}
+                        {% if form.cena.errors %}
+                        {{ form.cena(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cena.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.cena(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group float-left">
+                        {{ form.cyfrowy.label(class="form-control-label ") }}
+                        {% if form.cyfrowy.errors %}
+                        {{ form.cyfrowy(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cyfrowy.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.cyfrowy(class="form-control form-control-lg float-left") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.potwierdzenie(class="btn btn-outline-secondary") }}
                 </div>
-                {% else %}
-                {{ form.nazwa(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.tresc.label(class="form-control-label") }}
-                {% if form.tresc.errors  %}
-                {{ form.tresc(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.tresc.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.tresc(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.zdjecie.label(class="btn btn-outline-secondary") }}
-                {{ form.zdjecie(class="myinput") }}
-                {% if form.zdjecie.errors %}
-                {% for error in form.zdjecie.errors %}
-                <span class="text-danger">{{ error }}</span></br>
-                {% endfor %}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.ilosc.label(class="form-control-label") }}
-                {% if form.ilosc.errors  %}
-                {{ form.ilosc(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.ilosc.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.ilosc(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.cena.label(class="form-control-label") }}
-                {% if form.cena.errors  %}
-                {{ form.cena(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.cena.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.cena(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group float-left">
-                {{ form.cyfrowy.label(class="form-control-label ") }}
-                {% if form.cyfrowy.errors  %}
-                {{ form.cyfrowy(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.cyfrowy.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.cyfrowy(class="form-control form-control-lg float-left") }}
-                {% endif %}
-            </div>
-        </fieldset>
-        <div class="form-group">
-            {{ form.potwierdzenie(class="btn btn-outline-secondary") }}
+            </form>
         </div>
-    </form>
+
+        <div class="col-md-3">
+            <div class="content-section">
+                <h3>Menu Sklepu</h3>
+                <ul class="list-group">
+                    <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Idż do sklepu</a li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </div>
 {% endblock %}

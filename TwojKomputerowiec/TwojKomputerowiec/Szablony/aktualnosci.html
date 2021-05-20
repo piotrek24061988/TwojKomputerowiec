@@ -6,7 +6,7 @@
 
 {% block cialo %}
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
 
     {% for aktualnosc in aktualnosci.items %}
         <article class="media content-section">
@@ -47,21 +47,20 @@
 
     {% endfor %}
 
-        </div>
-            <div class="col-md-4">
-                <div class="content-section">
-                    <h3>Menu Aktualności</h3>
-                    <ul class="list-group">
-                        {% if current_user.is_authenticated  %}
-                            {% if current_user.email == admin %}
-                                <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieAktualnosci') }}">Dodaj aktualności</a li>
-                            {% endif %}
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
     </div>
+
+    <div class="col-md-3">
+        <div class="content-section">
+            <h3>Menu Aktualności</h3>
+            <ul class="list-group">
+                {% if current_user.is_authenticated %}
+                {% if current_user.email == admin %}
+                <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieAktualnosci') }}">Dodaj aktualności</a li>
+                {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

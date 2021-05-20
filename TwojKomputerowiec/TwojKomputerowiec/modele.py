@@ -74,6 +74,8 @@ class Zamowienie(db.Model):
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     ukonczone = db.Column(db.Boolean, default=False)
     platnosc = db.Column(db.String(200), nullable=True)
+    uwagi = db.Column(db.Text, nullable=False, default="Systemowy brak uwag")
+    komentarzAdmina = db.Column(db.Text, nullable=False, default="Systemowy brak komentarza")
     obiektZamowienia = db.relationship('ObiektZamowienia', backref='zamowienie', lazy=True)
     adresDostawy = db.relationship('AdresDostawy', backref='zamowienie', lazy=True)
 

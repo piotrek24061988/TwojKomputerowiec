@@ -5,41 +5,58 @@
 {% endblock %}
 
 {% block cialo %}
+<div class="row">
+    <div class="col-md-9">
 
-    <article class="media content-section">
+        <article class="media content-section">
 
-        <div class="media-body">
-            <h2 class="article-title text-center">{{ zdjecie.tytul }}</h2>
-            {% if zdjecie.zdjecie %}
+            <div class="media-body">
+                <h2 class="article-title text-center">{{ zdjecie.tytul }}</h2>
+                {% if zdjecie.zdjecie %}
                 <img class="rounded aktualnosci-img mb-1"
-                 src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}">
-            {% endif %}
-            {% if admin == current_user.email %}
+                     src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}">
+                {% endif %}
+                {% if admin == current_user.email %}
                 <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujZdjecie', zdjecie_id=zdjecie.id) }}">Aktualizuj</a>
-                <a class="btn btn-outline-secondary text-light" data-toggle="modal" data-target="#usuniecieModal">Usuń</a>
-            {% endif %}
-        </div>
+                <a class="btn btn-outline-secondary text-light" data-toggle="modal"
+                   data-target="#usuniecieModal">Usuń</a>
+                {% endif %}
+            </div>
 
-    </article>
+        </article>
 
-    <div class="modal fade" id="usuniecieModal" tabindex="-1" role="dialog" aria-labelledby="usuniecieModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="usuniecieModalLabel">Usunięcie zdjęcia</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Czy chcesz usunąć zdjęcie?
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</a>
-                    <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunZdjecie', zdjecie_id=zdjecie.id) }}">Potwierdź usunięcie</a>
+        <div class="modal fade" id="usuniecieModal" tabindex="-1" role="dialog" aria-labelledby="usuniecieModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="usuniecieModalLabel">Usunięcie zdjęcia</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Czy chcesz usunąć zdjęcie?
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</a>
+                        <a class="btn btn-outline-secondary text-light"
+                           href="{{ url_for('usunZdjecie', zdjecie_id=zdjecie.id) }}">Potwierdź usunięcie</a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
+    <div class="col-md-3">
+        <div class="content-section">
+            <h3>Menu Galerii</h3>
+            <ul class="list-group">
+                <a li class="list-group-item list-group-item-dark" href="{{ url_for('galeria') }}">Wróc do gelerii</a li>
+            </ul>
+        </div>
+    </div>
+
+</div>
 {% endblock %}

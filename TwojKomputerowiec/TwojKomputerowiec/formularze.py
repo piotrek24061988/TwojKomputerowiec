@@ -99,3 +99,9 @@ class FormularzNowegoProduktu(FlaskForm):
 class FormularzAktualizacjiProduktu(FormularzNowegoProduktu):
     zdjecie = FileField('Dodaj zdjęcie produktu', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     potwierdzenie = SubmitField('Aktualizuj produkt')
+
+
+class FormularzAktualizacjiZamowienia(FlaskForm):
+    komentarzAdmina = TextAreaField('Komentarz administratora', validators=[DataRequired()])
+    ukonczone = BooleanField('Ukonczone')
+    potwierdzenie = SubmitField('Aktualizuj zamówienie')

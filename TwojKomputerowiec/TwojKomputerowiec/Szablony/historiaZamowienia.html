@@ -7,56 +7,93 @@
 {% block cialo %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
 
-            <div class="row">
-                <div class="col-xl-12 mb-1 content-section">
-                        <h1>Zamowienie:</h1>
-                        <p>id zamówienia: {{ zamowienie.id }}</p>
-                        <p>data zamówienia: {{ zamowienie.data }}</p>
-                        <p>ukończone: {{ zamowienie.ukonczone }}</p>
-                        <p>płatność: {{ zamowienie.platnosc }}</p>
-                        <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
-                        <div class="article-metadata"></div>
-                        {% if zamowienie.autor %}
-                            <h3>Autor zamowienia:</h3>
-                            <p>email: {{ zamowienie.autor.email }}</p>
-                            <img class="rounded blog-img" src="{{ url_for('static', filename='media/profil/' + zamowienie.autor.zdjecie) }}">
-                            <div class="article-metadata"></div>
-                        {% endif %}
+        <div class="col-md-9">
+            <div class="col-xl-12 mb-1 content-section">
+                <h1>Zamowienie:</h1>
+                <p>id zamówienia: {{ zamowienie.id }}</p>
+                <p>data zamówienia: {{ zamowienie.data }}</p>
+                <p>ukończone: {{ zamowienie.ukonczone }}</p>
+                <p>płatność: {{ zamowienie.platnosc }}</p>
+                <p>uwagi: {{ zamowienie.uwagi }}</p>
+                <p>komentarz administratora: {{ zamowienie.komentarzAdmina }}</p>
+                <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
+                <div class="article-metadata"></div>
+                {% if zamowienie.autor %}
+                <h3>Autor zamowienia:</h3>
+                <p>email: {{ zamowienie.autor.email }}</p>
+                <img class="rounded blog-img"
+                     src="{{ url_for('static', filename='media/profil/' + zamowienie.autor.zdjecie) }}">
+                <div class="article-metadata"></div>
+                {% endif %}
 
-                        {% for adresDostawy in zamowienie.adresDostawy %}
-                            <h3>Adres dostawy:</h3>
-                            <p>id adresu dostawy: {{ adresDostawy.id }}</p>
-                            <p>adres: {{ adresDostawy.adres }}</p>
-                            <p>miasto: {{ adresDostawy.miasto }}</p>
-                            <p>kod: {{ adresDostawy.kod }}</p>
-                            <p>numer: {{ adresDostawy.numer }}</p>
-                            <div class="article-metadata"></div>
-                        {% endfor %}
+                {% for adresDostawy in zamowienie.adresDostawy %}
+                <h3>Adres dostawy:</h3>
+                <p>id adresu dostawy: {{ adresDostawy.id }}</p>
+                <p>adres: {{ adresDostawy.adres }}</p>
+                <p>miasto: {{ adresDostawy.miasto }}</p>
+                <p>kod: {{ adresDostawy.kod }}</p>
+                <p>numer: {{ adresDostawy.numer }}</p>
+                <div class="article-metadata"></div>
+                {% endfor %}
 
-                        {% for obiektZamowienia in zamowienie.obiektZamowienia %}
-                            <h3>Obiekt zamowienia:</h3>
-                            <p>id obiektu zamówienia: {{ obiektZamowienia.id }}</p>
-                            <p>id produktu: {{ obiektZamowienia.produkt_id }}</p>
-                            <p>ilość: {{ obiektZamowienia.ilosc }}</p>
-                            <div class="article-metadata"></div>
-                            {% if obiektZamowienia.produkt%}
-                                <h5>Produkt:</h5>
-                                <p>id produktu: {{ obiektZamowienia.produkt.id }}</p>
-                                <p>tytuł: {{ obiektZamowienia.produkt.tytul }}</p>
-                                <img class="rounded blog-img mb-1"
-                                    src="{{ url_for('static', filename='media/sklep/' + obiektZamowienia.produkt.zdjecie) }}">
-                                <p>tresc: {{ obiektZamowienia.produkt.tresc }}</p>
-                                <p>ilość: {{ obiektZamowienia.produkt.ilosc }}</p>
-                                <p>cena: {{ obiektZamowienia.produkt.cena }}</p>
-                                <p>cyfrowy: {{ obiektZamowienia.produkt.cyfrowy }}</p>
-                                <div class="article-metadata"></div>
-                            {% endif %}
-                        {% endfor %}
+                {% for obiektZamowienia in zamowienie.obiektZamowienia %}
+                <h3>Obiekt zamowienia:</h3>
+                <p>id obiektu zamówienia: {{ obiektZamowienia.id }}</p>
+                <p>id produktu: {{ obiektZamowienia.produkt_id }}</p>
+                <p>ilość: {{ obiektZamowienia.ilosc }}</p>
+                <div class="article-metadata"></div>
+                {% if obiektZamowienia.produkt%}
+                <h5>Produkt:</h5>
+                <p>id produktu: {{ obiektZamowienia.produkt.id }}</p>
+                <p>tytuł: {{ obiektZamowienia.produkt.tytul }}</p>
+                <img class="rounded blog-img mb-1"
+                     src="{{ url_for('static', filename='media/sklep/' + obiektZamowienia.produkt.zdjecie) }}">
+                <p>tresc: {{ obiektZamowienia.produkt.tresc }}</p>
+                <p>ilość: {{ obiektZamowienia.produkt.ilosc }}</p>
+                <p>cena: {{ obiektZamowienia.produkt.cena }}</p>
+                <p>cyfrowy: {{ obiektZamowienia.produkt.cyfrowy }}</p>
+                <div class="article-metadata"></div>
+                {% endif %}
+                {% endfor %}
+                {% if admin == current_user.email %}
+                <a class="btn btn-outline-secondary text-light" href="{{ url_for('aktualizujZamowienie', zamowienie_id=zamowienie.id) }}">Aktualizuj</a>
+                <a class="btn btn-outline-secondary text-light" data-toggle="modal"
+                   data-target="#usuniecieModal">Usuń</a>
+                {% endif %}
+            </div>
+
+            <div class="modal fade" id="usuniecieModal" tabindex="-1" role="dialog" aria-labelledby="usuniecieModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="usuniecieModalLabel">Usunięcie zamowienia</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Czy chcesz usunąć zdjęcie?
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</a>
+                            <a class="btn btn-outline-secondary text-light"
+                               href="{{ url_for('usunZamowienie', zamowienie_id=zamowienie.id) }}">Potwierdź usunięcie</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+        </div>
+
+        <div class="col-md-3">
+            <div class="content-section">
+                <h3>Menu Sklepu</h3>
+                <ul class="list-group">
+                    <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('historiaZamowien') }}">Idż do zamowien</a li>
+                </ul>
+            </div>
         </div>
 
     </div>

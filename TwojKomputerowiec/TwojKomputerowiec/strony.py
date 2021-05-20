@@ -38,7 +38,7 @@ def dodanieAktualnosci():
         db.session.commit()
         flash(f'Aktualizacja został dodany', 'success')
         return redirect(url_for('aktualnosci'))
-    return render_template('nowaAktualnosc.html', title='Aktualizacja', form=formularz)
+    return render_template('nowaAktualnosc.html', title='Dodanie aktualności', form=formularz)
 
 
 @app.route('/aktualnosc/<int:aktualnosc_id>')
@@ -322,6 +322,43 @@ def historiaZamowien():
 def historiaZamowienia(zamowienie_id):
     zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
     return render_template('historiaZamowienia.html', zamowienie=zamowienie, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/usunZamowienie/<int:zamowienie_id>', methods=['GET','POST'])
+@app.route('/deleteOrder/<int:zamowienie_id>', methods=['GET', 'POST'])
+@login_required
+def usunZamowienie(zamowienie_id):
+    zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    for obiekt in zamowienie.obiektZamowienia:
+        db.session.delete(obiekt)
+    for adres in zamowienie.adresDostawy:
+        db.session.delete(adres)
+    db.session.delete(zamowienie)
+    db.session.commit()
+    flash(f'Zamowienie zostało usunięte', 'success')
+    return redirect(url_for('historiaZamowien'))
+
+
+@app.route('/aktualizujZamowienie/<int:zamowienie_id>', methods=['GET', 'POST'])
+@app.route('/updateOrder/<int:zamowienie_id>', methods=['GET', 'POST'])
+@login_required
+def aktualizujZamowienie(zamowienie_id):
+    zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzAktualizacjiZamowienia()
+    if formularz.validate_on_submit():
+        zamowienie.komentarzAdmina = formularz.komentarzAdmina.data
+        zamowienie.ukonczone = formularz.ukonczone.data
+        db.session.commit()
+        flash(f'Zamowienie zostało zaktualizowane', 'success')
+        return redirect(url_for('historiaZamowien'))
+    elif request.method == 'GET':
+        formularz.komentarzAdmina.data = zamowienie.komentarzAdmina
+        formularz.ukonczone.data = zamowienie.ukonczone
+    return render_template('aktualizujZamowienie.html', title='Aktualizuj', form=formularz)
 
 
 @app.route('/blogZawodowy')
