@@ -223,23 +223,38 @@ def produkt(produkt_id):
     return render_template('produkt.html', produkt=produkt, admin=Konfiguracja.MAIL_USERNAME)
 
 
+@app.route('/dodajDoKosza/<int:produkt_id>', methods=['GET', 'POST'])
+@app.route('/addToBin/<int:produkt_id>', methods=['GET', 'POST'])
+@login_required
+def dodajDoKosza(produkt_id):
+    flash(f'Produkt został dodany', 'success')
+    return redirect(url_for('sklep'))
+
+
 @app.route('/karta')
 @app.route('/card')
+@login_required
 def karta():
-    zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
-    zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
-    zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
-    zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
+    zamowienie = Zamowienie.query.get_or_404(2)
+    #zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
+    #zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
+    #zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
+    #zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
     return render_template('karta.html', zamowienie=zamowienie, kosz=KoszStub(6, 59.94))
 
 
-@app.route('/zamowienie')
-@app.route('/order')
+@app.route('/zamowienie', methods=['GET', 'POST'])
+@app.route('/order', methods=['GET', 'POST'])
+@login_required
 def zamowienie():
-    zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
-    zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
-    zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
-    zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
+    if request.method == 'POST':
+        flash(f'Zamowienie zostało złożone', 'success')
+        return redirect(url_for('sklep'))
+    #zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
+    #zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
+    #zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
+    #zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
+    zamowienie = Zamowienie.query.get_or_404(2)
     return render_template('zamowienie.html', zamowienie=zamowienie, kosz=KoszStub(6, 59.94))
 
 

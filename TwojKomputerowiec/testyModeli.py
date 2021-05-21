@@ -104,10 +104,11 @@ class TestyModeliUzytkownika(unittest.TestCase):
         platnosc = "przelew"
         uwagi = "Proszę wysyłać jedynie w pełni skompletowane zamówienie"
         zamowienie = Zamowienie(autor=uzytkownik, ukonczone=False, platnosc=platnosc, uwagi=uwagi)
-        ilosc=88
+        ilosc = 2
+        ilosc2 = 4
         # Run
         obiektZamowienia = ObiektZamowienia(produkt=produkt, zamowienie=zamowienie, ilosc=ilosc)
-        obiektZamowienia2 = ObiektZamowienia(produkt=produkt2, zamowienie=zamowienie, ilosc=ilosc)
+        obiektZamowienia2 = ObiektZamowienia(produkt=produkt2, zamowienie=zamowienie, ilosc=ilosc2)
         db.session.add(obiektZamowienia)
         db.session.add(obiektZamowienia2)
         db.session.commit()

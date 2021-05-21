@@ -1,3 +1,4 @@
+from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import datetime
 from TwojKomputerowiec import db, loginManager, app
 from flask_login import UserMixin
@@ -86,6 +87,10 @@ class ObiektZamowienia(db.Model):
     zamowienie_id = db.Column(db.Integer, db.ForeignKey('zamowienie.id'), nullable=False)
     ilosc = db.Column(db.Integer, nullable=True)
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    @hybrid_property
+    def calkowitaCena(self):
+        return self.ilosc * self.produkt.cena
 
 
 class AdresDostawy(db.Model):

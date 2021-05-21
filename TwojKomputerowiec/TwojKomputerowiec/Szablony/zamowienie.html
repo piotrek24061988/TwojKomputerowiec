@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-md-6">
         <div id="form-wrapper" class="border text-center rounded bg-dark store-section mb-5">
-            <form id="form">
+            <form method="POST" id="form">
                 <div id="user-info">
                     <p>Informacje o użytkowniku</p>
                     <div class="form-field">
@@ -39,7 +39,7 @@
                 <div id="comments-info">
                     <p>Uwagi</p>
                     <div class="form-field w-75">
-                        <input required class="form-control" type="text" name="comments" placeholder="uwagi... ">
+                        <input class="form-control" type="text" name="comments" placeholder="uwagi... ">
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
             <a href="{{ url_for('karta') }}"><button class="btn btn-outline-secondary update-cart m-1">Modyfikuj</button></a>
             <p>Podsumowanie zamówienia</p>
             <table class="table">
-                {% for zamowienieProduktu in zamowienie %}
+                {% for zamowienieProduktu in zamowienie.obiektZamowienia %}
                 <tr>
                     <th>
                         <a href="{{ url_for('produkt', produkt_id=zamowienieProduktu.produkt.id) }}">

@@ -21,14 +21,14 @@
                         <th><h6>Cena łączna:</h6></th>
                     </tr>
 
-                    {% for zamowienieProduktu in zamowienie %}
+                    {% for zamowienieProduktu in zamowienie.obiektZamowienia %}
                     <tr>
                         <th>
                             <a href="{{ url_for('produkt', produkt_id=zamowienieProduktu.produkt.id) }}">
                                 <img src="{{ url_for('static', filename='media/sklep/' + zamowienieProduktu.produkt.zdjecie) }}" class="img-fluid text-center" style="max-width: 50px; height: auto;">
                             </a>
                         </th>
-                        <th><h6>{{ zamowienieProduktu.produkt.nazwa }}</h6></th>
+                        <th><h6>{{ zamowienieProduktu.produkt.tytul }}</h6></th>
                         <th><h6>{{ zamowienieProduktu.produkt.cena }}zł</h6></th>
                         <th>
                             <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="remove" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
