@@ -80,6 +80,20 @@ class Zamowienie(db.Model):
     obiektZamowienia = db.relationship('ObiektZamowienia', backref='zamowienie', lazy=True)
     adresDostawy = db.relationship('AdresDostawy', backref='zamowienie', lazy=True)
 
+    @hybrid_property
+    def iloscProduktow(self):
+        produkty = 0
+        for obiekt in self.obiektZamowienia:
+            produkty += obiekt.ilosc
+        return produkty
+
+    @hybrid_property
+    def lacznaCena(self):
+        cena = 0
+        for obiekt in self.obiektZamowienia:
+            cena += obiekt.calkowitaCena
+        return cena
+
 
 class ObiektZamowienia(db.Model):
     id = db.Column(db.Integer, primary_key=True)

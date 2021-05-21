@@ -47,8 +47,8 @@
                         <th>
                             <a href="{{ url_for('sklep') }}"><button class="btn btn-outline-secondary w-100 update-cart">Sklep</button></a>
                         </th>
-                        <th><h6>Produkty: {{ kosz.iloscProduktowKosza }}</h6></th>
-                        <th><h6>Kwota: {{ kosz.cenaKosza }} zł</h6></th>
+                        <th><h6>Produkty: {{ zamowienie.iloscProduktow }}</h6></th>
+                        <th><h6>Kwota: {{ zamowienie.lacznaCena }} zł</h6></th>
                         <th>
                             <a href="{{ url_for('zamowienie') }}"><button class="btn btn-outline-secondary w-100 update-cart">Zamów</button></a>
                         </th>

@@ -172,44 +172,11 @@ def aktualizujZdjecie(zdjecie_id):
     return render_template('noweZdjecie.html', title='Aktualizuj', form=formularz)
 
 
-"""
-Stub produktu sklepowego
-"""
-class ProduktStub():
-    def __init__(self, nazwa, zdjecie, id, ilosc=0, cena=999, opis=None):
-        self.nazwa = nazwa
-        self.zdjecie = zdjecie
-        self.id = id
-        self.ilosc = ilosc
-        self.cena = cena
-        self.opis = opis
-
-
-"""
-Stub zamowionego produktu
-"""
-class ZamowionyProduktStub():
-    def __init__(self, ilosc, calkowitaCena, produkt):
-        self.ilosc = ilosc
-        self.calkowitaCena = calkowitaCena
-        self.produkt = produkt
-
-"""
-Stub kosza
-"""
-class KoszStub():
-    def __init__(self, produkty, cena):
-        self.iloscProduktowKosza = produkty
-        self.cenaKosza = cena
-
-
 @app.route('/shop')
 @app.route('/sklep')
 def sklep():
     strona = request.args.get('page', 1, type=int)
     sklep = Produkt.query.order_by(Produkt.data.desc()).paginate(page=strona, per_page=10)
-    #sklep = {ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=3, cena=9.99),
-    #         ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=10, cena=11.11)}
     return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME)
 
 
@@ -219,7 +186,6 @@ def produkt(produkt_id):
     produkt = Produkt.query.get_or_404(produkt_id)
     opis = "to jest testowy opis produtu sporządzony dla celów testowych tego co znajduje się w sklepie, " \
            "który docelowo zostanie zamieniony na pełnowartościowy opis produktu sklepowego"
-    #produkt = ProduktStub("produkt testowy 1", "placeholder.png", 1, 10, 9.99, opis)
     return render_template('produkt.html', produkt=produkt, admin=Konfiguracja.MAIL_USERNAME)
 
 
@@ -235,12 +201,9 @@ def dodajDoKosza(produkt_id):
 @app.route('/card')
 @login_required
 def karta():
+    #hardcoded order from testyModely.py
     zamowienie = Zamowienie.query.get_or_404(2)
-    #zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
-    #zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
-    #zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
-    #zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
-    return render_template('karta.html', zamowienie=zamowienie, kosz=KoszStub(6, 59.94))
+    return render_template('karta.html', zamowienie=zamowienie)
 
 
 @app.route('/zamowienie', methods=['GET', 'POST'])
@@ -250,12 +213,9 @@ def zamowienie():
     if request.method == 'POST':
         flash(f'Zamowienie zostało złożone', 'success')
         return redirect(url_for('sklep'))
-    #zamowionyProdukt1 = ZamowionyProduktStub(1, 9.99, ProduktStub(nazwa="produkt testowy 1", zdjecie="placeholder.png", id=1, ilosc=11, cena=9.99))
-    #zamowionyProdukt2 = ZamowionyProduktStub(2, 19.98, ProduktStub(nazwa="produkt testowy 2", zdjecie="placeholder.png", id=2, ilosc=22, cena=9.99))
-    #zamowionyProdukt3 = ZamowionyProduktStub(3, 29.97, ProduktStub(nazwa="produkt testowy 3", zdjecie="placeholder.png", id=3, ilosc=33, cena=9.99))
-    #zamowienie = {zamowionyProdukt1, zamowionyProdukt2, zamowionyProdukt3}
+    #hardcoded order from testyModely.py
     zamowienie = Zamowienie.query.get_or_404(2)
-    return render_template('zamowienie.html', zamowienie=zamowienie, kosz=KoszStub(6, 59.94))
+    return render_template('zamowienie.html', zamowienie=zamowienie)
 
 
 @app.route('/nowyProdukt', methods=['GET', 'POST'])
@@ -269,7 +229,6 @@ def dodanieProduktu():
         plik_zdjecia = None
         if formularz.zdjecie.data:
             plik_zdjecia = zachowajZdjecie(formularz.zdjecie.data, sciezka=Konfiguracja.PATH_SHOP)
-        #produkt = ProduktStub(nazwa=formularz.nazwa.data, opis=formularz.tresc.data, zdjecie=plik_zdjecia, id=1, ilosc=formularz.ilosc.data, cena=formularz.cena.data)
         produkt = Produkt(tytul=formularz.nazwa.data, tresc=formularz.tresc.data, zdjecie=plik_zdjecia, ilosc=formularz.ilosc.data,
                           cena=formularz.cena.data, cyfrowy=formularz.cyfrowy.data)
         db.session.add(produkt)
@@ -277,6 +236,7 @@ def dodanieProduktu():
         flash(f'Produkt został dodany', 'success')
         return redirect(url_for('sklep'))
     return render_template('nowyProdukt.html', title='Nowy produkt', form=formularz)
+
 
 @app.route('/usunProdukt/<int:produkt_id>', methods=['GET','POST'])
 @app.route('/deleteProduct/<int:produkt_id>', methods=['GET', 'POST'])
@@ -296,7 +256,6 @@ def usunProdukt(produkt_id):
 @login_required
 def aktualizujProdukt(produkt_id):
     produkt = Produkt.query.get_or_404(produkt_id)
-    #produkt = ProduktStub("produkt testowy 1", "placeholder.png", 1, opis="lorem ipsum", ilosc=99, cena=9.99)
     if Konfiguracja.MAIL_USERNAME != current_user.email:
         abort(403)
     formularz = FormularzAktualizacjiProduktu()
