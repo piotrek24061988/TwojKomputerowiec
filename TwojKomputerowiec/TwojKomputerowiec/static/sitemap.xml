@@ -6,57 +6,45 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/dom</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/dom</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/aktualnosci</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/aktualnosci</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/kontakt</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/kontakt</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/oMnie</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/oMnie</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/galeria</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/galeria</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/itBlog</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/itBlog</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://piotrek24061988.pythonanywhere.com/login</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.twojkomputerowiec.bydgoszcz.pl/test</loc>
+  <lastmod>2021-05-24T15:05:17+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
-<url>
-  <loc>https://piotrek24061988.pythonanywhere.com/register</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://piotrek24061988.pythonanywhere.com/passwordReset</loc>
-  <lastmod>2021-03-20T10:05:27+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
 
 </urlset>
