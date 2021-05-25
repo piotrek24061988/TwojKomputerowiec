@@ -14,8 +14,13 @@
                 <div class="col-xl-6 mb-1 float-left">
                     <figure class="border text-center rounded content-section">
                         <a href="{{ url_for('produkt', produkt_id=produkt.id)  }}">
+                            {% if produkt.zdjecie %}
                             <img src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}"
                                  class="img-fluid galeryimg">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='media/sklep/placeholder.png') }}"
+                                 class="img-fluid galeryimg">
+                            {% endif %}
                         </a>
                         <figcaption class="update-cart"><h5>{{ produkt.tytul }}</h5></figcaption>
                         <h5>cena: {{ produkt.cena }} zł</h5>
