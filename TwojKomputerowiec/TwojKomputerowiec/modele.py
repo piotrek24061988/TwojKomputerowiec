@@ -1,7 +1,8 @@
 from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import datetime
-from TwojKomputerowiec import db, loginManager, app
+from TwojKomputerowiec import db, loginManager, app, admin, AdminModelView
 from flask_login import UserMixin
+
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
@@ -118,3 +119,12 @@ class AdresDostawy(db.Model):
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
+#Wyświetl modele na stronie administratora
+admin.add_view(AdminModelView(Uzytkownik, db.session))
+admin.add_view(AdminModelView(Post, db.session))
+admin.add_view(AdminModelView(Aktualnosc, db.session))
+admin.add_view(AdminModelView(Galeria, db.session))
+admin.add_view(AdminModelView(Produkt, db.session))
+admin.add_view(AdminModelView(Zamowienie, db.session))
+admin.add_view(AdminModelView(ObiektZamowienia, db.session))
+admin.add_view(AdminModelView(AdresDostawy, db.session))

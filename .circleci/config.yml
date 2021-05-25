@@ -11,6 +11,7 @@ jobs:
       - run:
           command: |
             pip install --upgrade pip
+            pip install flask-admin
             pip install flask==1.1.2
             pip install flask-wtf
             pip install email_validator
