@@ -117,7 +117,4 @@ class AdresDostawy(db.Model):
     numer = db.Column(db.String(100), nullable=True)
     data = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __str__(self):
-        print(adres)
-
 
