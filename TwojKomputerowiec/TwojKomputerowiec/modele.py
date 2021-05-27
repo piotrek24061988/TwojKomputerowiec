@@ -2,13 +2,24 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import datetime
 from TwojKomputerowiec import db, loginManager, app, admin, AdminModelView
 from flask_login import UserMixin
-
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
 @loginManager.user_loader
 def zaladujUzytkownika(userId):
     return Uzytkownik.query.get(int(userId))
+
+
+#Brakujaca funkcja get or create dla modeli
+def get_or_create(session, model, **kwargs):
+    instance = session.query(model).filter_by(**kwargs).first()
+    if instance:
+        return instance
+    else:
+        instance = model(**kwargs)
+        session.add(instance)
+        session.commit()
+        return instance
 
 
 class Uzytkownik(db.Model, UserMixin):

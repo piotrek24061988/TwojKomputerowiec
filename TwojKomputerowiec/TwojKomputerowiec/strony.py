@@ -201,6 +201,13 @@ def dodajDoKosza(produkt_id):
 @app.route('/card')
 @login_required
 def karta():
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
+            return render_template('karta.html', zamowienie=zamowienie)
+        else:
+            return render_template('karta.html', zamowienie=None)
     #hardcoded order from testyModely.py
     zamowienie = Zamowienie.query.get_or_404(2)
     return render_template('karta.html', zamowienie=zamowienie)
@@ -213,6 +220,13 @@ def zamowienie():
     if request.method == 'POST':
         flash(f'Zamowienie zostało złożone', 'success')
         return redirect(url_for('sklep'))
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
+            return render_template('zamowienie.html', zamowienie=zamowienie)
+        else:
+            return render_template('zamowienie.html', zamowienie=None)
     #hardcoded order from testyModely.py
     zamowienie = Zamowienie.query.get_or_404(2)
     return render_template('zamowienie.html', zamowienie=zamowienie)

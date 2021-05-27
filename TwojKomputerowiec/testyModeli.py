@@ -1,5 +1,5 @@
 import unittest, string, random
-from TwojKomputerowiec import app, db, bcrypt
+from TwojKomputerowiec import db, bcrypt
 from TwojKomputerowiec.modele import *
 
 

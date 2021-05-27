@@ -21,6 +21,7 @@
                         <th><h6>Cena łączna:</h6></th>
                     </tr>
 
+                    {% if zamowienie %}
                     {% for zamowienieProduktu in zamowienie.obiektZamowienia %}
                     <tr>
                         <th>
@@ -38,6 +39,7 @@
                         <th><h6>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}} zł</h6></th>
                     </tr>
                     {% endfor %}
+                    {% endif %}
                 </table>
             </div>
 
