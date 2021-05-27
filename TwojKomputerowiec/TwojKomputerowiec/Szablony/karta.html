@@ -29,13 +29,13 @@
                             </a>
                         </th>
                         <th><h6>{{ zamowienieProduktu.produkt.tytul }}</h6></th>
-                        <th><h6>{{ zamowienieProduktu.produkt.cena }}zł</h6></th>
+                        <th><h6>{{'%0.2f'|format(zamowienieProduktu.produkt.cena|float)}} zł</h6></th>
                         <th>
                             <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="remove" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
                             <h6 class="store-quant">{{ zamowienieProduktu.ilosc }}</h6>
                             <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="add" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
                         </th>
-                        <th><h6>{{ zamowienieProduktu.calkowitaCena }} zł</h6></th>
+                        <th><h6>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}} zł</h6></th>
                     </tr>
                     {% endfor %}
                 </table>
@@ -48,7 +48,7 @@
                             <a href="{{ url_for('sklep') }}"><button class="btn btn-outline-secondary w-100 update-cart">Sklep</button></a>
                         </th>
                         <th><h6>Produkty: {{ zamowienie.iloscProduktow }}</h6></th>
-                        <th><h6>Kwota: {{ zamowienie.lacznaCena }} zł</h6></th>
+                        <th><h6>Kwota: {{'%0.2f'|format(zamowienie.lacznaCena|float)}} zł</h6></th>
                         <th>
                             <a href="{{ url_for('zamowienie') }}"><button class="btn btn-outline-secondary w-100 update-cart">Zamów</button></a>
                         </th>

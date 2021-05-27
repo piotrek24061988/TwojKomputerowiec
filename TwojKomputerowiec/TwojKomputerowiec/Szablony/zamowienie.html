@@ -70,14 +70,14 @@
                     </th>
                     <th><h6>{{ zamowienieProduktu.produkt.nazwa }}</h6></th>
                     <th><h6>{{ zamowienieProduktu.ilosc }}</h6></th>
-                    <th><h6>{{ zamowienieProduktu.calkowitaCena }} zł</h6></th>
+                    <th><h6>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}}</h6></th>
                 </tr>
                 {% endfor %}
                 <tr>
                     <th></th>
                     <th></th>
                     <th><h6>Produkty: {{ zamowienie.iloscProduktow }}</h6></th>
-                    <th><h6>Kwota: {{ zamowienie.lacznaCena }} zł</h6></th>
+                    <th><h6>Kwota: {{'%0.2f'|format(zamowienie.lacznaCena|float)}} zł</h6></th>
                 </tr>
             </table>
         </div>

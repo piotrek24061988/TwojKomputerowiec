@@ -51,7 +51,7 @@
                      src="{{ url_for('static', filename='media/sklep/' + obiektZamowienia.produkt.zdjecie) }}">
                 <p>tresc: {{ obiektZamowienia.produkt.tresc }}</p>
                 <p>ilość: {{ obiektZamowienia.produkt.ilosc }}</p>
-                <p>cena: {{ obiektZamowienia.produkt.cena }}</p>
+                <p>cena: {{'%0.2f'|format(obiektZamowienia.produkt.cena|float)}}</p>
                 <p>cyfrowy: {{ obiektZamowienia.produkt.cyfrowy }}</p>
                 <div class="article-metadata"></div>
                 {% endif %}

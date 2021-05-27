@@ -23,7 +23,7 @@
                             {% endif %}
                         </a>
                         <figcaption class="update-cart"><h5>{{ produkt.tytul }}</h5></figcaption>
-                        <h5>cena: {{ produkt.cena }} zł</h5>
+                        <h5>cena: {{'%0.2f'|format(produkt.cena|float)}} zł</h5>
                         <h6>ilość w magazynie: {{ produkt.ilosc }}</h6>
                         <!--<button data-product={{ produkt.id }} data-action="add" class="btn btn-outline-secondary w-100 my-1 update-cart">do koszyka</button>-->
                         <a class="btn btn-outline-secondary w-100 my-1 update-cart" href="{{ url_for('dodajDoKosza', produkt_id=produkt.id) }}">do koszyka</a>
