@@ -32,9 +32,15 @@
                         <th><h6>{{ zamowienieProduktu.produkt.tytul }}</h6></th>
                         <th><h6>{{'%0.2f'|format(zamowienieProduktu.produkt.cena|float)}} zł</h6></th>
                         <th>
-                            <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="remove" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
+                            <!--<img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="remove" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">-->
+                            <a href="{{ url_for('zmniejszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
+                                <img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
+                            </a>
                             <h6 class="store-quant">{{ zamowienieProduktu.ilosc }}</h6>
-                            <img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="add" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
+                            <!--<img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">-->
+                            <a href="{{ url_for('zwiekszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
+                                <img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
+                            </a>
                         </th>
                         <th><h6>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}} zł</h6></th>
                     </tr>

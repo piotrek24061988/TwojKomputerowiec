@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <div id="form-wrapper" class="border text-center rounded bg-dark store-section mb-5">
             <form method="POST" id="form">
-                <div id="user-info">
+                <div id="user-info" class="hidden">
                     <p>Informacje o użytkowniku</p>
                     <div class="form-field">
                         <input required class="form-control" type="text" name="login" placeholder="login...">
@@ -43,16 +43,17 @@
                     </div>
                 </div>
 
-                <input id="store-form" type="submit" value="Potwierdż" class="btn btn-outline-secondary update-cart m-1">
+                <!--<input id="store-form" type="submit" value="Potwierdż" class="btn btn-outline-secondary update-cart m-1">-->
+                <a class="btn btn-outline-secondary update-cart m-1" href="{{ url_for('potwierdzZamowienie', zamowienie_id=zamowienie.id) }}">potwierdź</a>
             </form>
         </div>
 
-        <div class="border text-center rounded bg-dark store-section mb-5 hidden" id="payment-info">
+        <div class="border text-center rounded bg-dark store-section mb-5" id="payment-info">
             <strong>Formy płatności</strong>
             <p class="mt-5">1)Przedpłata przelewem na konto</p>
             Piotr Górecki<br>
             MBank: XX XXXX XXXX XXXX XXXX XXXX XXXX<br>
-            <input id="make-order" value="Potwierdż" class="btn btn-outline-secondary update-cart m-1">
+            <!--<input id="make-order" value="Potwierdż" class="btn btn-outline-secondary update-cart m-1">-->
         </div>
     </div>
 

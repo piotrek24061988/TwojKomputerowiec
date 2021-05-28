@@ -193,7 +193,97 @@ def produkt(produkt_id):
 @app.route('/addToBin/<int:produkt_id>', methods=['GET', 'POST'])
 @login_required
 def dodajDoKosza(produkt_id):
-    flash(f'Produkt został dodany', 'success')
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
+            obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id, produkt_id=produkt_id)
+            produkt = get_or_create(session=db.session, model=Produkt, id=produkt_id)
+            if not obiektZamowienia.ilosc:
+                obiektZamowienia.ilosc = 0
+            if produkt.ilosc != 0:
+                obiektZamowienia.ilosc = obiektZamowienia.ilosc + 1
+                produkt.ilosc = produkt.ilosc - 1
+                db.session.commit()
+                flash(f'Produkt został dodany', 'success')
+            else:
+                flash(f'Produkt nie został dodany - brak w magazynie', 'danger')
+        else:
+            flash(f'Produkt nie został dodany - problem z kontem użytkownika', 'danger')
+    else:
+        flash(f'Produkt nie został dodany - zaloguj się', 'danger')
+    return redirect(url_for('sklep'))
+
+
+@app.route('/zwiekszKosz/<int:produkt_id>', methods=['GET', 'POST'])
+@app.route('/binIncrement/<int:produkt_id>', methods=['GET', 'POST'])
+@login_required
+def zwiekszKosz(produkt_id):
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
+            obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id, produkt_id=produkt_id)
+            produkt = get_or_create(session=db.session, model=Produkt, id=produkt_id)
+            if not obiektZamowienia.ilosc:
+                obiektZamowienia.ilosc = 0
+            if produkt.ilosc != 0:
+                obiektZamowienia.ilosc = obiektZamowienia.ilosc + 1
+                produkt.ilosc = produkt.ilosc - 1
+                db.session.commit()
+                flash(f'Kosz został zwiekszony', 'success')
+            else:
+                flash(f'Kosz nie został zwiekszony - brak w magazynie', 'danger')
+        else:
+            flash(f'Kosz nie został zwiekszony - problem z kontem użytkownika', 'danger')
+    else:
+        flash(f'Kosz nie został zwiekszony - zaloguj się', 'danger')
+    return redirect(url_for('karta'))
+
+
+@app.route('/zmniejszKosz/<int:produkt_id>', methods=['GET', 'POST'])
+@app.route('/binDecrement/<int:produkt_id>', methods=['GET', 'POST'])
+@login_required
+def zmniejszKosz(produkt_id):
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
+            obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id, produkt_id=produkt_id)
+            produkt = get_or_create(session=db.session, model=Produkt, id=produkt_id)
+            if not obiektZamowienia.ilosc:
+                obiektZamowienia.ilosc = 0
+            if obiektZamowienia.ilosc != 0:
+                obiektZamowienia.ilosc = obiektZamowienia.ilosc - 1
+                produkt.ilosc = produkt.ilosc + 1
+                db.session.commit()
+                flash(f'Kosz został zmniejszony', 'success')
+            else:
+                flash(f'Kosz nie został zmniejszony - brak w koszu', 'danger')
+            if obiektZamowienia.ilosc == 0:
+                db.session.delete(obiektZamowienia)
+                db.session.commit()
+        else:
+            flash(f'Kosz nie został zmniejszony - problem z kontem użytkownika', 'danger')
+    else:
+        flash(f'Kosz nie został zmniejszony - zaloguj się', 'danger')
+    return redirect(url_for('karta'))
+
+
+@app.route('/potwierdzZamowienie/<int:zamowienie_id>', methods=['GET', 'POST'])
+@app.route('/confirmOrder/<int:zamowienie_id>', methods=['GET', 'POST'])
+@login_required
+def potwierdzZamowienie(zamowienie_id):
+    if current_user.is_authenticated:
+        zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
+        if zamowienie and zamowienie.iloscProduktow and zamowienie.lacznaCena:
+            zamowienie.ukonczone = True
+            db.session.commit()
+            flash(f'Zamowienie zostało potwierdzone', 'success')
+        else:
+            flash(f'Zamowienie nie zostało potwierdzone - problem z zamówieniem', 'danger')
+    else:
+        flash(f'Zamowienie nie zostało potwierdzone - zaloguj się', 'danger')
     return redirect(url_for('sklep'))
 
 

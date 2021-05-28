@@ -105,3 +105,11 @@ class FormularzAktualizacjiZamowienia(FlaskForm):
     komentarzAdmina = TextAreaField('Komentarz administratora', validators=[DataRequired()])
     ukonczone = BooleanField('Ukonczone')
     potwierdzenie = SubmitField('Aktualizuj zamówienie')
+
+
+class FormularzPotwierdzeniaZamowienia(FlaskForm):
+    adres = StringField('Adres', validators=[DataRequired()])
+    miasto = StringField('Miasto', validators=[DataRequired()])
+    kod = StringField('Kod pocztowy', validators=[DataRequired()])
+    numer = StringField('Telefon', validators=[DataRequired()])
+    uwagi = TextAreaField('Uwagi', validators=[DataRequired()])
