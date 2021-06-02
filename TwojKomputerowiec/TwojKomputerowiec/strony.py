@@ -308,13 +308,14 @@ def zamowienie():
                     if formularz.uwagi.data:
                         zamowienie.uwagi = formularz.uwagi.data
                     zamowienie.ukonczone = True
+                    emailZamowienia(uzytkownik.email, zamowienie)
                     #Only bank transfer allowed so far
                     zamowienie.platnosc = "przelew"
                     db.session.commit()
-                    flash(f'Zdjęcie zostało złożone', 'success')
+                    flash(f'Zamówienie zostało złożone', 'success')
                     return redirect(url_for('sklep'))
                 else:
-                    flash(f'Zdjęcie nie zostało złożone - wypełnij brakujące dane', 'danger')
+                    flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
                     return redirect(url_for('zamowienie'))
             elif request.method == 'GET':
                 formularz.miasto.data = adresDostawy.miasto

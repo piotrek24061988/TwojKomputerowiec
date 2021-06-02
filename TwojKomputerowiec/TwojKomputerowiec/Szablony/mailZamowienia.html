@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-xl-12 mb-1 content-section">
+            <h1 class="text-secondary">Zamowienie:</h1>
+            <p>id zamówienia: {{ zamowienie.id }}</p>
+            <p>ilość produktów: {{ zamowienie.iloscProduktow }}</p>
+            <p>cana łączna: {{ zamowienie.lacznaCena }}</p>
+            <p>data zamówienia: {{ zamowienie.data }}</p>
+            <p>ukończone: {{ zamowienie.ukonczone }}</p>
+            <p>płatność: {{ zamowienie.platnosc }}</p>
+            <p>uwagi: {{ zamowienie.uwagi }}</p>
+            <p>komentarz administratora: {{ zamowienie.komentarzAdmina }}</p>
+            <p>id użytkownika: {{ zamowienie.uzytkownik_id }}</p>
+            <div class="article-metadata"></div>
+            {% if zamowienie.autor %}
+            <h3 class="text-secondary">Autor zamowienia:</h3>
+            <p>email: {{ zamowienie.autor.email }}</p>
+            <div class="article-metadata"></div>
+            {% endif %}
+
+            {% for adresDostawy in zamowienie.adresDostawy %}
+            <h3 class="text-secondary">Adres dostawy:</h3>
+            <p>id adresu dostawy: {{ adresDostawy.id }}</p>
+            <p>adres: {{ adresDostawy.adres }}</p>
+            <p>miasto: {{ adresDostawy.miasto }}</p>
+            <p>kod: {{ adresDostawy.kod }}</p>
+            <p>numer: {{ adresDostawy.numer }}</p>
+            <div class="article-metadata"></div>
+            {% endfor %}
+
+            {% for obiektZamowienia in zamowienie.obiektZamowienia %}
+            <h3 class="text-secondary">Obiekt zamowienia:</h3>
+            <p>id obiektu zamówienia: {{ obiektZamowienia.id }}</p>
+            <p>id produktu: {{ obiektZamowienia.produkt_id }}</p>
+            <p>ilość: {{ obiektZamowienia.ilosc }}</p>
+            <div class="article-metadata"></div>
+            {% if obiektZamowienia.produkt%}
+            <h5 class="text-secondary">Produkt:</h5>
+            <p>id produktu: {{ obiektZamowienia.produkt.id }}</p>
+            <p>tytuł: {{ obiektZamowienia.produkt.tytul }}</p>
+            <p>tresc: {{ obiektZamowienia.produkt.tresc }}</p>
+            <p>ilość w magazynie: {{ obiektZamowienia.produkt.ilosc }}</p>
+            <p>cena: {{'%0.2f'|format(obiektZamowienia.produkt.cena|float)}}</p>
+            <p>cyfrowy: {{ obiektZamowienia.produkt.cyfrowy }}</p>
+            <div class="article-metadata"></div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

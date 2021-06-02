@@ -1,9 +1,9 @@
 import os
 import secrets
 from PIL import Image
-from flask import url_for
+from flask import url_for, render_template
 from flask_mail import Message
-from TwojKomputerowiec import mail, app
+from TwojKomputerowiec import mail, app, Konfiguracja
 
 
 def zachowajZdjecie(zdjecie, resize=False, sciezka='static/media/losowe'):
@@ -51,6 +51,17 @@ def emailKontaktowy(kontakt, temat, tresc):
     Wyślij email kontaktowy do administratora strony.
     :param kontakt, temat, tresc - maila
     """
-    msg = Message("Twój komputerowiec: " + temat, sender='noreplay@demo.com', recipients=['piotrek24061988@gmail.com'])
+    msg = Message("Twój komputerowiec: " + temat, sender='noreplay@demo.com', recipients=[Konfiguracja.MAIL_USERNAME])
     msg.body = "Twój komputerowiec:\n\n" + tresc + "\n\n" + "kontakt: " + kontakt
+    mail.send(msg)
+
+
+def emailZamowienia(emailZamawiajacego, zamowienie):
+    """
+    Wyślij email kontaktowy do administratora strony.
+    :param kontakt, temat, tresc - maila
+    """
+    msg = Message("Twój komputerowiec: ZAMÓWIENIE", sender='emailZamawiajacego', recipients=[Konfiguracja.MAIL_USERNAME, emailZamawiajacego])
+    msg.body = "ZAMÓWIENIE NR: " + str(zamowienie.id)
+    msg.html = render_template('mailZamowienia.html', zamowienie=zamowienie, admin=Konfiguracja.MAIL_USERNAME)
     mail.send(msg)
