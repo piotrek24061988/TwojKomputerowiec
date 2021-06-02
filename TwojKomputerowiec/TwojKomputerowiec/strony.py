@@ -177,7 +177,14 @@ def aktualizujZdjecie(zdjecie_id):
 def sklep():
     strona = request.args.get('page', 1, type=int)
     sklep = Produkt.query.order_by(Produkt.data.desc()).paginate(page=strona, per_page=10)
-    return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME)
+    zamowienie = None
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            for zamowienieUzytkownika in uzytkownik.zamowienia:
+                if zamowienieUzytkownika.ukonczone == False:
+                    zamowienie = zamowienieUzytkownika
+    return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME, zamowienie=zamowienie)
 
 
 @app.route('/produkt/<int:produkt_id>')
@@ -293,7 +300,7 @@ def zamowienie():
             zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
             adresDostawy = get_or_create(session=db.session, model=AdresDostawy, uzytkownik_id=uzytkownik.id, zamowienie_id=zamowienie.id)
             if request.method == 'POST':
-                if formularz.validate_on_submit():
+                if formularz.validate_on_submit() and zamowienie.lacznaCena:
                     adresDostawy.miasto = formularz.miasto.data
                     adresDostawy.kod = formularz.kod.data
                     adresDostawy.adres = formularz.adres.data

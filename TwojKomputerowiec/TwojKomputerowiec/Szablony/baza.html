@@ -64,7 +64,11 @@
                         {% if request.path == '/sklep' %}
                         <a href="{{ url_for('karta') }}">
                             <img class="basket-img" src="{{ url_for('static', filename='media/sklep/basket2_white.png') }}">
-                            <p id="cart-total"> 0 </p>
+                            {% if zamowienie %}
+                                <p id="cart-total"> {{ zamowienie.iloscProduktow }} </p>
+                            {% else %}
+                                <p id="cart-total"> 0 </p>
+                            {% endif %}
                         </a>
                         {% endif %}
                     </div>
