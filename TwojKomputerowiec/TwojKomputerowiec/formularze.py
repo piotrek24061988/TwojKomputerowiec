@@ -113,3 +113,4 @@ class FormularzPotwierdzeniaZamowienia(FlaskForm):
     kod = StringField('Kod pocztowy', validators=[DataRequired()])
     numer = StringField('Telefon', validators=[DataRequired()])
     uwagi = TextAreaField('Uwagi', validators=[DataRequired()])
+    potwierdzenie = SubmitField('Potwierdź zamówienie')

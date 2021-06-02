@@ -270,23 +270,6 @@ def zmniejszKosz(produkt_id):
     return redirect(url_for('karta'))
 
 
-@app.route('/potwierdzZamowienie/<int:zamowienie_id>', methods=['GET', 'POST'])
-@app.route('/confirmOrder/<int:zamowienie_id>', methods=['GET', 'POST'])
-@login_required
-def potwierdzZamowienie(zamowienie_id):
-    if current_user.is_authenticated:
-        zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
-        if zamowienie and zamowienie.iloscProduktow and zamowienie.lacznaCena:
-            zamowienie.ukonczone = True
-            db.session.commit()
-            flash(f'Zamowienie zostało potwierdzone', 'success')
-        else:
-            flash(f'Zamowienie nie zostało potwierdzone - problem z zamówieniem', 'danger')
-    else:
-        flash(f'Zamowienie nie zostało potwierdzone - zaloguj się', 'danger')
-    return redirect(url_for('sklep'))
-
-
 @app.route('/karta')
 @app.route('/card')
 @login_required
@@ -296,30 +279,43 @@ def karta():
         if uzytkownik:
             zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
             return render_template('karta.html', zamowienie=zamowienie)
-        else:
-            return render_template('karta.html', zamowienie=None)
-    #hardcoded order from testyModely.py
-    zamowienie = Zamowienie.query.get_or_404(2)
-    return render_template('karta.html', zamowienie=zamowienie)
+    return render_template('karta.html', zamowienie=None)
 
 
 @app.route('/zamowienie', methods=['GET', 'POST'])
 @app.route('/order', methods=['GET', 'POST'])
 @login_required
 def zamowienie():
-    if request.method == 'POST':
-        flash(f'Zamowienie zostało złożone', 'success')
-        return redirect(url_for('sklep'))
+    formularz = FormularzPotwierdzeniaZamowienia()
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
             zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
-            return render_template('zamowienie.html', zamowienie=zamowienie)
-        else:
-            return render_template('zamowienie.html', zamowienie=None)
-    #hardcoded order from testyModely.py
-    zamowienie = Zamowienie.query.get_or_404(2)
-    return render_template('zamowienie.html', zamowienie=zamowienie)
+            adresDostawy = get_or_create(session=db.session, model=AdresDostawy, uzytkownik_id=uzytkownik.id, zamowienie_id=zamowienie.id)
+            if request.method == 'POST':
+                if formularz.validate_on_submit():
+                    adresDostawy.miasto = formularz.miasto.data
+                    adresDostawy.kod = formularz.kod.data
+                    adresDostawy.adres = formularz.adres.data
+                    adresDostawy.numer = formularz.numer.data
+                    if formularz.uwagi.data:
+                        zamowienie.uwagi = formularz.uwagi.data
+                    zamowienie.ukonczone = True
+                    #Only bank transfer allowed so far
+                    zamowienie.platnosc = "przelew"
+                    db.session.commit()
+                    flash(f'Zdjęcie zostało złożone', 'success')
+                    return redirect(url_for('sklep'))
+                else:
+                    flash(f'Zdjęcie nie zostało złożone - wypełnij brakujące dane', 'danger')
+                    return redirect(url_for('zamowienie'))
+            elif request.method == 'GET':
+                formularz.miasto.data = adresDostawy.miasto
+                formularz.kod.data = adresDostawy.kod
+                formularz.adres.data = adresDostawy.adres
+                formularz.numer.data = adresDostawy.numer
+            return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
+    return render_template('zamowienie.html', zamowienie=None, form=formularz)
 
 
 @app.route('/nowyProdukt', methods=['GET', 'POST'])
