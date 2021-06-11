@@ -8,7 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/karta.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/karta.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/sklep.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/Szablony/sklep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/karta.js" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/sklep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/glowny.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/sklep.js" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/static/sklep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strona.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -1,5 +1,5 @@
 var userAuth = userAuthenticated
-var updateBtns = document.getElementsByClassName('update-cart');
+var updateBtns = document.getElementsByClassName('update-cart2');
 
 for(var i = 0; i < updateBtns.length; i++) {
     updateBtns[i].addEventListener('click', function(){

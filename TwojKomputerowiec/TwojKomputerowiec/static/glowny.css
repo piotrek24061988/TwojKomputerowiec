@@ -435,6 +435,11 @@ figcaption {
   color: #ffffff;
 }
 
+.update-cart2 {
+  font-weight: bold;
+  color: #ffffff;
+}
+
 .store-section {
     box-shadow: 3px 3px 10px 2px rgba(255,255,255,1);
 }

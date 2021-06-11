@@ -35,14 +35,14 @@
                             <a href="{{ url_for('zmniejszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
                                 <img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
                             </a>
-                            <button class="btn btn-link bg-transparent update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="decrease">
+                            <button class="btn btn-link bg-transparent update-cart2" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="decrease">
                                 <img class="store-quant-img" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
                             </button>
                             <h6 class="store-quant">{{ zamowienieProduktu.ilosc }}</h6>
                             <a href="{{ url_for('zwiekszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
                                 <img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
                             </a>
-                            <button class="btn btn-link bg-transparent update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="increase">
+                            <button class="btn btn-link bg-transparent update-cart2" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="increase">
                                 <img class="store-quant-img" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
                             </button>
                         </th>
