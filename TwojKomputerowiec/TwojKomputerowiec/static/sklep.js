@@ -19,9 +19,15 @@ function updateUserBin(productId, action) {
     console.log("user authenticated - sending data");
     console.log("csrftoken:" + csrftoken);
 
-    url=''
+    url='';
     if(action == 'add') {
         url = '/dodajDoKosza/' + productId;
+    }
+    else if(action == 'increase') {
+        url = '/zwiekszKosz/' + productId;
+    }
+    else if(action == 'decrease') {
+        url = '/zmniejszKosz/' + productId;
     }
 
     fetch(url, {

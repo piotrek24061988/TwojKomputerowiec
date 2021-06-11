@@ -32,15 +32,19 @@
                         <th><h6>{{ zamowienieProduktu.produkt.tytul }}</h6></th>
                         <th><h6>{{'%0.2f'|format(zamowienieProduktu.produkt.cena|float)}} zł</h6></th>
                         <th>
-                            <!--<img class="store-quant-img update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="remove" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">-->
                             <a href="{{ url_for('zmniejszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
                                 <img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
                             </a>
+                            <button class="btn btn-link bg-transparent update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="decrease">
+                                <img class="store-quant-img" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
+                            </button>
                             <h6 class="store-quant">{{ zamowienieProduktu.ilosc }}</h6>
-                            <!--<img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">-->
                             <a href="{{ url_for('zwiekszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
                                 <img class="store-quant-img update-cart" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
                             </a>
+                            <button class="btn btn-link bg-transparent update-cart" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="increase">
+                                <img class="store-quant-img" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
+                            </button>
                         </th>
                         <th><h6>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}} zł</h6></th>
                     </tr>
@@ -79,4 +83,9 @@
     </div>
 </div>
 
+<script type="text/javascript">
+         var userAuthenticated = '{{ current_user.is_authenticated }}'
+</script>
+<script src="{{ url_for('static', filename='tokenCSRF.js') }}"></script>
+<script src="{{ url_for('static', filename='sklep.js') }}"></script>
 {% endblock %}
