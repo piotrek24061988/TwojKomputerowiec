@@ -33,4 +33,8 @@ function updateUserBin(productId, action) {
         },
         body:JSON.stringify({'produkt_id': productId})
     })
+
+    .then((data) => {
+        location.reload()
+    })
 }
