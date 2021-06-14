@@ -93,6 +93,13 @@ class Zamowienie(db.Model):
     adresDostawy = db.relationship('AdresDostawy', backref='zamowienie', lazy=True)
 
     @hybrid_property
+    def tylkoCyfrowe(self):
+        tylkoCyfrowy = True
+        for obiekt in self.obiektZamowienia:
+            if not obiekt.produkt.cyfrowy:
+                tylkoCyfrowy = False
+
+    @hybrid_property
     def iloscProduktow(self):
         produkty = 0
         for obiekt in self.obiektZamowienia:
