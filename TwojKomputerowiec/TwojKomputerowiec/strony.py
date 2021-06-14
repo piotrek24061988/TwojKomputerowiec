@@ -301,10 +301,7 @@ def zamowienie():
             adresDostawy = get_or_create(session=db.session, model=AdresDostawy, uzytkownik_id=uzytkownik.id, zamowienie_id=zamowienie.id)
             if request.method == 'POST':
                 if zamowienie.tylkoCyfrowe:
-                    formularz.miasto.data = 'zamowienie cyfrowe'
-                    formularz.kod.data = 'zamowienie cyfrowe'
-                    formularz.adres.data = 'zamowienie cyfrowe'
-                    formularz.numer.data = 'zamowienie cyfrowe'
+                    formularz.numer.data = formularz.adres.data = formularz.kod.data = formularz.miasto.data = 'cyfrowe'
                 if formularz.validate_on_submit() and zamowienie.lacznaCena:
                     adresDostawy.miasto = formularz.miasto.data
                     adresDostawy.kod = formularz.kod.data
