@@ -20,6 +20,7 @@
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
                     <h3 class="border-bottom mb-4 text-center"> Informacje o dostawie </h3>
+                    {% if not zamowienie.tylkoCyfrowe %}
                     <div class="form-group">
                         {{ form.adres.label(class="form-control-label") }}
                         {% if form.adres.errors %}
@@ -72,6 +73,7 @@
                         {{ form.numer(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+                    {% endif %}
                     <div class="form-group">
                         {{ form.uwagi.label(class="form-control-label") }}
                         {% if form.uwagi.errors %}

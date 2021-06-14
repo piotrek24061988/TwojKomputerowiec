@@ -98,6 +98,7 @@ class Zamowienie(db.Model):
         for obiekt in self.obiektZamowienia:
             if not obiekt.produkt.cyfrowy:
                 tylkoCyfrowy = False
+        return tylkoCyfrowy
 
     @hybrid_property
     def iloscProduktow(self):
