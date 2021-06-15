@@ -309,10 +309,9 @@ def zamowienie():
                     adresDostawy.numer = formularz.numer.data
                     if formularz.uwagi.data:
                         zamowienie.uwagi = formularz.uwagi.data
+                    zamowienie.platnosc = formularz.platnosc.data
                     zamowienie.ukonczone = True
                     emailZamowienia(uzytkownik.email, zamowienie)
-                    #Only bank transfer allowed so far
-                    zamowienie.platnosc = "przelew"
                     db.session.commit()
                     flash(f'Zamówienie zostało złożone', 'success')
                     return redirect(url_for('sklep'))

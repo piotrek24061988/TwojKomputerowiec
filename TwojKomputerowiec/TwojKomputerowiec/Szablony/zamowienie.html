@@ -9,16 +9,32 @@
     <div class="col-md-6">
 
         <div class="border text-center rounded bg-dark store-section mb-5" id="payment-info">
-            <h3>Forma płatności</h3>
-            <p class="mt-3">Przedpłata przelewem na konto</p>
-            Piotr Górecki<br>
-            mBank: 75 1140 2004 0000 3102 7444 1064<br>
+            <h3 class="border-bottom mb-4 text-center ml-3 mr-3">Konto bankowe</h3>
+            <p class="">Piotr Górecki</p>
+            <p class="">Dworcowa 13/66</p>
+            <p class="mt-1">85-009 Bydgoszcz</p>
+            <p class="mt-1">mBank: 75 1140 2004 0000 3102 7444 1064</p>
+            <p class="mt-5 ml-3 mr-3 text-justify">w tytule proszę podać id zamówienia, które zostanie przesłane mailowo razem z potwierdzeniem</p>
         </div>
 
         <div class="content-section">
             <form method="POST">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
+                    <h3 class="border-bottom mb-4 text-center"> Informacje o płatności </h3>
+                    <div class="form-group">
+                        {{ form.platnosc.label(class="form-control-label") }}
+                        {% if form.platnosc.errors %}
+                        {{ form.platnosc(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.platnosc.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.platnosc(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
                     <h3 class="border-bottom mb-4 text-center"> Informacje o dostawie </h3>
                     {% if not zamowienie.tylkoCyfrowe %}
                     <div class="form-group">

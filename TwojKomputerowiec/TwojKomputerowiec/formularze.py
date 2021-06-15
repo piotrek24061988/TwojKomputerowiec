@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FloatField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FloatField, IntegerField, RadioField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, URL, Optional
 from TwojKomputerowiec.modele import Uzytkownik
 
@@ -108,6 +108,7 @@ class FormularzAktualizacjiZamowienia(FlaskForm):
 
 
 class FormularzPotwierdzeniaZamowienia(FlaskForm):
+    platnosc = RadioField('Formy płatności', choices=[('przelew','przedpłata przelewem na konto'),('pobranie','za pobraniem')], default='przelew')
     adres = StringField('Adres', validators=[DataRequired()])
     miasto = StringField('Miasto', validators=[DataRequired()])
     kod = StringField('Kod pocztowy', validators=[DataRequired()])
