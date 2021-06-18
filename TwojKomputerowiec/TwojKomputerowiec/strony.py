@@ -326,6 +326,27 @@ def zamowienie():
             return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
     return render_template('zamowienie.html', zamowienie=None, form=formularz)
 
+@app.route('/procesujZamowienie/<int:order_id>', methods=['POST'])
+@app.route('/processOrder/<int:order_id>', methods=['POST'])
+@login_required
+def procesujZamowienie(order_id):
+    print('procesujZamowienie: ', order_id)
+    if current_user.is_authenticated:
+        uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
+        if uzytkownik:
+            zamowienie = Zamowienie.query.get_or_404(order_id)
+            adresDostawy = get_or_create(session=db.session, model=AdresDostawy, uzytkownik_id=uzytkownik.id, zamowienie_id=zamowienie.id)
+            if zamowienie.tylkoCyfrowe:
+                adresDostawy.numer = adresDostawy.adres = adresDostawy.kod = adresDostawy.miasto = 'cyfrowe'
+            if zamowienie.lacznaCena:
+                zamowienie.ukonczone = True
+                emailZamowienia(uzytkownik.email, zamowienie)
+                db.session.commit()
+                flash(f'Zamówienie zostało złożone', 'success');
+                return redirect(url_for('sklep'))
+    flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
+    return redirect(url_for('zamowienie'))
+
 
 @app.route('/nowyProdukt', methods=['GET', 'POST'])
 @app.route('/newProduct', methods=['GET', 'POST'])

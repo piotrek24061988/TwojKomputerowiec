@@ -18,7 +18,7 @@
         </div>
 
         <div class="content-section">
-            <form method="POST">
+            <form method="POST" id="orderForm">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
                     <h3 class="border-bottom mb-4 text-center"> Informacje o płatności </h3>
@@ -108,6 +108,7 @@
                     {{ form.potwierdzenie(class="btn btn-outline-secondary") }}
                 </div>
             </form>
+            <button data-order={{ zamowienie.id }} data-action="order" class="btn btn-outline-secondary w-100 text-light my-1 process-order">Potwierdz zamówienie 2</button>
         </div>
     </div>
 
@@ -142,4 +143,10 @@
     </div>
 
 </div>
+
+<script type="text/javascript">
+         var userAuthenticated = '{{ current_user.is_authenticated }}'
+</script>
+<script src="{{ url_for('static', filename='tokenCSRF.js') }}"></script>
+<script src="{{ url_for('static', filename='sklep.js') }}"></script>
 {% endblock %}
