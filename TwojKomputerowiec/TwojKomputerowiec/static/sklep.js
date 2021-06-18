@@ -103,10 +103,10 @@ function processOrder(orderId, action) {
             'Content-Type':'application/json',
             'X-CSRFToken':csrftoken,
         },
-        body:JSON.stringify({'order_id': orderId})
+        body:JSON.stringify({'order_id': orderId, 'form_data': FormData})
     })
 
-    //.then((data) => {
-    //    location.reload()
-    //})
+    .then((data) => {
+        location.reload()
+    })
 }

@@ -331,6 +331,8 @@ def zamowienie():
 @login_required
 def procesujZamowienie(order_id):
     print('procesujZamowienie: ', order_id)
+    print('request.json', request.json)
+
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
@@ -343,8 +345,10 @@ def procesujZamowienie(order_id):
                 emailZamowienia(uzytkownik.email, zamowienie)
                 db.session.commit()
                 flash(f'Zamówienie zostało złożone', 'success');
+                print('Zamówienie zostało złożone')
                 return redirect(url_for('sklep'))
     flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
+    print('Zamówienie nie zostało złożone - wypełnij brakujące dane')
     return redirect(url_for('zamowienie'))
 
 
