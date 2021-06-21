@@ -73,9 +73,7 @@ function processOrder(orderId, action) {
         'numer': null,
     }
 
-    console.log("platnosc:" + form.platnosc.value);
     FormData.platnosc = form.platnosc.value;
-    console.log("uwagi:" + form.uwagi.value);
     FormData.uwagi = form.uwagi.value;
     if(form.adres){
         FormData.adres = form.adres.value;

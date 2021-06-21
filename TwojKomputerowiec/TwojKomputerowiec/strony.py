@@ -330,9 +330,6 @@ def zamowienie():
 @app.route('/processOrder/<int:order_id>', methods=['POST'])
 @login_required
 def procesujZamowienie(order_id):
-    print('procesujZamowienie: ', order_id)
-    print('request.json', request.json)
-
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
@@ -341,12 +338,27 @@ def procesujZamowienie(order_id):
             if zamowienie.tylkoCyfrowe:
                 adresDostawy.numer = adresDostawy.adres = adresDostawy.kod = adresDostawy.miasto = 'cyfrowe'
             if zamowienie.lacznaCena:
-                zamowienie.ukonczone = True
-                emailZamowienia(uzytkownik.email, zamowienie)
-                db.session.commit()
-                flash(f'Zamówienie zostało złożone', 'success');
-                print('Zamówienie zostało złożone')
-                return redirect(url_for('sklep'))
+                if 'form_data' in request.json:
+                    dane_zamowienia = request.json['form_data']
+                    if 'platnosc' in dane_zamowienia and dane_zamowienia['platnosc']:
+                        zamowienie.platnosc = dane_zamowienia['platnosc']
+                    if 'adres' in dane_zamowienia and dane_zamowienia['adres']:
+                        adresDostawy.adres = dane_zamowienia['adres']
+                    if 'miasto' in dane_zamowienia and dane_zamowienia['miasto']:
+                        adresDostawy.miasto = dane_zamowienia['miasto']
+                    if 'kod' in dane_zamowienia and dane_zamowienia['kod']:
+                        adresDostawy.kod = dane_zamowienia['kod']
+                    if 'numer' in dane_zamowienia and dane_zamowienia['numer']:
+                        adresDostawy.numer = dane_zamowienia['numer']
+                    if 'uwagi' in dane_zamowienia and dane_zamowienia['uwagi']:
+                        zamowienie.uwagi = dane_zamowienia['uwagi']
+                if zamowienie.platnosc and adresDostawy.adres and adresDostawy.miasto and adresDostawy.kod and adresDostawy.numer:
+                    zamowienie.ukonczone = True
+                    emailZamowienia(uzytkownik.email, zamowienie)
+                    db.session.commit()
+                    flash(f'Zamówienie zostało złożone', 'success');
+                    print('Zamówienie zostało złożone')
+                    return redirect(url_for('sklep'))
     flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
     print('Zamówienie nie zostało złożone - wypełnij brakujące dane')
     return redirect(url_for('zamowienie'))
