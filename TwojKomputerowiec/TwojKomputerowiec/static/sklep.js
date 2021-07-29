@@ -8,10 +8,11 @@ for(var i = 0; i < updateBtns.length; i++) {
         var action = this.dataset.action;
         console.log("productId: " + productId  + ", userAuthenticated: " +  userAuth);
 
-        if(userAuth) {
+        if(userAuth == 'True') {
             updateUserBin(productId, action);
         } else {
             console.log("user not authenticated - please log in");
+            addCookieItem(productId, action);
         }
     })
 }
@@ -22,7 +23,7 @@ for(var i = 0; i < orderBtn.length; i++) {
         var action = this.dataset.action;
         console.log("orderId: " + orderId + ", action: " + action);
 
-        if(userAuth) {
+        if(userAuth == 'True') {
             processOrder(orderId, action);
         } else {
             console.log("user not authenticated - please log in");
@@ -30,6 +31,33 @@ for(var i = 0; i < orderBtn.length; i++) {
     })
 }
 
+function addCookieItem(productId, action) {
+    console.log("user not authenticated - sending data to cokies");
+
+    if((action == 'add') || action == 'increase' ) {
+        console.log("addCookieItem add action");
+        if(cart[productId] == undefined) {
+            cart[productId] = {'quantity':1};
+            console.log("addCookieItem add action new product in cart");
+        } else {
+            cart[productId]['quantity'] += 1;
+            console.log("addCookieItem add action increased product in cart");
+        }
+    }
+
+    if(action == 'decrease') {
+        console.log("addCookieItem decrease action decrease product in cart");
+        cart[productId]['quantity'] -= 1;
+
+        if(cart[productId]['quantity'] <= 0) {
+            console.log("addCookieItem decrease action remove product from cart");
+            delete cart[productId];
+        }
+    }
+
+    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    location.reload()
+}
 
 function updateUserBin(productId, action) {
     console.log("user authenticated - sending data");

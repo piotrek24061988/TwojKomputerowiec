@@ -5,7 +5,7 @@ from TwojKomputerowiec.formularze import *
 from TwojKomputerowiec.modele import *
 from TwojKomputerowiec.przydatne import *
 from TwojKomputerowiec.konfiguracja import Konfiguracja
-
+import json
 
 @app.route('/')
 @app.route('/home')
@@ -184,6 +184,14 @@ def sklep():
             for zamowienieUzytkownika in uzytkownik.zamowienia:
                 if zamowienieUzytkownika.ukonczone == False:
                     zamowienie = zamowienieUzytkownika
+    else:
+        zamowienie = {'iloscProduktow': 0}
+        try:
+            karta = json.loads(request.cookies.get('cart'))
+        except:
+            karta = {}
+        for produkty in karta:
+            zamowienie['iloscProduktow'] += karta[produkty]['quantity']
     return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME, zamowienie=zamowienie)
 
 
