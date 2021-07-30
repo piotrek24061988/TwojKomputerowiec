@@ -58,6 +58,7 @@ def przetworzCiasteczkaZamowienia(request):
         zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     return zamowienie
 
+
 def emailResetuHasla(uzytkownik):
     """
     Wyślij email do zarejestrowanego użytkownika, który zapomniał swoje hasło.
