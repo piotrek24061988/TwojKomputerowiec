@@ -5,7 +5,7 @@ from TwojKomputerowiec.formularze import *
 from TwojKomputerowiec.modele import *
 from TwojKomputerowiec.przydatne import *
 from TwojKomputerowiec.konfiguracja import Konfiguracja
-import json
+
 
 @app.route('/')
 @app.route('/home')
@@ -177,7 +177,7 @@ def aktualizujZdjecie(zdjecie_id):
 def sklep():
     strona = request.args.get('page', 1, type=int)
     sklep = Produkt.query.order_by(Produkt.data.desc()).paginate(page=strona, per_page=10)
-    zamowienie = {'iloscProduktow': 0}
+    zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
@@ -186,12 +186,7 @@ def sklep():
                     zamowienie = zamowienieUzytkownika
     #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
     else:
-        try:
-            karta = json.loads(request.cookies.get('cart'))
-            for produkt in karta:
-                zamowienie['iloscProduktow'] += karta[produkt]['quantity']
-        except:
-            zamowienie = {'iloscProduktow': 0}
+        zamowienie = przetworzCiasteczkaZamowienia(request)
     return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME, zamowienie=zamowienie)
 
 
@@ -297,21 +292,7 @@ def karta():
             return render_template('karta.html', zamowienie=zamowienie)
     #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
     else:
-        try:
-            karta = json.loads(request.cookies.get('cart'))
-            for produkt in karta:
-                produktWBazie = get_or_create(session=db.session, model=Produkt, id=produkt)
-                if produktWBazie.ilosc > 0:
-                    zamowienie['iloscProduktow'] += karta[produkt]['quantity']
-                    zamowienie['lacznaCena'] += karta[produkt]['quantity'] * produktWBazie.cena
-                obiekt = {
-                    'produkt': produktWBazie,
-                    'ilosc': karta[produkt]['quantity'],
-                    'calkowitaCena': karta[produkt]['quantity'] * produktWBazie.cena,
-                }
-                zamowienie['obiektZamowienia'].append(obiekt)
-        except:
-            zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+        zamowienie = przetworzCiasteczkaZamowienia(request)
     return render_template('karta.html', zamowienie=zamowienie)
 
 
@@ -353,21 +334,7 @@ def zamowienie():
             return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
     #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
     else:
-        try:
-            karta = json.loads(request.cookies.get('cart'))
-            for produkt in karta:
-                produktWBazie = get_or_create(session=db.session, model=Produkt, id=produkt)
-                if produktWBazie.ilosc > 0:
-                    zamowienie['iloscProduktow'] += karta[produkt]['quantity']
-                    zamowienie['lacznaCena'] += karta[produkt]['quantity'] * produktWBazie.cena
-                obiekt = {
-                    'produkt': produktWBazie,
-                    'ilosc': karta[produkt]['quantity'],
-                    'calkowitaCena': karta[produkt]['quantity'] * produktWBazie.cena,
-                }
-                zamowienie['obiektZamowienia'].append(obiekt)
-        except:
-            zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+        zamowienie = przetworzCiasteczkaZamowienia(request)
     return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
 
 @app.route('/procesujZamowienie/<int:order_id>', methods=['POST'])

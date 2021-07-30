@@ -1,9 +1,11 @@
 import os
 import secrets
+import json
 from PIL import Image
 from flask import url_for, render_template
 from flask_mail import Message
-from TwojKomputerowiec import mail, app, Konfiguracja
+from TwojKomputerowiec import mail, app, db, Konfiguracja
+from TwojKomputerowiec.modele import *
 
 
 def zachowajZdjecie(zdjecie, resize=False, sciezka='static/media/losowe'):
@@ -29,6 +31,32 @@ def zachowajZdjecie(zdjecie, resize=False, sciezka='static/media/losowe'):
         zdjecie.save(sciezkaZdjecia)
     return zdjecieNazwa
 
+
+def przetworzCiasteczkaZamowienia(request):
+    """
+    Funkcja przetwarza ciasteczka przeglądarki internetowej w poszukiwaniu danych
+    zamówienia niezalogowanego klienta. Funkcja stara się sparsować ciasteczka i
+    na ich podstawie utworzyć oiekt zamówienia.
+    :param request: Request http przetrzymujący ciasteczka przeglądarki
+    :return: obiekt zamowienia niezalogowanego klineta.
+    """
+    zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+    try:
+        karta = json.loads(request.cookies.get('cart'))
+        for produkt in karta:
+            produktWBazie = get_or_create(session=db.session, model=Produkt, id=produkt)
+            if produktWBazie.ilosc > 0:
+                zamowienie['iloscProduktow'] += karta[produkt]['quantity']
+                zamowienie['lacznaCena'] += karta[produkt]['quantity'] * produktWBazie.cena
+            obiekt = {
+                'produkt': produktWBazie,
+                'ilosc': karta[produkt]['quantity'],
+                'calkowitaCena': karta[produkt]['quantity'] * produktWBazie.cena,
+            }
+            zamowienie['obiektZamowienia'].append(obiekt)
+    except:
+        zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+    return zamowienie
 
 def emailResetuHasla(uzytkownik):
     """
