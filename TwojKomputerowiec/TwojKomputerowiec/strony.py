@@ -177,21 +177,21 @@ def aktualizujZdjecie(zdjecie_id):
 def sklep():
     strona = request.args.get('page', 1, type=int)
     sklep = Produkt.query.order_by(Produkt.data.desc()).paginate(page=strona, per_page=10)
-    zamowienie = None
+    zamowienie = {'iloscProduktow': 0}
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
             for zamowienieUzytkownika in uzytkownik.zamowienia:
                 if zamowienieUzytkownika.ukonczone == False:
                     zamowienie = zamowienieUzytkownika
+    #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
     else:
-        zamowienie = {'iloscProduktow': 0}
         try:
             karta = json.loads(request.cookies.get('cart'))
+            for produkt in karta:
+                zamowienie['iloscProduktow'] += karta[produkt]['quantity']
         except:
-            karta = {}
-        for produkty in karta:
-            zamowienie['iloscProduktow'] += karta[produkty]['quantity']
+            zamowienie = {'iloscProduktow': 0}
     return render_template('sklep.html', sklep=sklep, admin=Konfiguracja.MAIL_USERNAME, zamowienie=zamowienie)
 
 
@@ -287,20 +287,39 @@ def zmniejszKosz(produkt_id):
 
 @app.route('/karta')
 @app.route('/card')
-@login_required
+#@login_required
 def karta():
+    zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
             zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
             return render_template('karta.html', zamowienie=zamowienie)
-    return render_template('karta.html', zamowienie=None)
+    #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
+    else:
+        try:
+            karta = json.loads(request.cookies.get('cart'))
+            for produkt in karta:
+                produktWBazie = get_or_create(session=db.session, model=Produkt, id=produkt)
+                if produktWBazie.ilosc > 0:
+                    zamowienie['iloscProduktow'] += karta[produkt]['quantity']
+                    zamowienie['lacznaCena'] += karta[produkt]['quantity'] * produktWBazie.cena
+                obiekt = {
+                    'produkt': produktWBazie,
+                    'ilosc': karta[produkt]['quantity'],
+                    'calkowitaCena': karta[produkt]['quantity'] * produktWBazie.cena,
+                }
+                zamowienie['obiektZamowienia'].append(obiekt)
+        except:
+            zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+    return render_template('karta.html', zamowienie=zamowienie)
 
 
 @app.route('/zamowienie', methods=['GET', 'POST'])
 @app.route('/order', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def zamowienie():
+    zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     formularz = FormularzPotwierdzeniaZamowienia()
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -332,7 +351,24 @@ def zamowienie():
                 formularz.adres.data = adresDostawy.adres
                 formularz.numer.data = adresDostawy.numer
             return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
-    return render_template('zamowienie.html', zamowienie=None, form=formularz)
+    #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
+    else:
+        try:
+            karta = json.loads(request.cookies.get('cart'))
+            for produkt in karta:
+                produktWBazie = get_or_create(session=db.session, model=Produkt, id=produkt)
+                if produktWBazie.ilosc > 0:
+                    zamowienie['iloscProduktow'] += karta[produkt]['quantity']
+                    zamowienie['lacznaCena'] += karta[produkt]['quantity'] * produktWBazie.cena
+                obiekt = {
+                    'produkt': produktWBazie,
+                    'ilosc': karta[produkt]['quantity'],
+                    'calkowitaCena': karta[produkt]['quantity'] * produktWBazie.cena,
+                }
+                zamowienie['obiektZamowienia'].append(obiekt)
+        except:
+            zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+    return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
 
 @app.route('/procesujZamowienie/<int:order_id>', methods=['POST'])
 @app.route('/processOrder/<int:order_id>', methods=['POST'])
