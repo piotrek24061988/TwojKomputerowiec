@@ -179,6 +179,7 @@ def sklep():
     strona = request.args.get('page', 1, type=int)
     sklep = Produkt.query.order_by(Produkt.data.desc()).paginate(page=strona, per_page=10)
     zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+    #obsluga zalogowanego uzytkownika
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
@@ -286,6 +287,7 @@ def zmniejszKosz(produkt_id):
 #@login_required
 def karta():
     zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
+    #obsluga zalogowanego uzytkownika
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
@@ -303,6 +305,7 @@ def karta():
 def zamowienie():
     zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     formularz = FormularzPotwierdzeniaZamowienia()
+    #obsluga zalogowanego uzytkownika
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
@@ -342,56 +345,38 @@ def zamowienie():
 @app.route('/processOrder/<int:order_id>', methods=['POST'])
 #@login_required
 def procesujZamowienie(order_id):
+    #obsluga zalogowanego uzytkownika
+    zamowienie = None
+    adresDostawy = None
+    brakWBazie = False
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
         if uzytkownik:
             zamowienie = Zamowienie.query.get_or_404(order_id)
             adresDostawy = get_or_create(session=db.session, model=AdresDostawy, uzytkownik_id=uzytkownik.id, zamowienie_id=zamowienie.id)
-            if zamowienie.tylkoCyfrowe:
-                adresDostawy.numer = adresDostawy.adres = adresDostawy.kod = adresDostawy.miasto = 'cyfrowe'
-            if zamowienie.lacznaCena:
-                if 'form_data' in request.json:
-                    dane_zamowienia = request.json['form_data']
-                    if 'platnosc' in dane_zamowienia and dane_zamowienia['platnosc']:
-                        zamowienie.platnosc = dane_zamowienia['platnosc']
-                    if 'adres' in dane_zamowienia and dane_zamowienia['adres']:
-                        adresDostawy.adres = dane_zamowienia['adres']
-                    if 'miasto' in dane_zamowienia and dane_zamowienia['miasto']:
-                        adresDostawy.miasto = dane_zamowienia['miasto']
-                    if 'kod' in dane_zamowienia and dane_zamowienia['kod']:
-                        adresDostawy.kod = dane_zamowienia['kod']
-                    if 'numer' in dane_zamowienia and dane_zamowienia['numer']:
-                        adresDostawy.numer = dane_zamowienia['numer']
-                    if 'uwagi' in dane_zamowienia and dane_zamowienia['uwagi']:
-                        zamowienie.uwagi = dane_zamowienia['uwagi']
-                if zamowienie.platnosc and adresDostawy.adres and adresDostawy.miasto and adresDostawy.kod and adresDostawy.numer:
-                    zamowienie.ukonczone = True
-                    emailZamowienia(uzytkownik.email, zamowienie)
-                    db.session.commit()
-                    flash(f'Zamówienie zostało złożone', 'success');
-                    print('Zamówienie zostało złożone')
-                    return redirect(url_for('sklep'))
     #obsluga niezalogowanego uzytkownika za pomoca ciasteczek
     else:
-        zamowienieCiasteczka = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
         zamowienieCiasteczka = przetworzCiasteczkaZamowienia(request)
         print('CIASTECZKA:', zamowienieCiasteczka)
-        print('ORDERID', order_id)
-        uzytkownik = get_or_create(session=db.session, model=Uzytkownik, email=''.join(random.choice(string.ascii_letters) for i in range(10)),
+        #utworz sztucznego niezalogowanego uzytkownika
+        uzytkownik = get_or_create(session=db.session, model=Uzytkownik, email= 'cookiesUser' + ''.join(random.choice(string.ascii_letters) for i in range(10)),
         haslo=''.join(random.choice(string.ascii_letters) for i in range(10)))
-        print('UZYTKOWNIK UTWORZONY')
         zamowienie = get_or_create(session=db.session, model=Zamowienie, uzytkownik_id=uzytkownik.id, ukonczone=False)
-        print('ZAMOWIENIE UTWORZONE')
-        for obiektZamowieniaCiasteczka in zamowienieCiasteczka['obiektZamowienia']:
-            obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id,
-            ilosc=obiektZamowieniaCiasteczka['ilosc'], produkt_id=obiektZamowieniaCiasteczka['produkt'].id)
-            print(obiektZamowieniaCiasteczka)
         adresDostawy = get_or_create(session=db.session, model=AdresDostawy, uzytkownik_id=uzytkownik.id, zamowienie_id=zamowienie.id)
-        if zamowienie.tylkoCyfrowe:
-            adresDostawy.numer = adresDostawy.adres = adresDostawy.kod = adresDostawy.miasto = 'cyfrowe'
-        if zamowienie.lacznaCena:
-            if 'form_data' in request.json:
-                dane_zamowienia = request.json['form_data']
+        for obiektZamowieniaCiasteczka in zamowienieCiasteczka['obiektZamowienia']:
+            produkt = Produkt.query.get_or_404(obiektZamowieniaCiasteczka['produkt'].id)
+            if produkt and produkt.ilosc > obiektZamowieniaCiasteczka['ilosc']:
+                obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id,
+                ilosc=obiektZamowieniaCiasteczka['ilosc'], produkt_id=obiektZamowieniaCiasteczka['produkt'].id)
+                produkt.ilosc = produkt.ilosc - obiektZamowieniaCiasteczka['ilosc']
+            else:
+                brakWBazie = True
+    #czesc wspolna obslugi zalogowanego i niezalogowanego uzytkownika
+    if zamowienie and zamowienie.tylkoCyfrowe:
+        adresDostawy.numer = adresDostawy.adres = adresDostawy.kod = adresDostawy.miasto = 'cyfrowe'
+    if not brakWBazie and zamowienie and zamowienie.lacznaCena:
+        if 'form_data' in request.json:
+            dane_zamowienia = request.json['form_data']
             if 'platnosc' in dane_zamowienia and dane_zamowienia['platnosc']:
                 zamowienie.platnosc = dane_zamowienia['platnosc']
             if 'adres' in dane_zamowienia and dane_zamowienia['adres']:
@@ -404,13 +389,13 @@ def procesujZamowienie(order_id):
                 adresDostawy.numer = dane_zamowienia['numer']
             if 'uwagi' in dane_zamowienia and dane_zamowienia['uwagi']:
                 zamowienie.uwagi = dane_zamowienia['uwagi']
-            if zamowienie.platnosc and adresDostawy.adres and adresDostawy.miasto and adresDostawy.kod and adresDostawy.numer:
-                zamowienie.ukonczone = True
-                emailZamowienia(uzytkownik.email, zamowienie)
-                db.session.commit()
-                flash(f'Zamówienie zostało złożone', 'success');
-                print('Zamówienie zostało złożone')
-                return redirect(url_for('sklep'))
+        if zamowienie.platnosc and adresDostawy.adres and adresDostawy.miasto and adresDostawy.kod and adresDostawy.numer:
+            zamowienie.ukonczone = True
+            emailZamowienia(uzytkownik.email, zamowienie)
+            db.session.commit()
+            flash(f'Zamówienie zostało złożone', 'success');
+            print('Zamówienie zostało złożone')
+            return redirect(url_for('sklep'))
     flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
     print('Zamówienie nie zostało złożone - wypełnij brakujące dane')
     return redirect(url_for('zamowienie'))

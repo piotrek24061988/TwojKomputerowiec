@@ -11,7 +11,7 @@ for(var i = 0; i < updateBtns.length; i++) {
         if(userAuth == 'True') {
             updateUserBin(productId, action);
         } else {
-            console.log("user not authenticated - please log in");
+            console.log("user not authenticated");
             addCookieItem(productId, action);
         }
     })
@@ -26,9 +26,8 @@ for(var i = 0; i < orderBtn.length; i++) {
         if(userAuth == 'True') {
             processOrder(orderId, action);
         } else {
-            console.log("user not authenticated - please log in");
-            processOrder(999, "order");//narazie tymczasowo
-
+            console.log("user not authenticated");
+            processOrder(999, 'order');//niezalogowany uzytkownik
         }
     })
 }
@@ -91,7 +90,7 @@ function updateUserBin(productId, action) {
 }
 
 function processOrder(orderId, action) {
-    console.log("user authenticated - processing order");
+    console.log("processing order");
     console.log("csrftoken:" + csrftoken);
     var form = document.getElementById('orderForm');
     var FormData = {
