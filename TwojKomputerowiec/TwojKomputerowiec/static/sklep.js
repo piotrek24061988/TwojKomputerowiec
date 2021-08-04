@@ -27,6 +27,8 @@ for(var i = 0; i < orderBtn.length; i++) {
             processOrder(orderId, action);
         } else {
             console.log("user not authenticated - please log in");
+            processOrder(999, "order");//narazie tymczasowo
+
         }
     })
 }
@@ -117,10 +119,13 @@ function processOrder(orderId, action) {
     }
 
     console.log("FormData", FormData);
+    console.log("orderId", orderId);
 
     url='';
     if(action == 'order') {
         url = '/procesujZamowienie/' + orderId;
+    } else {
+        console.log("zla akcja");
     }
 
     fetch(url, {
@@ -133,6 +138,8 @@ function processOrder(orderId, action) {
     })
 
     .then((data) => {
+        cart = {}
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
         location.reload()
     })
 }
