@@ -203,7 +203,7 @@ def produkt(produkt_id):
 
 @app.route('/dodajDoKosza/<int:produkt_id>', methods=['GET', 'POST'])
 @app.route('/addToBin/<int:produkt_id>', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def dodajDoKosza(produkt_id):
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -223,13 +223,14 @@ def dodajDoKosza(produkt_id):
         else:
             flash(f'Produkt nie został dodany - problem z kontem użytkownika', 'danger')
     else:
-        flash(f'Produkt nie został dodany - zaloguj się', 'danger')
+        #flash(f'Produkt nie został dodany - zaloguj się', 'danger')
+        print('Produkt nie został dodany - zaloguj się')
     return redirect(url_for('sklep'))
 
 
 @app.route('/zwiekszKosz/<int:produkt_id>', methods=['GET', 'POST'])
 @app.route('/binIncrement/<int:produkt_id>', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def zwiekszKosz(produkt_id):
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -249,13 +250,14 @@ def zwiekszKosz(produkt_id):
         else:
             flash(f'Kosz nie został zwiekszony - problem z kontem użytkownika', 'danger')
     else:
-        flash(f'Kosz nie został zwiekszony - zaloguj się', 'danger')
+        #flash(f'Kosz nie został zwiekszony - zaloguj się', 'danger')
+        print('Kosz nie został zwiekszony - zaloguj się')
     return redirect(url_for('karta'))
 
 
 @app.route('/zmniejszKosz/<int:produkt_id>', methods=['GET', 'POST'])
 @app.route('/binDecrement/<int:produkt_id>', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def zmniejszKosz(produkt_id):
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -278,7 +280,8 @@ def zmniejszKosz(produkt_id):
         else:
             flash(f'Kosz nie został zmniejszony - problem z kontem użytkownika', 'danger')
     else:
-        flash(f'Kosz nie został zmniejszony - zaloguj się', 'danger')
+        #flash(f'Kosz nie został zmniejszony - zaloguj się', 'danger')
+        print('Kosz nie został zmniejszony - zaloguj się')
     return redirect(url_for('karta'))
 
 
@@ -372,7 +375,7 @@ def procesujZamowienie(order_id):
             else:
                 brakWBazie = True
     #czesc wspolna obslugi zalogowanego i niezalogowanego uzytkownika
-    if zamowienie and zamowienie.tylkoCyfrowe:
+    if zamowienie and zamowienie.tylkoCyfrowe and current_user.is_authenticated:
         adresDostawy.numer = adresDostawy.adres = adresDostawy.kod = adresDostawy.miasto = 'cyfrowe'
     if not brakWBazie and zamowienie and zamowienie.lacznaCena:
         if 'form_data' in request.json:

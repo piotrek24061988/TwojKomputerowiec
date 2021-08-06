@@ -26,7 +26,7 @@
                         <h5>cena: {{'%0.2f'|format(produkt.cena|float)}} zł</h5>
                         <h6>ilość w magazynie: {{ produkt.ilosc }}</h6>
                         {% if produkt.ilosc > 0 %}
-                            <a class="btn btn-outline-secondary w-100 my-1 update-cart" href="{{ url_for('dodajDoKosza', produkt_id=produkt.id) }}">do koszyka</a>
+                            <a class="btn btn-outline-secondary w-100 my-1 update-cart update-cart1" data-product={{ produkt.id }} data-action="add" href="{{ url_for('dodajDoKosza', produkt_id=produkt.id) }}">do koszyka</a>
                             <button data-product={{ produkt.id }} data-action="add" class="btn btn-outline-secondary w-100 my-1 update-cart2">do koszyka2</button>
                         {% else %}
                             <a class="btn btn-danger w-100 my-1 update-cart">wyprzedano</a>

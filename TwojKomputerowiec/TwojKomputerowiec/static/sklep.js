@@ -1,9 +1,25 @@
 var userAuth = userAuthenticated
-var updateBtns = document.getElementsByClassName('update-cart2');
+var updateBtns1 = document.getElementsByClassName('update-cart1');
+var updateBtns2 = document.getElementsByClassName('update-cart2');
 var orderBtn = document.getElementsByClassName('process-order');
 
-for(var i = 0; i < updateBtns.length; i++) {
-    updateBtns[i].addEventListener('click', function(){
+for(var i = 0; i < updateBtns1.length; i++) {
+    updateBtns1[i].addEventListener('click', function(){
+        var productId = this.dataset.product;
+        var action = this.dataset.action;
+        console.log("productId: " + productId  + ", userAuthenticated: " +  userAuth);
+
+        if(userAuth == 'True') {
+            console.log("user authenticated do nothing");
+        } else {
+            console.log("user not authenticated");
+            addCookieItem(productId, action);
+        }
+    })
+}
+
+for(var i = 0; i < updateBtns2.length; i++) {
+    updateBtns2[i].addEventListener('click', function(){
         var productId = this.dataset.product;
         var action = this.dataset.action;
         console.log("productId: " + productId  + ", userAuthenticated: " +  userAuth);
@@ -92,6 +108,7 @@ function updateUserBin(productId, action) {
 function processOrder(orderId, action) {
     console.log("processing order");
     console.log("csrftoken:" + csrftoken);
+    var brakDanych = new Boolean(false);
     var form = document.getElementById('orderForm');
     var FormData = {
         'platnosc': null,
@@ -106,15 +123,23 @@ function processOrder(orderId, action) {
     FormData.uwagi = form.uwagi.value;
     if(form.adres){
         FormData.adres = form.adres.value;
+    } else {
+        brakDanych = true;
     }
     if(form.miasto){
         FormData.miasto = form.miasto.value;
+    } else {
+        brakDanych = true;
     }
     if(form.kod) {
         FormData.kod = form.kod.value;
+    } else {
+        brakDanych = true;
     }
     if(form.numer){
         FormData.numer = form.numer.value;
+    } else {
+        brakDanych = true;
     }
 
     console.log("FormData", FormData);
@@ -137,8 +162,16 @@ function processOrder(orderId, action) {
     })
 
     .then((data) => {
+        console.log("promise done")
+        if(!brakDanych) {
+            cart = {}
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+        }
+        location.reload()
+    }, reason => {
+        console.log("promise not done")
+        console.error(reason)
         cart = {}
         document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-        location.reload()
     })
 }
