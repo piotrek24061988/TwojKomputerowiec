@@ -105,10 +105,17 @@
                     </div>
                 </fieldset>
                 <div class="form-group text-center">
-                    {{ form.potwierdzenie(class="btn btn-outline-secondary process-order") }}
+                {% if current_user.is_authenticated %}
+                    {{ form.potwierdzenie(class="btn btn-outline-secondary process-order1") }}
+                {% endif %}
                 </div>
             </form>
-            <button data-order={{ zamowienie.id }} data-action="order" class="btn btn-outline-secondary w-100 text-light my-1 process-order">Potwierdz zamówienie 2</button>
+            <div class="form-group text-center">
+            {% if not current_user.is_authenticated %}
+                <button class="btn btn-outline-secondary process-order1">Potwierdz zamówienie 1</button>
+            {% endif %}
+            </div>
+            <button data-order={{ zamowienie.id }} data-action="order" class="btn btn-outline-secondary w-100 text-light my-1 process-order2">Potwierdz zamówienie 2</button>
         </div>
     </div>
 

@@ -1,7 +1,8 @@
 var userAuth = userAuthenticated
 var updateBtns1 = document.getElementsByClassName('update-cart1');
 var updateBtns2 = document.getElementsByClassName('update-cart2');
-var orderBtn = document.getElementsByClassName('process-order');
+var orderBtn1 = document.getElementsByClassName('process-order1');
+var orderBtn2 = document.getElementsByClassName('process-order2');
 
 for(var i = 0; i < updateBtns1.length; i++) {
     updateBtns1[i].addEventListener('click', function(){
@@ -33,8 +34,23 @@ for(var i = 0; i < updateBtns2.length; i++) {
     })
 }
 
-for(var i = 0; i < orderBtn.length; i++) {
-    orderBtn[i].addEventListener('click', function(){
+for(var i = 0; i < orderBtn1.length; i++) {
+    orderBtn1[i].addEventListener('click', function(){
+        var orderId = this.dataset.order;
+        var action = this.dataset.action;
+        console.log("orderId: " + orderId + ", action: " + action);
+
+        if(userAuth == 'True') {
+            console.log("user authenticated do nothing");
+        } else {
+            console.log("user not authenticated");
+            processOrder(999, 'order');//niezalogowany uzytkownik
+        }
+    })
+}
+
+for(var i = 0; i < orderBtn2.length; i++) {
+    orderBtn2[i].addEventListener('click', function(){
         var orderId = this.dataset.order;
         var action = this.dataset.action;
         console.log("orderId: " + orderId + ", action: " + action);
@@ -108,7 +124,7 @@ function updateUserBin(productId, action) {
 function processOrder(orderId, action) {
     console.log("processing order");
     console.log("csrftoken:" + csrftoken);
-    var brakDanych = new Boolean(false);
+    var brakDanych = Boolean(false);
     var form = document.getElementById('orderForm');
     var FormData = {
         'platnosc': null,
@@ -121,22 +137,22 @@ function processOrder(orderId, action) {
 
     FormData.platnosc = form.platnosc.value;
     FormData.uwagi = form.uwagi.value;
-    if(form.adres){
+    if(form.adres.value){
         FormData.adres = form.adres.value;
     } else {
         brakDanych = true;
     }
-    if(form.miasto){
+    if(form.miasto.value){
         FormData.miasto = form.miasto.value;
     } else {
         brakDanych = true;
     }
-    if(form.kod) {
+    if(form.kod.value) {
         FormData.kod = form.kod.value;
     } else {
         brakDanych = true;
     }
-    if(form.numer){
+    if(form.numer.value){
         FormData.numer = form.numer.value;
     } else {
         brakDanych = true;
@@ -163,7 +179,11 @@ function processOrder(orderId, action) {
 
     .then((data) => {
         console.log("promise done")
-        if(!brakDanych) {
+        console.log(data)
+        if(brakDanych) {
+          console.log("cookies not cleared missing data")
+        } else {
+            console.log("cookies cleared")
             cart = {}
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
         }
@@ -171,7 +191,5 @@ function processOrder(orderId, action) {
     }, reason => {
         console.log("promise not done")
         console.error(reason)
-        cart = {}
-        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
     })
 }

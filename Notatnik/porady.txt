@@ -1,14 +1,16 @@
 1) Reset cache firefoxa:
 - Shift + F5
-2) Znalezc zombie proces Flaska i zabic
+2) Zwalnianie portu
+    kill -9 $(lsof -t -i:5000)
+3) Znalezc zombie proces Flaska i zabic
 - ps -efa | grep flask
 - kill -9 pid
-3) Flask utworzenie bazy danych
+4) Flask utworzenie bazy danych
 - export FLASK_APP=twojKomputerowiec.py
 - flask db init
 - flask db migrate
 - flask db upgrade
-4) Używanie REST API
+5) Używanie REST API
 - curl http://piotrek24061988.pythonanywhere.com/autor
 - curl http://piotrek24061988.pythonanywhere.com/email
 - curl -H "Content-Type: application/json" -X POST -d '{"name": "piotrek", "kontakt": "mieciu@gmail.com"}' http://piotrek24061988.pythonanywhere.com/email

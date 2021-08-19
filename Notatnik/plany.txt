@@ -3,3 +3,9 @@
 3) Prezentacja o automated tests
 4) Testy sklepu zalogowany i niezalogowany użytkownik
 git diff HEAD~7 HEAD --name-only
+5!!!)Zamowienie ma zablokowany submit form dla niezalogowanych uzytkownikow.
+    W przeciwnim razie onsubmit sciga sie z javascript przypisanym do obslugi
+    przycisku niezalogowane uzytkownika i "fetch" failuje i nie dziala zamawianie
+    dla niezalogowanych uzytkownikow
+    Przy zablokowanym submicie w htmlu dla niezalogowanego uzytkowniak nie ma wyscigu
+    i wszystko dziala.
