@@ -394,8 +394,9 @@ def procesujZamowienie(order_id):
             print('Zamówienie zostało złożone')
             return redirect(url_for('sklep'))
         else:
-            #jesli zamowienie nie zostalo ukonczone to posporzataj
-            usunDaneZamowienia(zamowienie)
+            #jesli zamowienie nie zostalo ukonczone dla goscia to posporzataj
+            if not current_user.is_authenticated:
+                usunDaneZamowienia(zamowienie)
     flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
     print('Zamówienie nie zostało złożone - wypełnij brakujące dane')
     return redirect(url_for('zamowienie'))
