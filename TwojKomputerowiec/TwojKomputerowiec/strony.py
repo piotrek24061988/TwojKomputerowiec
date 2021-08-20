@@ -364,7 +364,6 @@ def procesujZamowienie(order_id):
                 obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id,
                 ilosc=obiektZamowieniaCiasteczka['ilosc'], produkt_id=obiektZamowieniaCiasteczka['produkt'].id)
                 produkt.ilosc = produkt.ilosc - obiektZamowieniaCiasteczka['ilosc']
-                print(produkt.tytul + ", ilosc: " + str(produkt.ilosc))
                 db.session.commit()
             else:
                 brakWBazie = True
