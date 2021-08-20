@@ -137,22 +137,22 @@ function processOrder(orderId, action) {
 
     FormData.platnosc = form.platnosc.value;
     FormData.uwagi = form.uwagi.value;
-    if(form.adres.value){
+    if(form.adres && form.adres.value){
         FormData.adres = form.adres.value;
     } else {
         brakDanych = true;
     }
-    if(form.miasto.value){
+    if(form.miasto && form.miasto.value){
         FormData.miasto = form.miasto.value;
     } else {
         brakDanych = true;
     }
-    if(form.kod.value) {
+    if(form.kod && form.kod.value) {
         FormData.kod = form.kod.value;
     } else {
         brakDanych = true;
     }
-    if(form.numer.value){
+    if(form.numer && form.numer.value){
         FormData.numer = form.numer.value;
     } else {
         brakDanych = true;
