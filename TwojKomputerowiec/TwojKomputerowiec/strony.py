@@ -492,6 +492,11 @@ def usunZamowienie(zamowienie_id):
     if Konfiguracja.MAIL_USERNAME != current_user.email:
         abort(403)
     for obiekt in zamowienie.obiektZamowienia:
+        #jesli kasowane nieukonczone zamowienie to jego produkty
+        #wracaja na stan sklepu
+        if not zamowienie.ukonczone:
+            produkt = Produkt.query.get_or_404(obiekt.produkt_id)
+            produkt.ilosc += obiekt.ilosc
         db.session.delete(obiekt)
     for adres in zamowienie.adresDostawy:
         db.session.delete(adres)
