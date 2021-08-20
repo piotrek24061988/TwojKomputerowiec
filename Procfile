@@ -1,1 +1,1 @@
-web: cd TwojKomputerowiec && export FLASK_APP=twojKomputerowiec.py && flask db init && flask db migrate && flask db upgrade && python3 testyModeli.py && python3 testyStron.py && gunicorn TwojKomputerowiec:app
+web: cd TwojKomputerowiec && export FLASK_APP=twojKomputerowiec.py && rm -f migrations  && rm -f TwojKomputerowiec/strona.db && flask db init && flask db migrate && flask db upgrade && python3 testyModeli.py && python3 testyStron.py && gunicorn TwojKomputerowiec:app
