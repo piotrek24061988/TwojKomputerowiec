@@ -203,7 +203,6 @@ def produkt(produkt_id):
 
 @app.route('/dodajDoKosza/<int:produkt_id>', methods=['GET', 'POST'])
 @app.route('/addToBin/<int:produkt_id>', methods=['GET', 'POST'])
-#@login_required
 def dodajDoKosza(produkt_id):
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -223,14 +222,12 @@ def dodajDoKosza(produkt_id):
         else:
             flash(f'Produkt nie został dodany - problem z kontem użytkownika', 'danger')
     else:
-        #flash(f'Produkt nie został dodany - zaloguj się', 'danger')
         print('Produkt nie został dodany - zaloguj się')
     return redirect(url_for('sklep'))
 
 
 @app.route('/zwiekszKosz/<int:produkt_id>', methods=['GET', 'POST'])
 @app.route('/binIncrement/<int:produkt_id>', methods=['GET', 'POST'])
-#@login_required
 def zwiekszKosz(produkt_id):
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -250,14 +247,12 @@ def zwiekszKosz(produkt_id):
         else:
             flash(f'Kosz nie został zwiekszony - problem z kontem użytkownika', 'danger')
     else:
-        #flash(f'Kosz nie został zwiekszony - zaloguj się', 'danger')
         print('Kosz nie został zwiekszony - zaloguj się')
     return redirect(url_for('karta'))
 
 
 @app.route('/zmniejszKosz/<int:produkt_id>', methods=['GET', 'POST'])
 @app.route('/binDecrement/<int:produkt_id>', methods=['GET', 'POST'])
-#@login_required
 def zmniejszKosz(produkt_id):
     if current_user.is_authenticated:
         uzytkownik = Uzytkownik.query.filter_by(email=current_user.email).first()
@@ -280,14 +275,12 @@ def zmniejszKosz(produkt_id):
         else:
             flash(f'Kosz nie został zmniejszony - problem z kontem użytkownika', 'danger')
     else:
-        #flash(f'Kosz nie został zmniejszony - zaloguj się', 'danger')
         print('Kosz nie został zmniejszony - zaloguj się')
     return redirect(url_for('karta'))
 
 
 @app.route('/karta')
 @app.route('/card')
-#@login_required
 def karta():
     zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     #obsluga zalogowanego uzytkownika
@@ -304,7 +297,6 @@ def karta():
 
 @app.route('/zamowienie', methods=['GET', 'POST'])
 @app.route('/order', methods=['GET', 'POST'])
-#@login_required
 def zamowienie():
     zamowienie = {'iloscProduktow': 0, 'lacznaCena': 0, 'obiektZamowienia': []}
     formularz = FormularzPotwierdzeniaZamowienia()
@@ -344,9 +336,9 @@ def zamowienie():
         zamowienie = przetworzCiasteczkaZamowienia(request)
     return render_template('zamowienie.html', zamowienie=zamowienie, form=formularz)
 
+
 @app.route('/procesujZamowienie/<int:order_id>', methods=['POST'])
 @app.route('/processOrder/<int:order_id>', methods=['POST'])
-#@login_required
 def procesujZamowienie(order_id):
     #obsluga zalogowanego uzytkownika
     zamowienie = None
@@ -372,6 +364,8 @@ def procesujZamowienie(order_id):
                 obiektZamowienia = get_or_create(session=db.session, model=ObiektZamowienia, zamowienie_id=zamowienie.id,
                 ilosc=obiektZamowieniaCiasteczka['ilosc'], produkt_id=obiektZamowieniaCiasteczka['produkt'].id)
                 produkt.ilosc = produkt.ilosc - obiektZamowieniaCiasteczka['ilosc']
+                print(produkt.tytul + ", ilosc: " + str(produkt.ilosc))
+                db.session.commit()
             else:
                 brakWBazie = True
     #czesc wspolna obslugi zalogowanego i niezalogowanego uzytkownika
@@ -399,6 +393,9 @@ def procesujZamowienie(order_id):
             flash(f'Zamówienie zostało złożone', 'success');
             print('Zamówienie zostało złożone')
             return redirect(url_for('sklep'))
+        else:
+            #jesli zamowienie nie zostalo ukonczone to posporzataj
+            usunDaneZamowienia(zamowienie)
     flash(f'Zamówienie nie zostało złożone - wypełnij brakujące dane', 'danger')
     print('Zamówienie nie zostało złożone - wypełnij brakujące dane')
     return redirect(url_for('zamowienie'))
@@ -484,13 +481,10 @@ def historiaZamowienia(zamowienie_id):
     return render_template('historiaZamowienia.html', zamowienie=zamowienie, admin=Konfiguracja.MAIL_USERNAME)
 
 
-@app.route('/usunZamowienie/<int:zamowienie_id>', methods=['GET','POST'])
-@app.route('/deleteOrder/<int:zamowienie_id>', methods=['GET', 'POST'])
-@login_required
-def usunZamowienie(zamowienie_id):
-    zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
-    if Konfiguracja.MAIL_USERNAME != current_user.email:
-        abort(403)
+#Sprzata dane zamowienia takie jak powiazane
+#produkty i adresy oraz przywraca na stan sklepu
+#produkty dla nieukonczonego zamowienia
+def usunDaneZamowienia(zamowienie):
     for obiekt in zamowienie.obiektZamowienia:
         #jesli kasowane nieukonczone zamowienie to jego produkty
         #wracaja na stan sklepu
@@ -502,6 +496,16 @@ def usunZamowienie(zamowienie_id):
         db.session.delete(adres)
     db.session.delete(zamowienie)
     db.session.commit()
+
+
+@app.route('/usunZamowienie/<int:zamowienie_id>', methods=['GET','POST'])
+@app.route('/deleteOrder/<int:zamowienie_id>', methods=['GET', 'POST'])
+@login_required
+def usunZamowienie(zamowienie_id):
+    zamowienie = Zamowienie.query.get_or_404(zamowienie_id)
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    usunDaneZamowienia(zamowienie)
     flash(f'Zamowienie zostało usunięte', 'success')
     return redirect(url_for('historiaZamowien'))
 
