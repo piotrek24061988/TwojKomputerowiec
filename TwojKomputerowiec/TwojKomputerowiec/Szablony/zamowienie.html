@@ -112,10 +112,10 @@
             </form>
             <div class="form-group text-center">
             {% if not current_user.is_authenticated %}
-                <button class="btn btn-outline-secondary process-order1">Potwierdz zamówienie 1</button>
+                <button class="btn btn-outline-secondary process-order1">Potwierdz zamówienie</button>
             {% endif %}
             </div>
-            <button data-order={{ zamowienie.id }} data-action="order" class="btn btn-outline-secondary w-100 text-light my-1 process-order2">Potwierdz zamówienie 2</button>
+            <button data-order={{ zamowienie.id }} data-action="order" class="btn btn-outline-secondary w-100 text-light my-1 process-order2">Potwierdz zamówienie</button>
         </div>
     </div>
 
