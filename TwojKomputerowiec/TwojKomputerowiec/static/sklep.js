@@ -187,7 +187,9 @@ function processOrder(orderId, action) {
             cart = {}
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
         }
-        location.reload()
+        location.reload(true)
+        alert("zamówienie zrealizowane")
+        window.location.href = '/sklep'
     }, reason => {
         console.log("promise not done")
         console.error(reason)
