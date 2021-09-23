@@ -16,3 +16,6 @@ class Konfiguracja:
     PATH_SHOP = 'static/media/sklep'
     #SERVER_URL = 'http://piotrek24061988.pythonanywhere.com'
     SERVER_URL = 'https://www.twojkomputerowiec.bydgoszcz.pl'
+    STORAGE_NAME = 'do08cz1nj'
+    STORAGE_KEY = '311767175853995'
+    STORAGE_SEC = 'M_ApqE5rBoqTHpY94c9exAVmn0M'

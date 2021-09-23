@@ -6,6 +6,7 @@ from TwojKomputerowiec.modele import *
 from TwojKomputerowiec.przydatne import *
 from TwojKomputerowiec.konfiguracja import Konfiguracja
 import string, random
+import cloudinary, cloudinary.uploader
 
 
 @app.route('/')
@@ -698,7 +699,14 @@ def noweHaslo(token):
 @app.route('/testowa')
 @app.route('/test')
 def testowa():
-    return render_template('testowa.html')
+    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:image').execute()
+    #print(result)
+    images = []
+    for resource in result['resources']:
+        print(resource.get("url"))
+        images.append(resource.get("url"))
+    print(images)
+    return render_template('testowa.html', images=images)
 
 
 @app.errorhandler(404)

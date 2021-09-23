@@ -9,6 +9,7 @@ from flask_login import current_user
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from TwojKomputerowiec.konfiguracja import Konfiguracja
+import cloudinary
 
 
 app = Flask(__name__, template_folder=Konfiguracja.TEMPLATE_FOLDER)
@@ -25,7 +26,7 @@ bcrypt = Bcrypt(app)
 mail = Mail(app)
 api = Api(app)
 admin = Admin(app, name='', index_view=AdminIndexView(name='Admin'))
-
+cloudinary.config(cloud_name=Konfiguracja.STORAGE_NAME, api_key=Konfiguracja.STORAGE_KEY, api_secret=Konfiguracja.STORAGE_SEC)
 
 class AdminModelView(ModelView):
     def is_accessible(self):
