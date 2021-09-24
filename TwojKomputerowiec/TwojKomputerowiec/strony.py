@@ -696,17 +696,43 @@ def noweHaslo(token):
     return render_template('utworzenieNowegoHasla.html', title='Utwórz nowe hasło', form=formularz)
 
 
+@app.route('/pliki')
+@app.route('/files')
+def pliki():
+    images = []
+    videos = []
+    files = []
+    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:image').with_field('context').execute()
+    for resource in result['resources']:
+        url = resource.get("url")
+        title = None
+        if resource.get("context"):
+            title = resource.get("context").get('caption')
+        images.append({'url': url, 'title': title})
+    print(images)
+    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:video').with_field('context').execute()
+    for resource in result['resources']:
+        url = resource.get("url")
+        title = None
+        if resource.get("context"):
+            title = resource.get("context").get('caption')
+        videos.append({'url': url, 'title': title})
+    print(videos)
+    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:raw').with_field('context').execute()
+    for resource in result['resources']:
+        url = resource.get("url")
+        title = None
+        if resource.get("context"):
+            title = resource.get("context").get('caption')
+        files.append({'url': url, 'title': title})
+    print(files)
+    return render_template('pliki.html', images=images, videos=videos, files=files)
+
+
 @app.route('/testowa')
 @app.route('/test')
 def testowa():
-    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:image').execute()
-    #print(result)
-    images = []
-    for resource in result['resources']:
-        print(resource.get("url"))
-        images.append(resource.get("url"))
-    print(images)
-    return render_template('testowa.html', images=images)
+    return render_template('testowa.html')
 
 
 @app.errorhandler(404)

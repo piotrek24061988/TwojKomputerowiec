@@ -5,39 +5,7 @@
 {% endblock %}
 
 {% block cialo %}
-<div class="container">
-        <div class="row">
-                <div class="col-md-9">
+<div>
 
-                        <div class="row">
-                                {% for image in images %}
-                                <div class="col-xl-4 col-md-6 mb-1 float-left">
-                                        <figure class="border text-center rounded content-section">
-                                                <a href="{{image}}" target="_blank">
-                                                        <img src="{{image}}"
-                                                             class="img-fluid galeryimg">
-                                                <figcaption class="text-light">"lorem ipsum"</figcaption>
-                                                </a>
-                                        </figure>
-                                </div>
-                                {% endfor %}
-                        </div>
-
-                </div>
-
-                <div class="col-md-3">
-                        <div class="content-section">
-                                <h3>Menu Plików</h3>
-                                <ul class="list-group">
-                                        {% if current_user.is_authenticated  %}
-                                        {% if current_user.email == admin %}
-                                        <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieZdjecia') }}">Dodaj plik</a li>
-                                        {% endif %}
-                                        {% endif %}
-                                </ul>
-                        </div>
-                </div>
-
-        </div>
 </div>
 {% endblock %}

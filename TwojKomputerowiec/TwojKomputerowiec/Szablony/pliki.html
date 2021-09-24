@@ -1,0 +1,77 @@
+{% extends "baza.html" %}
+
+{% block glowa %}
+        <title>Pliki</title>
+{% endblock %}
+
+{% block cialo %}
+<div class="container">
+        <div class="row">
+                <div class="col-md-9">
+
+                        <div class="row">
+                                {% for image in images %}
+                                <div class="col-xl-4 col-md-6 mb-1 float-left">
+                                        <figure class="border text-center rounded content-section">
+                                                <a href="{{image.url}}" target="_blank">
+                                                        <img src="{{image.url}}" class="img-fluid galeryimg">
+                                                {% if image.title %}
+                                                <figcaption class="text-light">{{image.title}}</figcaption>
+                                                {% endif %}
+                                                </a>
+                                        </figure>
+                                </div>
+                                {% endfor %}
+                        </div>
+
+                        <div class="row">
+                                {% for video in videos %}
+                                <div class="col-xl-6 mb-1 float-left">
+                                        <figure class="border text-center rounded content-section">
+                                                <a href="{{video.url}}" target="_blank">
+                                                        <iframe src="{{video.url}}" class="img-fluid galeryimg" frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                allowfullscreen>
+                                                        </iframe>
+                                                        {% if video.title %}
+                                                        <figcaption class="text-light">{{video.title}}</figcaption>
+                                                        {% endif %}
+                                                </a>
+                                        </figure>
+                                </div>
+                                {% endfor %}
+                        </div>
+
+                        <div class="row">
+                                {% for file in files %}
+                                <div class="col-xl-3 col-md-4 mb-1 float-left">
+                                        <figure class="border text-center rounded content-section">
+                                                <a href="{{file.url}}" download>
+                                                        <img class="img-fluid galeryimg" src="{{ url_for('static', filename='/media/ikony/download.png') }}">
+                                                        {% if file.title %}
+                                                                <figcaption class="text-light">{{file.title}}</figcaption>
+                                                        {% endif %}
+                                                </a>
+                                        </figure>
+                                </div>
+                                {% endfor %}
+                        </div>
+
+                </div>
+
+                <div class="col-md-3">
+                        <div class="content-section">
+                                <h3>Menu Plików</h3>
+                                <ul class="list-group">
+                                        {% if current_user.is_authenticated  %}
+                                        {% if current_user.email == admin %}
+                                        <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieZdjecia') }}">Dodaj plik</a li>
+                                        {% endif %}
+                                        {% endif %}
+                                </ul>
+                        </div>
+                </div>
+
+        </div>
+</div>
+{% endblock %}
