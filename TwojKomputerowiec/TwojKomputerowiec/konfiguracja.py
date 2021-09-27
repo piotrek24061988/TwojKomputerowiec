@@ -19,4 +19,6 @@ class Konfiguracja:
     STORAGE_NAME = 'do08cz1nj'
     STORAGE_KEY = '311767175853995'
     STORAGE_SEC = 'M_ApqE5rBoqTHpY94c9exAVmn0M'
+    STORAGE_PROXY = ''
     STORAGE_FOLDER = 'twojkomputerowiec'
+

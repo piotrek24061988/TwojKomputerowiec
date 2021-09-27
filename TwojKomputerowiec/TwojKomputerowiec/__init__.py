@@ -9,7 +9,12 @@ from flask_login import current_user
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from TwojKomputerowiec.konfiguracja import Konfiguracja
-import cloudinary
+import os
+CLOUDINARY_URL = "cloudinary://" + Konfiguracja.STORAGE_KEY + ":" + Konfiguracja.STORAGE_SEC + "@" + Konfiguracja.STORAGE_NAME
+if Konfiguracja.STORAGE_PROXY:
+    CLOUDINARY_URL = CLOUDINARY_URL + "?api_proxy=" + Konfiguracja.STORAGE_PROXY
+
+os.environ["CLOUDINARY_URL"] = CLOUDINARY_URL
 
 
 app = Flask(__name__, template_folder=Konfiguracja.TEMPLATE_FOLDER)
@@ -26,7 +31,7 @@ bcrypt = Bcrypt(app)
 mail = Mail(app)
 api = Api(app)
 admin = Admin(app, name='', index_view=AdminIndexView(name='Admin'))
-cloudinary.config(cloud_name=Konfiguracja.STORAGE_NAME, api_key=Konfiguracja.STORAGE_KEY, api_secret=Konfiguracja.STORAGE_SEC)
+
 
 class AdminModelView(ModelView):
     def is_accessible(self):
@@ -36,5 +41,9 @@ class AdminModelView(ModelView):
         # redirect to login page if user doesn't have access
         return redirect(url_for('logowanie'))
 
-
+import cloudinary
+if Konfiguracja.STORAGE_PROXY:
+    cloudinary.config(cloud_name=Konfiguracja.STORAGE_NAME, api_key=Konfiguracja.STORAGE_KEY, api_secret=Konfiguracja.STORAGE_SEC, api_proxy=Konfiguracja.STORAGE_PROXY)
+else:
+    cloudinary.config(cloud_name=Konfiguracja.STORAGE_NAME, api_key=Konfiguracja.STORAGE_KEY, api_secret=Konfiguracja.STORAGE_SEC)
 from TwojKomputerowiec import strony, restApi
