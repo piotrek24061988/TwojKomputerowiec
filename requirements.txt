@@ -12,3 +12,4 @@ Flask-Admin==1.5.8
 Pillow==7.0.0
 requests==2.23.0
 gunicorn==19.9.0
+cloudinary==1.26.0

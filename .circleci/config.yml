@@ -22,6 +22,7 @@ jobs:
             pip install flask-mail
             pip install flask-migrate
             pip install Flask-RESTful
+            pip install cloudinary
       - run:
           command: |
             cd TwojKomputerowiec

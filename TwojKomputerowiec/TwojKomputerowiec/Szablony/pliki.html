@@ -9,6 +9,11 @@
         <div class="row">
                 <div class="col-md-9">
 
+                        {% if images %}
+                        <div class="border-top">
+                                <h3 class="text-center mt-1">zdjęcia</h3>
+                        </div>
+                        {% endif %}
                         <div class="row">
                                 {% for image in images %}
                                 <div class="col-xl-4 col-md-6 mb-1 float-left">
@@ -24,6 +29,11 @@
                                 {% endfor %}
                         </div>
 
+                        {% if videos %}
+                        <div class="border-top">
+                                <h3 class="text-center mt-1">filmy</h3>
+                        </div>
+                        {% endif %}
                         <div class="row">
                                 {% for video in videos %}
                                 <div class="col-xl-6 mb-1 float-left">
@@ -42,6 +52,11 @@
                                 {% endfor %}
                         </div>
 
+                        {% if files %}
+                        <div class="border-top">
+                                <h3 class="text-center mt-1">skompresowane pliki</h3>
+                        </div>
+                        {% endif %}
                         <div class="row">
                                 {% for file in files %}
                                 <div class="col-xl-3 col-md-4 mb-1 float-left">
@@ -56,16 +71,16 @@
                                 </div>
                                 {% endfor %}
                         </div>
-
+                        <div class="border-bottom"></div>
                 </div>
 
                 <div class="col-md-3">
                         <div class="content-section">
-                                <h3>Menu Plików</h3>
+                                <h3>Menu plików</h3>
                                 <ul class="list-group">
                                         {% if current_user.is_authenticated  %}
                                         {% if current_user.email == admin %}
-                                        <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodanieZdjecia') }}">Dodaj plik</a li>
+                                        <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePliku') }}">Dodaj plik</a li>
                                         {% endif %}
                                         {% endif %}
                                 </ul>

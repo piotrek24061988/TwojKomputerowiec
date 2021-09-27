@@ -700,33 +700,67 @@ def noweHaslo(token):
 @app.route('/files')
 def pliki():
     images = []
+    try:
+        result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:image').with_field('context').execute()
+    except:
+        result = None
+    if result:
+        for resource in result['resources']:
+            url = resource.get("url")
+            title = None
+            if resource.get("context"):
+                title = resource.get("context").get('caption')
+            images.append({'url': url, 'title': title})
     videos = []
+    try:
+        result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:video').with_field('context').execute()
+    except:
+        result = None
+    if result:
+        for resource in result['resources']:
+            url = resource.get("url")
+            title = None
+            if resource.get("context"):
+                title = resource.get("context").get('caption')
+            videos.append({'url': url, 'title': title})
     files = []
-    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:image').with_field('context').execute()
-    for resource in result['resources']:
-        url = resource.get("url")
-        title = None
-        if resource.get("context"):
-            title = resource.get("context").get('caption')
-        images.append({'url': url, 'title': title})
-    print(images)
-    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:video').with_field('context').execute()
-    for resource in result['resources']:
-        url = resource.get("url")
-        title = None
-        if resource.get("context"):
-            title = resource.get("context").get('caption')
-        videos.append({'url': url, 'title': title})
-    print(videos)
-    result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:raw').with_field('context').execute()
-    for resource in result['resources']:
-        url = resource.get("url")
-        title = None
-        if resource.get("context"):
-            title = resource.get("context").get('caption')
-        files.append({'url': url, 'title': title})
-    print(files)
-    return render_template('pliki.html', images=images, videos=videos, files=files)
+    try:
+        result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:raw').with_field('context').execute()
+    except:
+        result = None
+    if result:
+        for resource in result['resources']:
+            url = resource.get("url")
+            title = None
+            if resource.get("context"):
+                title = resource.get("context").get('caption')
+            files.append({'url': url, 'title': title})
+    return render_template('pliki.html', images=images, videos=videos, files=files, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/nowyPlik', methods=['GET', 'POST'])
+@app.route('/addFile', methods=['GET', 'POST'])
+@login_required
+def dodaniePliku():
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzNowegoPliku()
+    if formularz.validate_on_submit():
+        niepowodzenie = False
+        if formularz.plik.data:
+            try:
+                cloudinary.uploader.upload(formularz.plik.data, folder=Konfiguracja.STORAGE_FOLDER, resource_type=formularz.rodzaj.data,
+                                            context="alt=" + formularz.opis.data + "|caption=" + formularz.tytul.data)
+            except:
+                niepowodzenie = "serwer rzucił wyjątek"
+        else:
+            niepowodzenie = "niekompletny formularz"
+        if not niepowodzenie:
+            flash(f'plik został dodany', 'success')
+        else:
+            flash(f'plik nie został dodany: ' + niepowodzenie, 'danger')
+        return redirect(url_for('pliki'))
+    return render_template('nowyPlik.html', title='Nowy plik', form=formularz)
 
 
 @app.route('/testowa')

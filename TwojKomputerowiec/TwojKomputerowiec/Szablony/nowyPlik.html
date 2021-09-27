@@ -1,0 +1,82 @@
+{% extends "baza.html" %}
+
+{% block glowa %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block cialo %}
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="content-section">
+            <form method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <h3 class="border-bottom mb-4"> {{ title }} </h3>
+                    <div class="form-group">
+                        {{ form.tytul.label(class="form-control-label") }}
+                        {% if form.tytul.errors %}
+                        {{ form.tytul(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.tytul.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.tytul(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.opis.label(class="form-control-label") }}
+                        {% if form.opis.errors %}
+                        {{ form.opis(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.opis.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.opis(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.rodzaj.label(class="form-control-label") }}
+                        {% if form.rodzaj.errors %}
+                        {{ form.rodzaj(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.rodzaj.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.rodzaj(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.plik.label(class="btn btn-outline-secondary") }}
+                        {{ form.plik(class="myinput") }}
+                        {% if form.plik.errors %}
+                        {% for error in form.plik.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.potwierdzenie(class="btn btn-outline-secondary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="content-section">
+            <h3>Menu plików</h3>
+            <ul class="list-group">
+                <a li class="list-group-item list-group-item-dark" href="{{ url_for('pliki') }}">Wróc do plików</a li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
