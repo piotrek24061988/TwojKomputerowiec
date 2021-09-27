@@ -13,7 +13,7 @@
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/formularze.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/konfiguracja.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/TwojKomputerowiec/strony.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/testCloudinary.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/cloudinaryClient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwojKomputerowiec/cloudinaryClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwojKomputerowiec/cloudinaryClient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

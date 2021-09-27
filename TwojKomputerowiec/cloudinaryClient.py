@@ -6,7 +6,7 @@ import cloudinary, cloudinary.uploader
 
 cloudinary.config(cloud_name="do08cz1nj", api_key="311767175853995", api_secret="M_ApqE5rBoqTHpY94c9exAVmn0M")
 
-result = cloudinary.uploader.upload("./testCloudinary.py", folder="twojkomputerowiec", resource_type="raw",
+result = cloudinary.uploader.upload("./cloudinaryClient.py", folder="twojkomputerowiec", resource_type="raw",
                                     context="alt=my description|caption=my title")
 print(result.get("url"))
 
