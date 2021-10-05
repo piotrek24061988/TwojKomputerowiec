@@ -46,4 +46,11 @@ if Konfiguracja.STORAGE_PROXY:
     cloudinary.config(cloud_name=Konfiguracja.STORAGE_NAME, api_key=Konfiguracja.STORAGE_KEY, api_secret=Konfiguracja.STORAGE_SEC, api_proxy=Konfiguracja.STORAGE_PROXY)
 else:
     cloudinary.config(cloud_name=Konfiguracja.STORAGE_NAME, api_key=Konfiguracja.STORAGE_KEY, api_secret=Konfiguracja.STORAGE_SEC)
+
+from imagekitio import ImageKit
+imagekit = ImageKit(
+    private_key=Konfiguracja.STORAGE2_SEC,
+    public_key=Konfiguracja.STORAGE2_KEY,
+    url_endpoint='https://ik.imagekit.io/' + Konfiguracja.STORAGE2_NAME
+)
 from TwojKomputerowiec import strony, restApi

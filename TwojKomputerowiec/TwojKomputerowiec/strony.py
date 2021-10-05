@@ -1,6 +1,6 @@
 from flask import render_template, flash, url_for, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
-from TwojKomputerowiec import app, db, bcrypt
+from TwojKomputerowiec import app, db, bcrypt, imagekit
 from TwojKomputerowiec.formularze import *
 from TwojKomputerowiec.modele import *
 from TwojKomputerowiec.przydatne import *
@@ -761,6 +761,74 @@ def dodaniePliku():
             flash(f'plik nie został dodany: ' + niepowodzenie, 'danger')
         return redirect(url_for('pliki'))
     return render_template('nowyPlik.html', title='Nowy plik', form=formularz)
+
+
+@app.route('/pliki2')
+@app.route('/files2')
+def pliki2():
+    images = []
+    try:
+        results = imagekit.list_files({
+            "path": "/" + Konfiguracja.STORAGE2_FOLDER + "/",
+            "skip": 0,
+            "limit": 10,
+            "fileType": "image"
+        })
+    except:
+        results = None
+    if results:
+        if not results['error']:
+            for result in results['response']:
+                url = result.get('url')
+                tags = result.get('tags')
+                if tags and len(tags) > 1:
+                    title = tags[-1]
+                else:
+                    title = None
+                images.append({'url': url, 'title': title})
+    videos = []
+    try:
+        results = imagekit.list_files({
+            "path": "/" + Konfiguracja.STORAGE2_FOLDER + "/",
+            "skip": 0,
+            "limit": 10,
+            "fileType": "non-image",
+            "tags": "video",
+        })
+    except:
+        results = None
+    if results:
+        if not results['error']:
+            for result in results['response']:
+                url = result.get('url')
+                tags = result.get('tags')
+                if tags and len(tags) > 1:
+                    title = tags[-1]
+                else:
+                    title = None
+                videos.append({'url': url, 'title': title})
+    files = []
+    try:
+        results = imagekit.list_files({
+            "path": "/" + Konfiguracja.STORAGE2_FOLDER + "/",
+            "skip": 0,
+            "limit": 10,
+            "fileType": "non-image",
+            "tags": "raw",
+        })
+    except:
+        results = None
+    if results:
+        if not results['error']:
+            for result in results['response']:
+                url = result.get('url')
+                tags = result.get('tags')
+                if tags and len(tags) > 1:
+                    title = tags[-1]
+                else:
+                    title = None
+                files.append({'url': url, 'title': title})
+    return render_template('pliki.html', images=images, videos=videos, files=files, admin=Konfiguracja.MAIL_USERNAME)
 
 
 @app.route('/testowa')

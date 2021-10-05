@@ -21,4 +21,8 @@ class Konfiguracja:
     STORAGE_SEC = 'M_ApqE5rBoqTHpY94c9exAVmn0M'
     STORAGE_PROXY = ''
     STORAGE_FOLDER = 'twojkomputerowiec'
+    STORAGE2_NAME = 'bry5gj5urua'
+    STORAGE2_KEY = 'public_3DO66QF/NddNueQIPN2rVtp3oIE='
+    STORAGE2_SEC = 'private_/VE3e+xlNcOda8x5H0rWdJkadH8='
+    STORAGE2_FOLDER = 'twojkomputerowiec'
 
