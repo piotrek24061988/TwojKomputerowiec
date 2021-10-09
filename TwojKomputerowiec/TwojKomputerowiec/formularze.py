@@ -120,6 +120,6 @@ class FormularzPotwierdzeniaZamowienia(FlaskForm):
 class FormularzNowegoPliku(FlaskForm):
     tytul = StringField('Tytuł', validators=[DataRequired()])
     opis = StringField('Opis', validators=[DataRequired()])
-    plik = FileField('Plik do załadowania', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'tar', 'mp4'])])
-    rodzaj = RadioField('Rodzaj pliku', choices=[('image','obraz: jpg lub png'),('video','video: mp4'), ('raw','skompresowny: tar')], default='image')
+    plik = FileField('Plik do załadowania', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'wim', 'mp4'])])
+    rodzaj = RadioField('Rodzaj pliku', choices=[('image','obraz: jpg lub png'),('video','video: mp4'), ('raw','skompresowny: wim')], default='image')
     potwierdzenie = SubmitField('Dodaj plik')

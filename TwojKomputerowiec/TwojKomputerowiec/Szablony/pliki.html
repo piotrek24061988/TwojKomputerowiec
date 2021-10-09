@@ -80,7 +80,12 @@
                                 <ul class="list-group">
                                         {% if current_user.is_authenticated  %}
                                         {% if current_user.email == admin %}
-                                        <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePliku') }}">Dodaj plik</a li>
+                                        {% if request.path == '/files' %}
+                                                <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePliku') }}">Dodaj plik</a li>
+                                        {% endif %}
+                                        {% if request.path == '/files2' %}
+                                                <a li class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePliku2') }}">Dodaj plik</a li>
+                                        {% endif %}
                                         {% endif %}
                                         {% endif %}
                                 </ul>

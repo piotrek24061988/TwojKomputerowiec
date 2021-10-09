@@ -73,7 +73,12 @@
         <div class="content-section">
             <h3>Menu plików</h3>
             <ul class="list-group">
-                <a li class="list-group-item list-group-item-dark" href="{{ url_for('pliki') }}">Wróc do plików</a li>
+                {% if request.path == '/addFile' %}
+                    <a li class="list-group-item list-group-item-dark" href="{{ url_for('pliki') }}">Wróc do plików</a li>
+                {% endif %}
+                {% if request.path == '/addFile2' %}
+                    <a li class="list-group-item list-group-item-dark" href="{{ url_for('pliki2') }}">Wróc do plików</a li>
+                {% endif %}
             </ul>
         </div>
     </div>

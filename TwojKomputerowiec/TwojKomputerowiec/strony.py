@@ -831,6 +831,40 @@ def pliki2():
     return render_template('pliki.html', images=images, videos=videos, files=files, admin=Konfiguracja.MAIL_USERNAME)
 
 
+@app.route('/nowyPlik2', methods=['GET', 'POST'])
+@app.route('/addFile2', methods=['GET', 'POST'])
+@login_required
+def dodaniePliku2():
+    if Konfiguracja.MAIL_USERNAME != current_user.email:
+        abort(403)
+    formularz = FormularzNowegoPliku()
+    if formularz.validate_on_submit():
+        niepowodzenie = False
+        if formularz.plik.data:
+            try:
+                imagekit.upload_file(
+                    file=formularz.plik.data,
+                    file_name=formularz.plik.data.filename,
+                    options={
+                        "folder": Konfiguracja.STORAGE2_FOLDER,
+                        "tags": [formularz.rodzaj.data, formularz.tytul.data],
+                        "is_private_file": False,
+                        "use_unique_file_name": True,
+                        "response_fields": ["tags"],
+                    }
+                )
+            except:
+                niepowodzenie = "serwer rzucił wyjątek"
+        else:
+            niepowodzenie = "niekompletny formularz"
+        if not niepowodzenie:
+            flash(f'plik został dodany', 'success')
+        else:
+            flash(f'plik nie został dodany: ' + niepowodzenie, 'danger')
+        return redirect(url_for('pliki2'))
+    return render_template('nowyPlik.html', title='Nowy plik', form=formularz)
+
+
 @app.route('/testowa')
 @app.route('/test')
 def testowa():
