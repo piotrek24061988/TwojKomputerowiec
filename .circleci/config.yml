@@ -23,6 +23,7 @@ jobs:
             pip install flask-migrate
             pip install Flask-RESTful
             pip install cloudinary
+            pip install imagekitio
       - run:
           command: |
             cd TwojKomputerowiec
