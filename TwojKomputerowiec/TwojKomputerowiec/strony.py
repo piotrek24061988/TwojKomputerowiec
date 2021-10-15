@@ -6,7 +6,7 @@ from TwojKomputerowiec.modele import *
 from TwojKomputerowiec.przydatne import *
 from TwojKomputerowiec.konfiguracja import Konfiguracja
 import string, random
-import cloudinary, cloudinary.uploader
+import cloudinary, cloudinary.uploader, cloudinary.api
 
 
 @app.route('/')
@@ -707,10 +707,12 @@ def pliki():
     if result:
         for resource in result['resources']:
             url = resource.get("url")
+            id = resource.get("public_id")
+            id = id.replace(Konfiguracja.STORAGE_FOLDER + '/', '')
             title = None
             if resource.get("context"):
                 title = resource.get("context").get('caption')
-            images.append({'url': url, 'title': title})
+            images.append({'url': url, 'title': title, 'id': id})
     videos = []
     try:
         result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:video').with_field('context').execute()
@@ -719,10 +721,12 @@ def pliki():
     if result:
         for resource in result['resources']:
             url = resource.get("url")
+            id = resource.get("public_id")
+            id = id.replace(Konfiguracja.STORAGE_FOLDER + '/', '')
             title = None
             if resource.get("context"):
                 title = resource.get("context").get('caption')
-            videos.append({'url': url, 'title': title})
+            videos.append({'url': url, 'title': title, 'id': id})
     files = []
     try:
         result = cloudinary.Search().expression('folder:twojkomputerowiec AND resource_type:raw').with_field('context').execute()
@@ -731,11 +735,29 @@ def pliki():
     if result:
         for resource in result['resources']:
             url = resource.get("url")
+            id = resource.get("public_id")
+            id = id.replace(Konfiguracja.STORAGE_FOLDER + '/', '')
             title = None
             if resource.get("context"):
                 title = resource.get("context").get('caption')
-            files.append({'url': url, 'title': title})
+            files.append({'url': url, 'title': title, 'id': id})
     return render_template('pliki.html', images=images, videos=videos, files=files, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/usunPlik/<string:plik_id>/<string:type>')
+@app.route('/deleteFile/<string:plik_id>/<string:type>')
+def usunPlik(plik_id, type):
+    niepowodzenie = False
+    try:
+        plik_id = Konfiguracja.STORAGE_FOLDER + '/' + plik_id
+        cloudinary.api.delete_resources([plik_id], resource_type=type)
+    except:
+        niepowodzenie = "serwer rzucił wyjątek"
+    if not niepowodzenie:
+        flash(f'plik został usunięty', 'success')
+    else:
+        flash(f'plik nie został usunięty: ' + niepowodzenie, 'danger')
+    return redirect(url_for('pliki'))
 
 
 @app.route('/nowyPlik', methods=['GET', 'POST'])
@@ -781,11 +803,12 @@ def pliki2():
             for result in results['response']:
                 url = result.get('url')
                 tags = result.get('tags')
+                id = result.get('fileId')
                 if tags and len(tags) > 1:
                     title = tags[-1]
                 else:
                     title = None
-                images.append({'url': url, 'title': title})
+                images.append({'url': url, 'title': title, 'id': id})
     videos = []
     try:
         results = imagekit.list_files({
@@ -802,11 +825,12 @@ def pliki2():
             for result in results['response']:
                 url = result.get('url')
                 tags = result.get('tags')
+                id = result.get('fileId')
                 if tags and len(tags) > 1:
                     title = tags[-1]
                 else:
                     title = None
-                videos.append({'url': url, 'title': title})
+                videos.append({'url': url, 'title': title, 'id': id})
     files = []
     try:
         results = imagekit.list_files({
@@ -823,12 +847,28 @@ def pliki2():
             for result in results['response']:
                 url = result.get('url')
                 tags = result.get('tags')
+                id = result.get('fileId')
                 if tags and len(tags) > 1:
                     title = tags[-1]
                 else:
                     title = None
-                files.append({'url': url, 'title': title})
+                files.append({'url': url, 'title': title, 'id': id})
     return render_template('pliki.html', images=images, videos=videos, files=files, admin=Konfiguracja.MAIL_USERNAME)
+
+
+@app.route('/usunPlik2/<string:plik_id>')
+@app.route('/deleteFile2/<string:plik_id>')
+def usunPlik2(plik_id):
+    niepowodzenie = False
+    try:
+        imagekit.delete_file(plik_id)
+    except:
+        niepowodzenie = "serwer rzucił wyjątek"
+    if not niepowodzenie:
+        flash(f'plik został usunięty', 'success')
+    else:
+        flash(f'plik nie został usunięty: ' + niepowodzenie, 'danger')
+    return redirect(url_for('pliki2'))
 
 
 @app.route('/nowyPlik2', methods=['GET', 'POST'])

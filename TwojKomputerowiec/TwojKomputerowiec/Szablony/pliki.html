@@ -21,7 +21,17 @@
                                                 <a href="{{image.url}}" target="_blank">
                                                         <img src="{{image.url}}" class="img-fluid galeryimg">
                                                 {% if image.title %}
-                                                <figcaption class="text-light">{{image.title}}</figcaption>
+                                                        <figcaption class="text-light">{{image.title}}</figcaption>
+                                                {% endif %}
+                                                {% if current_user.is_authenticated  %}
+                                                {% if current_user.email == admin %}
+                                                {% if request.path == '/files' %}
+                                                        <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunPlik', plik_id=image.id, type='image') }}">Usuń</a>
+                                                {% endif %}
+                                                {% if request.path == '/files2' %}
+                                                        <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunPlik2', plik_id=image.id) }}">Usuń</a>
+                                                {% endif %}
+                                                {% endif %}
                                                 {% endif %}
                                                 </a>
                                         </figure>
@@ -40,11 +50,21 @@
                                         <figure class="border text-center rounded content-section">
                                                 <a href="{{video.url}}" target="_blank">
                                                         <iframe src="{{video.url}}" class="img-fluid galeryimg" frameborder="0"
-                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                                 allowfullscreen>
                                                         </iframe>
                                                         {% if video.title %}
-                                                        <figcaption class="text-light">{{video.title}}</figcaption>
+                                                                <figcaption class="text-light">{{video.title}}</figcaption>
+                                                        {% endif %}
+                                                        {% if current_user.is_authenticated  %}
+                                                        {% if current_user.email == admin %}
+                                                        {% if request.path == '/files' %}
+                                                                <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunPlik', plik_id=video.id, type='video') }}">Usuń</a>
+                                                        {% endif %}
+                                                        {% if request.path == '/files2' %}
+                                                                <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunPlik2', plik_id=video.id) }}">Usuń</a>
+                                                        {% endif %}
+                                                        {% endif %}
                                                         {% endif %}
                                                 </a>
                                         </figure>
@@ -65,6 +85,16 @@
                                                         <img class="img-fluid galeryimg" src="{{ url_for('static', filename='/media/ikony/download.png') }}">
                                                         {% if file.title %}
                                                                 <figcaption class="text-light">{{file.title}}</figcaption>
+                                                        {% endif %}
+                                                        {% if current_user.is_authenticated  %}
+                                                        {% if current_user.email == admin %}
+                                                        {% if request.path == '/files' %}
+                                                                <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunPlik', plik_id=file.id, type='raw') }}">Usuń</a>
+                                                        {% endif %}
+                                                        {% if request.path == '/files2' %}
+                                                                <a class="btn btn-outline-secondary text-light" href="{{ url_for('usunPlik2', plik_id=file.id) }}">Usuń</a>
+                                                        {% endif %}
+                                                        {% endif %}
                                                         {% endif %}
                                                 </a>
                                         </figure>
