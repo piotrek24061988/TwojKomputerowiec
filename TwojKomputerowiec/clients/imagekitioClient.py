@@ -3,6 +3,7 @@
 
 from imagekitio import ImageKit
 
+#configuration
 imagekit = ImageKit(
     private_key='private_/VE3e+xlNcOda8x5H0rWdJkadH8=',
     public_key='public_3DO66QF/NddNueQIPN2rVtp3oIE=',
@@ -24,7 +25,6 @@ imagekit.upload_file(
 )
 """
 
-"""
 #listing files
 results = imagekit.list_files({
     "path": "/twojkomputerowiec/",
@@ -53,16 +53,16 @@ results = imagekit.list_files({
 
 if not results['error']:
     for result in results['response']:
-        print(result)
         print(result.get('url'))
+        title = result.get('tags')
+        if title:
+            print(title[-1])
         print("=======================")
 else:
     print('error', results['error'])
 print("#######################")
-"""
 
 #listing videos
-#results = imagekit.list_files({'searchQuery': 'createdAt < "7d"'})
 results = imagekit.list_files({
     "path": "/twojkomputerowiec/",
     "skip": 0,
@@ -73,8 +73,10 @@ results = imagekit.list_files({
 
 if not results['error']:
     for result in results['response']:
-        #print(result)
         print(result.get('url'))
+        title = result.get('tags')
+        if title:
+            print(title[-1])
         print("=======================")
 else:
     print('error', results['error'])
