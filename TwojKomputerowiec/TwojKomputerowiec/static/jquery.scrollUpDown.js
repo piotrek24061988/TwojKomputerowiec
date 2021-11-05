@@ -4,7 +4,7 @@ $(function($)
     $('.linknr').click(function()
     {
         console.log(event.currentTarget.id)
-        $.scrollTo($('#' + event.currentTarget.id + 'cont'), 1500);
+        $.scrollTo($('#' + event.currentTarget.id + 'cont'), 1500, {offset: -100});
     });
 
     //Scroll to top when button selected

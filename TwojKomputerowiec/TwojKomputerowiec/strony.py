@@ -905,6 +905,11 @@ def dodaniePliku2():
     return render_template('nowyPlik.html', title='Nowy plik', form=formularz)
 
 
+@app.route('/aspice')
+def aspice():
+    return render_template('aspice.html')
+
+
 @app.route('/testowa')
 @app.route('/test')
 def testowa():
