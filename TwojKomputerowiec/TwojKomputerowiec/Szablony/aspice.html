@@ -683,6 +683,7 @@
                 Corresponding code should be static code analysis error free.
             </div>
             <div class="col-md-2 text-center">
+                <p><a href="#" class="linknr text-light" id="link5007">SWTEST7</a></p>
                 <p><a href="#" class="linknr text-light" id="link6002">SWARCH2</a></p>
                 <p><a href="#" class="linknr text-light" id="link6002">SWARCH3</a></p>
             </div>
@@ -695,6 +696,7 @@
                 Corresponding code should be dynamic code analysis error free.
             </div>
             <div class="col-md-2 text-center">
+                <p><a href="#" class="linknr text-light" id="link5008">SWTEST8</a></p>
                 <p><a href="#" class="linknr text-light" id="link6002">SWARCH2</a></p>
                 <p><a href="#" class="linknr text-light" id="link6002">SWARCH3</a></p>
             </div>
@@ -816,6 +818,34 @@
                 <p id="link5007cont">ID: SWTEST7</p>
             </div>
             <div class="col-md-8">
+                <p class="text-center">
+                    <a href="#" class="text-light circleci" download>click here to download</a>
+                </p>
+                <p>Downloaded file contains new static code analysis results under out/staticAnalysis</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <p><a href="#" class="linknr text-light" id="link4015">SWREQ15</a></p>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-2 text-center">
+                <p id="link5008cont">ID: SWTEST8</p>
+            </div>
+            <div class="col-md-8">
+                <p class="text-center">
+                    <a href="#" class="text-light circleci" download>click here to download</a>
+                </p>
+                <p>Downloaded file contains new dynamic code analysis results under out/dynamicAnalysis</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <p><a href="#" class="linknr text-light" id="link4016">SWREQ16</a></p>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-2 text-center">
+                <p id="link5009cont">ID: SWTEST9</p>
+            </div>
+            <div class="col-md-8">
                 ...
             </div>
             <div class="col-md-2 text-center">
@@ -823,7 +853,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 text-center">lastUsedId: SWTEST7</div>
+            <div class="col-md-12 text-center">lastUsedId: SWTEST9</div>
         </div>
     </div>
 
@@ -1994,4 +2024,19 @@
     </div>
 </div>
 </div>
+
+<script type='text/javascript'>
+        fetch('https://circleci.com/api/v1.1/project/github/piotrek24061988/AutomaticTesting/latest/artifacts')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                //Last CircleCi build artifacts link
+                artifactsLink = data['0']['url'];
+                var artifactsLinks = document.getElementsByClassName('circleci');
+                console.log(artifactsLinks);
+                for(var i = 0; i < artifactsLinks.length; i++) {
+                    artifactsLinks[i].href = artifactsLink;
+                }
+        })
+</script>
 {% endblock %}
