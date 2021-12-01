@@ -8,7 +8,7 @@ body {
   color: white;
 }
 
-.site-header .navbar-nav .dropdown-item {
+.site-header .navbar-nav .dropdown-item, .site-header .navbar-nav .btn-outline-secondary, .update-cart, .update-cart2, .form-group .btn-outline-secondary, .media-body .btn-outline-secondary {
   color: white;
   font-weight: bold;
 }
@@ -18,12 +18,7 @@ body {
   background-color: #868e96 !important;
 }
 
-.site-header .navbar-nav .btn-outline-secondary {
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.site-header .navbar-nav .btn-outline-secondary:hover {
+.site-header .navbar-nav .btn-outline-secondary:hover, .modal-content .btn-outline-secondary {
   font-weight: bold;
 }
 
@@ -36,22 +31,17 @@ body {
   box-shadow: 3px 3px 10px 2px rgba(255,255,255,1);
 }
 
-.content-section a:hover {
+.content-section a:hover, .article-metadata a:hover, a.article-title:hover {
     text-decoration: none;
-}
-
-.article-title {
-  color: #ffffff;
 }
 
 a.article-title:hover {
   color: #868e96;
-  text-decoration: none;
 }
 
 .article-content {
   white-space: pre-line;
-  color: #ffffff;
+  color: white;
 }
 
 .article-img {
@@ -64,10 +54,6 @@ a.article-title:hover {
   padding-bottom: 1px;
   margin-bottom: 4px;
   border-bottom: 1px solid #e3e3e3
-}
-
-.article-metadata a:hover {
-  text-decoration: none;
 }
 
 .article-svg {
@@ -94,55 +80,29 @@ a.article-title:hover {
   margin-bottom: 5px;
 }
 
-.content-section .list-group-item-dark {
-  color: #ffffff;
+.content-section .list-group-item-dark, .form-group .form-control-label, .article-title, .socialmedia:hover {
+  color: white;
 }
 
-.content-section .list-group-item-dark:hover {
+.content-section .list-group-item-dark:hover, .col-md-8 .btn-outline-secondary:hover {
   color: #868e96;
 }
 
-.form-group .form-control-label {
-  color: #ffffff;
-}
-
-.form-group .btn-outline-secondary {
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.media-body .btn-outline-secondary {
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.modal-content {
+.modal-content, .col-md-8 .btn-outline-secondary {
   background: #343a40;
-  color: #ffffff;
-}
-
-.modal-content .btn-outline-secondary {
-  font-weight: bold;
+  color: white;
 }
 
 .col-md-8 .btn-outline-secondary {
   font-weight: bold;
-  background: #343a40;
-  color: #ffffff;
 }
 
-.col-md-8 .btn-outline-secondary:hover {
-  color: #868e96;
-}
-
-.aktualnosci-img {
+.aktualnosci-img, .aktualnosci-video {
   width: 100%;
   height: auto;
 }
 
 .aktualnosci-video {
-  height: 100%;
-  width: 100%;
   min-height: 480px;
   margin-left: auto;
   margin-right: auto;
@@ -163,7 +123,7 @@ a.article-title:hover {
     transition: all 0.5s ease-in-out;
 }
 
-.scrollup:hover {
+.scrollup:hover, .store-quant-img:hover {
     transform: scale(0.7);
 }
 
@@ -255,7 +215,6 @@ figcaption {
 }
 
 @media (max-width: 800px) {
-
     .domowa {
         min-height: 100vh;
     }
@@ -351,15 +310,13 @@ figcaption {
     filter: brightness(100%);
 }
 
-.socials
-{
+.socials {
     text-align: center;
     background-color: #343a40;
     margin-top: 30px;
 }
 
-.socialmedia
-{
+.socialmedia {
     width: 25%;
     height: auto;
     float:left;
@@ -367,30 +324,21 @@ figcaption {
     color: white;
 }
 
-.socialmedia:hover
-{
-    color: white;
-}
-
-.youtube:hover
-{
+.youtube:hover {
     background-color: #d94348;
 }
 
-.github:hover
-{
+.github:hover, .bitbucket:hover {
     background-color: #e0e0e0;
     color: black;
 }
 
-.bitbucket:hover
-{
+.bitbucket:hover {
     background-color: #e0e0e0;
     color: #2684ff;
 }
 
-.linkedin:hover
-{
+.linkedin:hover {
     background-color: #0e76a8;
 }
 
@@ -430,43 +378,23 @@ figcaption {
     color: white;
 }
 
-.update-cart {
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.update-cart2 {
-  font-weight: bold;
-  color: #ffffff;
-}
-
 .store-section {
     box-shadow: 3px 3px 10px 2px rgba(255,255,255,1);
 }
 
-.store-quant {
+.store-quant, .store-quant-img {
     display: inline-block;
     max-width: 25px;
     height: auto;
 }
 
 .store-quant-img {
-    display: inline-block;
     max-width: 30px;
-    height: auto;
     transition: all 0.5s ease-in-out;
-}
-
-.store-quant-img:hover {
-    transform: scale(0.7);
 }
 
 .form-field {
     width: 250px;
     padding: 5px;
     display: inline-block;
-}
-
-.hidden {
-    display: none;
 }
