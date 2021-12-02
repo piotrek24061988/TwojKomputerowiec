@@ -65,8 +65,7 @@ a.article-title:hover {
 .account-img {
   height: 125px;
   width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
+  margin: 0px 20px 16px 0px;
 }
 
 .account-heading {
@@ -76,8 +75,7 @@ a.article-title:hover {
 .blog-img {
   height: 50px;
   width: 50px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin: 0px 5px 5px 0px;
 }
 
 .content-section .list-group-item-dark, .form-group .form-control-label, .article-title, .socialmedia:hover {
@@ -104,8 +102,7 @@ a.article-title:hover {
 
 .aktualnosci-video {
   min-height: 480px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   display: block
 }
 
@@ -262,22 +259,18 @@ figcaption {
 }
 
 .domeindetail {
-    padding-top: 60px;
-    padding-bottom: 60px;
     background: #343a40;
     padding: 1px 1px;
     border: 1px solid #dddddd;
     border-radius: 5px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px 0;
     box-shadow: 3px 3px 10px 2px rgba(255,255,255,1);
 }
 
 .domeindetailimage {
     padding: 10px;
     display: inline-block;
-    margin-left: 30px;
-    margin-right: 10px;
+    margin: 0px 10px 0px 30px;
     max-width: 100%;
     width: 260px;
     height: auto;
@@ -293,8 +286,7 @@ figcaption {
     display: inline-block;
     width: 70%;
     text-align: justify;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .domeindescription h2 {
@@ -358,17 +350,14 @@ figcaption {
 }
 
 #zegar {
-    margin-left: 12px;
-    margin-top: 8px;
     text-align: center;
-    margin-right: 3px;
+    margin: 8px 3px 0px 12px;
 }
 
 .basket-img {
   height: 35px;
-  margin-top: 3px;
   width: auto;
-  margin-left: 3px;
+  margin: 3px 0px 0px 3px;
   float: left;
 }
 
