@@ -97,7 +97,6 @@ a.article-title:hover {
 
 .aktualnosci-img, .aktualnosci-video {
   width: 100%;
-  height: auto;
 }
 
 .aktualnosci-video {
@@ -273,7 +272,6 @@ figcaption {
     margin: 0px 10px 0px 30px;
     max-width: 100%;
     width: 260px;
-    height: auto;
 }
 
 .domeindetailimage img {
@@ -298,7 +296,6 @@ figcaption {
 
 .domainfoto {
     width: 100%;
-    height: auto;
     filter: brightness(100%);
 }
 
@@ -310,7 +307,6 @@ figcaption {
 
 .socialmedia {
     width: 25%;
-    height: auto;
     float:left;
     padding: 10px 0px 10px 0px;
     color: white;
@@ -356,7 +352,6 @@ figcaption {
 
 .basket-img {
   height: 35px;
-  width: auto;
   margin: 3px 0px 0px 3px;
   float: left;
 }
@@ -374,7 +369,6 @@ figcaption {
 .store-quant, .store-quant-img {
     display: inline-block;
     max-width: 25px;
-    height: auto;
 }
 
 .store-quant-img {
