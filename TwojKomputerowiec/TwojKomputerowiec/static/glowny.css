@@ -381,3 +381,15 @@ figcaption {
     padding: 5px;
     display: inline-block;
 }
+
+.newest::after {
+    content: "Najnowsza";
+    background-color: #aaaaaa;
+    position: absolute;
+    display: inline-block;
+    padding: 5px;
+    right: 0px;
+    top: -15px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
