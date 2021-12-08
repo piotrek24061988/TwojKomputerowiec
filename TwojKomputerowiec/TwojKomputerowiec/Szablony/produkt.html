@@ -1,7 +1,7 @@
 {% extends "baza.html" %}
 
 {% block glowa %}
-<title>{{ produkt.nazwa }}</title>
+<title>{{ produkt.tytul }}</title>
 {% endblock %}
 
 {% block cialo %}
@@ -14,7 +14,7 @@
                 <h2 class="article-title text-center">{{ produkt.tytul }}</h2>
                 {% if produkt.zdjecie %}
                 <img class="rounded aktualnosci-img mb-1"
-                     src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}">
+                     src="{{ url_for('static', filename='media/sklep/' + produkt.zdjecie) }}" alt="{ produkt.tytul }}">
                 {% else %}
                 <img class="rounded aktualnosci-img mb-1"
                      src="{{ url_for('static', filename='media/sklep/placeholder.png') }}">
@@ -42,8 +42,7 @@
         <div class="content-section">
             <h3>Menu Sklepu</h3>
             <ul class="list-group">
-                <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Wróć do
-                    sklepu</a li>
+                <li><a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Wróć do sklepu</a></li>
             </ul>
         </div>
     </div>
