@@ -18,10 +18,11 @@
                 </div>
                 <h2><a class="article-title" href="{{ url_for('aktualnosc', aktualnosc_id=aktualnosc.id)  }}">{{ aktualnosc.tytul }}</a></h2>
                 {% if aktualnosc.zdjecie %}
-                    <img class="rounded aktualnosci-img mb-3" src="{{ url_for('static', filename='media/aktualnosci/' + aktualnosc.zdjecie) }}">
+                    <img class="rounded aktualnosci-img mb-3" src="{{ url_for('static', filename='media/aktualnosci/' + aktualnosc.zdjecie) }}"
+                         alt="{{ aktualnosc.tytul }}">
                 {% endif %}
                 {% if aktualnosc.videoUrl %}
-                    <iframe class="aktualnosci-video mb-3" src="{{aktualnosc.videoUrl}}" title="YouTube video player" frameborder="0"
+                    <iframe class="aktualnosci-video mb-3" src="{{aktualnosc.videoUrl}}" title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                     </iframe>

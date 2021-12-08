@@ -394,3 +394,7 @@ figcaption {
     border-radius: 5px;
     border: 1px solid white;
 }
+
+iframe{
+    border-width: 0px;
+}
