@@ -121,9 +121,7 @@
 
     <div class="col-md-6">
         <div class="border text-center rounded bg-dark store-section mb-5">
-            <a href="{{ url_for('karta') }}">
-                <button class="btn btn-outline-secondary update-cart m-1">Modyfikuj</button>
-            </a>
+            <a href="{{ url_for('karta') }}" class="btn btn-outline-secondary update-cart m-1">Modyfikuj</a>
             <p>Podsumowanie zamówienia</p>
             <table class="table">
                 {% for zamowienieProduktu in zamowienie.obiektZamowienia %}
