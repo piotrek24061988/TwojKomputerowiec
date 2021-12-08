@@ -26,21 +26,24 @@
                     <tr>
                         <th>
                             <a href="{{ url_for('produkt', produkt_id=zamowienieProduktu.produkt.id) }}">
-                                <img src="{{ url_for('static', filename='media/sklep/' + zamowienieProduktu.produkt.zdjecie) }}" class="img-fluid text-center" style="max-width: 50px; height: auto;">
+                                <img src="{{ url_for('static', filename='media/sklep/' + zamowienieProduktu.produkt.zdjecie) }}"
+                                     alt="{{ zamowienieProduktu.produkt.tytul }}" class="img-fluid text-center" style="max-width: 50px; height: auto;">
                             </a>
                         </th>
                         <th><h6>{{ zamowienieProduktu.produkt.tytul }}</h6></th>
                         <th><h6>{{'%0.2f'|format(zamowienieProduktu.produkt.cena|float)}} zł</h6></th>
                         <th>
                             <a href="{{ url_for('zmniejszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
-                                <img class="store-quant-img update-cart update-cart1" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="decrease" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
+                                <img class="store-quant-img update-cart update-cart1" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="decrease"
+                                     src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}" alt="ikona zmniejszenia">
                             </a>
                             <!--<button class="btn btn-link bg-transparent update-cart2" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="decrease">
                                 <img class="store-quant-img" src="{{ url_for('static', filename='media/ikony/scrolldown.png') }}">
                             </button>-->
                             <h6 class="store-quant">{{ zamowienieProduktu.ilosc }}</h6>
                             <a href="{{ url_for('zwiekszKosz', produkt_id=zamowienieProduktu.produkt.id) }}">
-                                <img class="store-quant-img update-cart update-cart1" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="increase" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
+                                <img class="store-quant-img update-cart update-cart1" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="increase"
+                                     src="{{ url_for('static', filename='media/ikony/scrollup.png') }}" alt="ikona zwiększenia">
                             </a>
                             <!--<button class="btn btn-link bg-transparent update-cart2" data-product="{{ zamowienieProduktu.produkt.id }}" data-action="increase">
                                 <img class="store-quant-img" src="{{ url_for('static', filename='media/ikony/scrollup.png') }}">
@@ -74,8 +77,8 @@
             <div class="content-section">
                 <h3>Menu Sklepu</h3>
                 <ul class="list-group">
-                    <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Idż do sklepu</a li>
-                    <a li class="list-group-item list-group-item-dark mb-1" href="{{ url_for('zamowienie') }}">Podsumuj zamówienie</a li>
+                    <li><a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('sklep') }}">Idż do sklepu</a></li>
+                    <li><aclass="list-group-item list-group-item-dark mb-1" href="{{ url_for('zamowienie') }}">Podsumuj zamówienie</a></li>
                 </ul>
             </div>
         </div>
@@ -84,7 +87,7 @@
 </div>
 
 <script src="{{ url_for('static', filename='ciasteczka.js') }}"></script>
-<script type="text/javascript">
+<script>
          var userAuthenticated = '{{ current_user.is_authenticated }}'
 </script>
 <script src="{{ url_for('static', filename='tokenCSRF.js') }}"></script>

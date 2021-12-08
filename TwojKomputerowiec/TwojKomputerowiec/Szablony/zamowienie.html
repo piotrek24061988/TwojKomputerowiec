@@ -131,6 +131,7 @@
                     <th>
                         <a href="{{ url_for('produkt', produkt_id=zamowienieProduktu.produkt.id) }}">
                             <img src="{{ url_for('static', filename='media/sklep/' + zamowienieProduktu.produkt.zdjecie) }}"
+                                 alt="{{ zamowienieProduktu.produkt.tytul }}"
                                  class="img-fluid text-center" style="max-width: 35px; height: auto;">
                         </a>
                     </th>
@@ -152,7 +153,7 @@
 </div>
 
 <script src="{{ url_for('static', filename='ciasteczka.js') }}"></script>
-<script type="text/javascript">
+<script>
          var userAuthenticated = '{{ current_user.is_authenticated }}'
 </script>
 <script src="{{ url_for('static', filename='tokenCSRF.js') }}"></script>
