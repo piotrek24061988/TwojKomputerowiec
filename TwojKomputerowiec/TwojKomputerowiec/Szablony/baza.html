@@ -29,7 +29,8 @@
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon">
-                            <img style="width: 100%; height: auto;" src="{{ url_for('static', filename='media/ikony/pgwhite600black.png') }}"/>
+                            <img style="width: 100%; height: auto;" src="{{ url_for('static', filename='media/ikony/pgwhite600black.png') }}"
+                                 alt="przycisk rozwijanej nawigacji z bialym logo Piotr Górecki na czarnym tle"/>
                         </span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarToggle">
@@ -40,7 +41,7 @@
                             <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('oMnie') }}">O mnie</a>
                             <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('galeria') }}">Galeria</a>
                             <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('sklep') }}">Sklep</a>
-                            <li class="nav-item dropdown">
+                            <div class="nav-item dropdown">
                                 <button class="btn btn-outline-secondary w-100 mx-1" id="subnav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Dodatkowo
                                 </button>
@@ -51,17 +52,17 @@
                                     <a class="dropdown-item bg-dark" href="{{ url_for('aspice') }}">ASPICE</a>
                                     <a class="dropdown-item bg-dark" href="{{ url_for('testowa') }}">Testowa</a>
                                 </div>
-                            </li>
+                            </div>
                             <div id="zegar">00:00:00</div>
                         </div>
 
                         <div class="navbar-nav">
                             {% if current_user.is_authenticated %}
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('profil') }}">Profil</a>
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('wylogowanie') }}">Wyloguj</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('profil') }}">Profil</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('wylogowanie') }}">Wyloguj</a>
                             {% else %}
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('logowanie') }}">Loguj</a>
-                                <a class="btn btn-outline-secondary w-100 mx-1" type="link" href="{{ url_for('rejestracja') }}">Rejestruj</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('logowanie') }}">Loguj</a>
+                                <a class="btn btn-outline-secondary w-100 mx-1" href="{{ url_for('rejestracja') }}">Rejestruj</a>
                             {% endif %}
                         </div>
                         {% if request.path == '/sklep' %}
@@ -79,7 +80,7 @@
             </nav>
         </header>
 
-        <main role="main" class="container" style="min-height: 72vh;">
+        <main class="container" style="min-height: 72vh;">
             {%  with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
