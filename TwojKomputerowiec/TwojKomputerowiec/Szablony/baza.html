@@ -67,7 +67,8 @@
                         </div>
                         {% if request.path == '/sklep' %}
                         <a href="{{ url_for('karta') }}">
-                            <img class="basket-img" src="{{ url_for('static', filename='media/sklep/basket2_white.png') }}">
+                            <img class="basket-img" src="{{ url_for('static', filename='media/sklep/basket2_white.png') }}"
+                                 alt="ikona koszyka sklepowego">
                             {% if zamowienie %}
                                 <p id="cart-total"> {{ zamowienie.iloscProduktow }} </p>
                             {% else %}
