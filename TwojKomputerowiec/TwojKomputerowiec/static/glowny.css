@@ -383,10 +383,11 @@ figcaption {
 }
 
 .newest::after {
-    content: "Najnowsza";
+    content: "NAJNOWSZA";
     background-color: #aaaaaa;
     position: absolute;
     display: inline-block;
+    letter-spacing: 2px;
     padding: 5px;
     right: 0px;
     top: -15px;
