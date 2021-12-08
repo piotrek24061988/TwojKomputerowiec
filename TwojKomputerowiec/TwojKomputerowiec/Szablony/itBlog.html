@@ -39,18 +39,14 @@
 
     {% endfor %}
 
-        </div>
-            <div class="col-md-4">
-                <div class="content-section">
-                    <h3>Menu Bloga</h3>
-                    <ul class="list-group">
-                        {% if current_user.is_authenticated  %}
-                            <li><a class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePosta') }}">Dodaj post</a></li>
-                        {% endif %}
-                        <!--<a li class="list-group-item list-group-item-dark" href="#">Najnowsze</a li>
-                        <a li class="list-group-item list-group-item-dark" href="#">Najstarsze</a li>-->
-                    </ul>
-                </div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <h3>Menu Bloga</h3>
+                <ul class="list-group">
+                    {% if current_user.is_authenticated  %}
+                        <li><a class="list-group-item list-group-item-dark" href="{{ url_for('dodaniePosta') }}">Dodaj post</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
 
