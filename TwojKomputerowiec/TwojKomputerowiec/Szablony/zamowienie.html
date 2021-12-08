@@ -135,16 +135,16 @@
                                  class="img-fluid text-center" style="max-width: 35px; height: auto;">
                         </a>
                     </th>
-                    <th><h6>{{ zamowienieProduktu.produkt.nazwa }}</h6></th>
-                    <th><h6>{{ zamowienieProduktu.ilosc }}</h6></th>
-                    <th><h6>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}}</h6></th>
+                    <th>{{ zamowienieProduktu.produkt.nazwa }}</th>
+                    <th>{{ zamowienieProduktu.ilosc }}</th>
+                    <th>{{'%0.2f'|format(zamowienieProduktu.calkowitaCena|float)}}</th>
                 </tr>
                 {% endfor %}
                 <tr>
                     <th></th>
                     <th></th>
-                    <th><h6>Produkty: {{ zamowienie.iloscProduktow }}</h6></th>
-                    <th><h6>Kwota: {{'%0.2f'|format(zamowienie.lacznaCena|float)}} zł</h6></th>
+                    <th>Produkty: {{ zamowienie.iloscProduktow }}</th>
+                    <th>Kwota: {{'%0.2f'|format(zamowienie.lacznaCena|float)}} zł</th>
                 </tr>
             </table>
         </div>
