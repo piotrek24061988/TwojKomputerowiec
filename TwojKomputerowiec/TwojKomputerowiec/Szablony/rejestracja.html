@@ -6,7 +6,7 @@
 
 {% block cialo %}
     <div class="content-section">
-        <form method="POST" action="">
+        <form method="POST">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <h3 class="border-bottom mb-4">Dokonaj rejestracji</h3>
@@ -57,7 +57,7 @@
     </div>
     <div class="border-top pt-3">
         <small class="text-light">
-            <h6>Masz już konto? <a class="ml-2 article-title" href="{{ url_for('logowanie') }}">Zaloguj się</a></h6>
+            Masz już konto? <a class="ml-2 article-title" href="{{ url_for('logowanie') }}">Zaloguj się</a>
         </small>
     </div>
 {% endblock %}

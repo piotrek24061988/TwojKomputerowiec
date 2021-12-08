@@ -6,7 +6,7 @@
 
 {% block cialo %}
     <div class="content-section">
-        <form method="POST" action="">
+        <form method="POST">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <h3 class="border-bottom mb-4">Dokonaj logowania</h3>
@@ -45,13 +45,13 @@
                 {{ form.potwierdzenie(class="btn btn-outline-secondary") }}
             </div>
             <small class="text-light">
-                <h6>Nie pamiętasz hasła? <a class="ml-2 article-title" href="{{ url_for('wnioskujResetHasla', ) }}">Zresetuj hasło</a></h6>
+                Nie pamiętasz hasła? <a class="ml-2 article-title" href="{{ url_for('wnioskujResetHasla', ) }}">Zresetuj hasło</a>
             </small>
         </form>
     </div>
     <div class="border-top pt-3">
         <small class="text-light">
-            <h6>Nie masz konta? <a class="ml-2 article-title" href="{{ url_for('rejestracja') }}">Zarejestruj się</a><h5>
+            Nie masz konta? <a class="ml-2 article-title" href="{{ url_for('rejestracja') }}">Zarejestruj się</a>
         </small>
     </div>
 {% endblock %}
