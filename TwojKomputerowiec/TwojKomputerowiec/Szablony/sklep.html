@@ -46,11 +46,11 @@
                 <ul class="list-group">
                     {% if current_user.is_authenticated  %}
                     {% if current_user.email == admin %}
-                    <a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('dodanieProduktu') }}">Dodaj produkt</a>
-                    <a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('historiaZamowien') }}">Historia zamowien</a>
+                    <li><a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('dodanieProduktu') }}">Dodaj produkt</a></li>
+                    <li><a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('historiaZamowien') }}">Historia zamowien</a></li>
                     {% endif %}
                     {% endif %}
-                    <a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('karta') }}">Idż do kasy</a>
+                    <li><a class="list-group-item list-group-item-dark mb-1" href="{{ url_for('karta') }}">Idż do kasy</a></li>
                 </ul>
             </div>
         </div>

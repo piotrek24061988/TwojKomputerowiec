@@ -14,11 +14,11 @@
                 <h2 class="article-title">{{ aktualnosc.tytul }}</h2>
                 {% if aktualnosc.zdjecie %}
                 <img class="rounded aktualnosci-img mb-1"
-                     src="{{ url_for('static', filename='media/aktualnosci/' + aktualnosc.zdjecie) }}">
+                     src="{{ url_for('static', filename='media/aktualnosci/' + aktualnosc.zdjecie) }}"
+                     alt="{{ aktualnosc.tytul }}">
                 {% endif %}
                 {% if aktualnosc.videoUrl %}
                 <iframe class="aktualnosci-video mb-1" src="{{aktualnosc.videoUrl}}" title="YouTube video player"
-                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                 </iframe>
@@ -62,7 +62,7 @@
         <div class="content-section">
             <h3>Menu Aktualności</h3>
             <ul class="list-group">
-                <a li class="list-group-item list-group-item-dark" href="{{ url_for('aktualnosci') }}">Wróc do aktualności</a li>
+                <li><a class="list-group-item list-group-item-dark" href="{{ url_for('aktualnosci') }}">Wróc do aktualności</a></li>
             </ul>
         </div>
     </div>
