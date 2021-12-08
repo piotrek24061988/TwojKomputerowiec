@@ -14,7 +14,7 @@
                 <h2 class="article-title text-center">{{ zdjecie.tytul }}</h2>
                 {% if zdjecie.zdjecie %}
                 <img class="rounded aktualnosci-img mb-1"
-                     src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}">
+                     src="{{ url_for('static', filename='media/galeria/' + zdjecie.zdjecie) }}" alt="{{ zdjecie.tytul }}">
                 {% endif %}
                 {% if admin == current_user.email %}
                 <a class="btn btn-outline-secondary" href="{{ url_for('aktualizujZdjecie', zdjecie_id=zdjecie.id) }}">Aktualizuj</a>
@@ -53,7 +53,7 @@
         <div class="content-section">
             <h3>Menu Galerii</h3>
             <ul class="list-group">
-                <a li class="list-group-item list-group-item-dark" href="{{ url_for('galeria') }}">Wróc do gelerii</a li>
+                <li><a li class="list-group-item list-group-item-dark" href="{{ url_for('galeria') }}">Wróc do gelerii</a></li>
             </ul>
         </div>
     </div>
